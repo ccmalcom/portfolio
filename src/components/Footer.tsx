@@ -41,13 +41,7 @@ export function Footer() {
             >
               <Linkedin size={18} />
             </a>
-            <a
-              href={socialLinks.email}
-              className="text-foreground-muted hover:text-accent transition-colors p-2"
-              aria-label="Email"
-            >
-              <Mail size={18} />
-            </a>
+         
           </div>
 
           {/* Copyright */}

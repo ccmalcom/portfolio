@@ -174,27 +174,14 @@ export function Contact() {
                 Other ways to connect
               </h3>
               <p className="text-foreground-muted mb-6">
-                Prefer to reach out directly? Feel free to email me or connect on
+                Prefer to reach out directly? Feel free to connect on
                 social media.
               </p>
             </div>
 
             {/* Social links */}
             <div className="space-y-4">
-              <a
-                href={socialLinks.email}
-                className="flex items-center gap-4 p-4 rounded-lg bg-background-secondary border border-border hover:border-accent/30 transition-all group"
-              >
-                <div className="p-2 rounded-lg bg-accent-muted group-hover:bg-accent/20 transition-colors">
-                  <Mail size={20} className="text-accent" />
-                </div>
-                <div>
-                  <p className="font-medium text-foreground">Email</p>
-                  <p className="text-sm text-foreground-muted">
-                    chase@chasemalcom.com
-                  </p>
-                </div>
-              </a>
+         
 
               <a
                 href={socialLinks.github}
@@ -227,14 +214,7 @@ export function Contact() {
               </a>
             </div>
 
-            {/* Fun note */}
-            <div className="p-4 rounded-lg border border-dashed border-accent/30 bg-accent-muted/30">
-              <p className="text-sm text-foreground-muted italic">
-                🌱 Fun fact: When I&apos;m not coding, I&apos;m probably hiking a trail or
-                tending to my garden. Growing things—whether it&apos;s plants or
-                software—brings me joy.
-              </p>
-            </div>
+            
           </motion.div>
         </div>
       </div>

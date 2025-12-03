@@ -16,8 +16,15 @@ function ProjectCard({
   isInView: boolean;
 }) {
   const [isHovered, setIsHovered] = useState(false);
+  const [isSwapped, setIsSwapped] = useState(false);
   const isEven = index % 2 === 0;
   const hasBackImage = !!project.backImage;
+
+  // Determine which image is front/back based on swap state
+  const frontImage = isSwapped ? project.backImage! : project.image;
+  const backImage = isSwapped ? project.image : project.backImage!;
+  const frontLabel = isSwapped ? "Salesforce Admin" : "Public Site";
+  const backLabel = isSwapped ? "Public Site" : "Salesforce Admin";
 
   return (
     <motion.article
@@ -40,23 +47,32 @@ function ProjectCard({
           className="relative aspect-video rounded-lg overflow-hidden"
           style={{ perspective: "1000px" }}
         >
-          {/* Back image (Salesforce admin/backend) - only if backImage exists */}
+          {/* Back image - only if backImage exists */}
           {hasBackImage && (
-            <div className="absolute inset-0 rounded-lg overflow-hidden border border-border" style={{ backgroundColor: "#121212" }}>
+            <button
+              onClick={() => setIsSwapped(!isSwapped)}
+              className="absolute inset-0 rounded-lg overflow-hidden border border-border cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent"
+              style={{ backgroundColor: "#121212" }}
+              aria-label={`Switch to ${backLabel} view`}
+            >
               <Image
-                src={project.backImage!}
-                alt={`${project.title} - Backend`}
+                src={backImage}
+                alt={`${project.title} - ${backLabel}`}
                 fill
                 className="object-cover"
               />
               {/* Label for back image */}
               <div className="absolute top-3 left-3 px-2 py-1 rounded text-xs font-medium" style={{ backgroundColor: "#1DB954", color: "#0a0a0a" }}>
-                Salesforce Admin
+                {backLabel}
               </div>
-            </div>
+              {/* Click hint */}
+              <div className="absolute bottom-3 right-3 px-2 py-1 rounded text-xs" style={{ backgroundColor: "rgba(10, 10, 10, 0.8)", color: "#a0a0a0" }}>
+                Click to swap
+              </div>
+            </button>
           )}
 
-          {/* Front image (public site) */}
+          {/* Front image */}
           <motion.div
             className="absolute inset-0 rounded-lg overflow-hidden border border-border"
             style={{ backgroundColor: "#1a1a1a" }}
@@ -78,8 +94,8 @@ function ProjectCard({
             transition={{ duration: 0.4, ease: "easeOut" }}
           >
             <Image
-              src={project.image}
-              alt={project.title}
+              src={frontImage}
+              alt={`${project.title} - ${frontLabel}`}
               fill
               className="object-cover"
             />
@@ -87,7 +103,7 @@ function ProjectCard({
             {/* Label for front image (only show if there's a back image) */}
             {hasBackImage && (
               <div className="absolute top-3 left-3 px-2 py-1 rounded text-xs font-medium" style={{ backgroundColor: "#1DB954", color: "#0a0a0a" }}>
-                Public Site
+                {frontLabel}
               </div>
             )}
 

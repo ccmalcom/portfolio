@@ -25,8 +25,8 @@ export const projects: Project[] = [
 			'Salesforce NPSP org + Experience Cloud site for a no-kill animal rescue, replacing 6 legacy systems and saving $800/year.',
 		longDescription:
 			'Built a comprehensive Salesforce solution for a no-kill animal rescue organization. Consolidated six disparate legacy systems into a unified NPSP implementation with a custom Experience Cloud portal for volunteers and adopters. Created custom Lightning Web Components for the adoption workflow and wrote Apex classes to handle complex matching logic between animals and potential adopters.',
-		image: '/projects/CCR-site.png',
-		backImage: '/projects/CCR-internal.png', // Salesforce admin view
+		image: '/projects/ccr/site.png',
+		backImage: '/projects/ccr/portal.png', // Salesforce admin view
 		technologies: [
 			'Salesforce',
 			'NPSP',
@@ -50,7 +50,7 @@ export const projects: Project[] = [
 			'A bilingual Next.js + Supabase platform connecting immigrants with mutual aid resources and volunteer support.',
 		longDescription:
 			'Developed a full-stack web application for a local mutual aid group serving immigrant communities in Indiana. Features include bilingual support (English/Spanish), real-time resource availability updates, an admin portal for managing volunteers and resources, and integration with local service providers.',
-		image: '/projects/indiana-aid.png',
+		image: '/projects/indianaaid-2.png',
 		technologies: [
 			'Next.js',
 			'TypeScript',
@@ -64,7 +64,7 @@ export const projects: Project[] = [
 			'Admin portal for volunteer coordination',
 			'Mobile-first responsive design',
 		],
-		liveUrl: 'https://indiana-aid.org',
+		liveUrl: 'https://indianaaid.org',
 		githubUrl: 'https://github.com/ccmalcom/indiana-aid',
 		featured: true,
 	},

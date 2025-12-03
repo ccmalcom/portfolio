@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowDown, Sparkles } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 
 export function Hero() {
   const scrollToAbout = () => {
@@ -17,7 +17,7 @@ export function Hero() {
       {/* Floating decorative elements */}
       <motion.div
         className="absolute top-1/4 left-[15%] w-4 h-4 rounded-full"
-        style={{ backgroundColor: "#1DB954" }}
+        style={{ backgroundColor: "var(--accent)" }}
         animate={{
           y: [0, -20, 0],
           opacity: [0.6, 1, 0.6],
@@ -30,7 +30,7 @@ export function Hero() {
       />
       <motion.div
         className="absolute top-1/3 right-[20%] w-5 h-5 rounded-full"
-        style={{ backgroundColor: "#1DB954" }}
+        style={{ backgroundColor: "var(--accent)" }}
         animate={{
           y: [0, 15, 0],
           opacity: [0.5, 0.9, 0.5],
@@ -44,7 +44,7 @@ export function Hero() {
       />
       <motion.div
         className="absolute bottom-1/3 left-[25%] w-3 h-3 rounded-full"
-        style={{ backgroundColor: "#1DB954" }}
+        style={{ backgroundColor: "var(--accent-2)" }}
         animate={{
           y: [0, -15, 0],
           opacity: [0.7, 1, 0.7],
@@ -58,7 +58,7 @@ export function Hero() {
       />
       <motion.div
         className="absolute top-1/2 right-[12%] w-2 h-2 rounded-full"
-        style={{ backgroundColor: "#1DB954" }}
+        style={{ backgroundColor: "var(--accent-2)" }}
         animate={{
           y: [0, 10, 0],
           opacity: [0.5, 0.8, 0.5],
@@ -120,6 +120,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
           className="mt-16 max-w-md mx-auto"
+          
         >
           <div className="code-block text-left text-sm">
             <div className="flex items-center gap-2 mb-3 pb-3 border-b border-border">
@@ -127,7 +128,7 @@ export function Hero() {
               <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
               <div className="w-3 h-3 rounded-full bg-green-500/80" />
               <span className="text-foreground-muted text-xs ml-2">
-                chase.ts
+                chase.tsx
               </span>
             </div>
             <code className="text-foreground-muted">
