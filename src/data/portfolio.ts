@@ -4,6 +4,7 @@ export interface Project {
 	description: string;
 	longDescription: string;
 	image: string;
+  bg? : string;
 	backImage?: string; // Optional second image revealed on hover (e.g., admin/backend view)
 	technologies: string[];
 	highlights: string[];
@@ -50,7 +51,7 @@ export const projects: Project[] = [
 			'A bilingual Next.js + Supabase platform connecting immigrants with mutual aid resources and volunteer support.',
 		longDescription:
 			'Developed a full-stack web application for a local mutual aid group serving immigrant communities in Indiana. Features include bilingual support (English/Spanish), real-time resource availability updates, an admin portal for managing volunteers and resources, and integration with local service providers.',
-		image: '/projects/indianaaid-2.png',
+		image: '/projects/indiana-aid/site.png',
 		technologies: [
 			'Next.js',
 			'TypeScript',
@@ -75,7 +76,8 @@ export const projects: Project[] = [
 			'A macOS menubar app that syncs your Google Calendar with Govee LED lights for visual meeting notifications.',
 		longDescription:
 			'Built a Python-based macOS menubar application that provides visual meeting notifications through smart LED lights. The app monitors Google Calendar events and automatically changes Govee LED light colors based on meeting proximity—warm white when idle, blue when a meeting is approaching, red when imminent, and white during active meetings. Features intelligent state tracking that reduces API calls by 97%, robust error handling with exponential backoff, and automatic recovery from sleep/wake cycles.',
-		image: '/projects/meeting-light.png',
+    bg: '/projects/meeting-light/bg.png',
+		image: '/projects/meeting-light/app.gif',
 		technologies: [
 			'Python',
 			'Google Calendar API',
