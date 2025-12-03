@@ -2,13 +2,13 @@
 
 :root {
   /* Light mode - rarely used but available */
-  --background: #b3dcb2;
+  --background: #BFD7FD;
   --background-secondary: #f0f0f0;
-  --background-tertiary: #cddbcd;
+  --background-tertiary: #d7dbcc;
   --foreground: #121212;
-  --foreground-muted: #535353;
-  --accent: #1DB954;
-  --accent-hover: #1ed760;
+  --foreground-muted: #191818;
+  --accent: #d7dbcc;
+  --accent-hover: #eeefea;
   --accent-muted: rgba(29, 185, 84, 0.15);
   --accent-2: #a8b5db;
   --border: rgba(0, 0, 0, 0.1);
@@ -102,7 +102,7 @@ body {
 .gradient-text {
   background: linear-gradient(135deg,
       var(--accent) 0%,
-      #BFD7FD 50%,
+      var(--accent-2) 50%,
       var(--accent) 100%);
   background-size: 200% 200%;
   -webkit-background-clip: text;
