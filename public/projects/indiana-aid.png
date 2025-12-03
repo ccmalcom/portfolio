@@ -1,0 +1,11 @@
+<svg width="800" height="450" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#121212"/>
+  <rect x="50" y="30" width="700" height="60" rx="8" fill="#1a1a1a"/>
+  <rect x="50" y="110" width="220" height="290" rx="8" fill="#1a1a1a"/>
+  <rect x="290" y="110" width="220" height="290" rx="8" fill="#1a1a1a"/>
+  <rect x="530" y="110" width="220" height="290" rx="8" fill="#1a1a1a"/>
+  <circle cx="160" cy="200" r="40" fill="#1DB954" opacity="0.3"/>
+  <circle cx="400" cy="200" r="40" fill="#1DB954" opacity="0.3"/>
+  <circle cx="640" cy="200" r="40" fill="#1DB954" opacity="0.3"/>
+  <text x="400" y="430" text-anchor="middle" fill="#1DB954" font-family="system-ui" font-size="16">Indiana Aid - Next.js + Supabase</text>
+</svg>

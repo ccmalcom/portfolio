@@ -1,0 +1,262 @@
+"use client";
+
+import { motion, useInView } from "framer-motion";
+import { useRef, useState } from "react";
+import { ExternalLink, Github, ChevronRight } from "lucide-react";
+import { projects, Project } from "@/data/portfolio";
+import Image from "next/image";
+
+function ProjectCard({
+  project,
+  index,
+  isInView,
+}: {
+  project: Project;
+  index: number;
+  isInView: boolean;
+}) {
+  const [isHovered, setIsHovered] = useState(false);
+  const isEven = index % 2 === 0;
+  const hasBackImage = !!project.backImage;
+
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 40 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, delay: index * 0.15 }}
+      className={`grid lg:grid-cols-12 gap-6 lg:gap-8 items-center ${
+        !isEven ? "lg:text-right" : ""
+      }`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {/* Project image */}
+      <div
+        className={`lg:col-span-7 relative group ${
+          !isEven ? "lg:order-2" : ""
+        }`}
+      >
+        <div 
+          className="relative aspect-video rounded-lg overflow-hidden"
+          style={{ perspective: "1000px" }}
+        >
+          {/* Back image (Salesforce admin/backend) - only if backImage exists */}
+          {hasBackImage && (
+            <div className="absolute inset-0 rounded-lg overflow-hidden border border-border" style={{ backgroundColor: "#121212" }}>
+              <Image
+                src={project.backImage!}
+                alt={`${project.title} - Backend`}
+                fill
+                className="object-cover"
+              />
+              {/* Label for back image */}
+              <div className="absolute top-3 left-3 px-2 py-1 rounded text-xs font-medium" style={{ backgroundColor: "#1DB954", color: "#0a0a0a" }}>
+                Salesforce Admin
+              </div>
+            </div>
+          )}
+
+          {/* Front image (public site) */}
+          <motion.div
+            className="absolute inset-0 rounded-lg overflow-hidden border border-border"
+            style={{ backgroundColor: "#1a1a1a" }}
+            animate={
+              hasBackImage && isHovered
+                ? {
+                    rotateX: 12,
+                    y: -20,
+                    scale: 0.95,
+                    boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
+                  }
+                : {
+                    rotateX: 0,
+                    y: 0,
+                    scale: 1,
+                    boxShadow: "0 0 0 0px rgba(0, 0, 0, 0)",
+                  }
+            }
+            transition={{ duration: 0.4, ease: "easeOut" }}
+          >
+            <Image
+              src={project.image}
+              alt={project.title}
+              fill
+              className="object-cover"
+            />
+            
+            {/* Label for front image (only show if there's a back image) */}
+            {hasBackImage && (
+              <div className="absolute top-3 left-3 px-2 py-1 rounded text-xs font-medium" style={{ backgroundColor: "#1DB954", color: "#0a0a0a" }}>
+                Public Site
+              </div>
+            )}
+
+            {/* Hover overlay with links - only for single-image projects */}
+            {!hasBackImage && (
+              <motion.div
+                initial={false}
+                animate={{ opacity: isHovered ? 1 : 0 }}
+                className="absolute inset-0 flex items-center justify-center gap-4"
+                style={{ backgroundColor: "rgba(29, 185, 84, 0.1)", backdropFilter: "blur(1px)" }}
+              >
+                {project.liveUrl && (
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3 rounded-full text-foreground hover:text-accent transition-colors"
+                    style={{ backgroundColor: "rgba(10, 10, 10, 0.9)" }}
+                    aria-label="View live site"
+                  >
+                    <ExternalLink size={20} />
+                  </a>
+                )}
+                {project.githubUrl && (
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3 rounded-full text-foreground hover:text-accent transition-colors"
+                    style={{ backgroundColor: "rgba(10, 10, 10, 0.9)" }}
+                    aria-label="View source code"
+                  >
+                    <Github size={20} />
+                  </a>
+                )}
+              </motion.div>
+            )}
+          </motion.div>
+
+          {/* Hover hint for stacked cards */}
+          {hasBackImage && !isHovered && (
+            <div className="absolute bottom-3 right-3 px-2 py-1 rounded text-xs text-foreground-muted" style={{ backgroundColor: "rgba(26, 26, 26, 0.8)" }}>
+              Hover to peek behind
+            </div>
+          )}
+        </div>
+
+        {/* Decorative corner */}
+        <div
+          className={`absolute -bottom-2 ${
+            isEven ? "-right-2" : "-left-2"
+          } w-24 h-24 border-2 rounded-lg -z-10`}
+          style={{ borderColor: "rgba(29, 185, 84, 0.2)" }}
+        />
+      </div>
+
+      {/* Project info */}
+      <div
+        className={`lg:col-span-5 space-y-4 ${!isEven ? "lg:order-1" : ""}`}
+      >
+        <div className="space-y-2">
+          <p className="text-accent text-sm font-mono">Featured Project</p>
+          <h3 className="text-2xl md:text-3xl font-bold text-foreground">
+            {project.title}
+          </h3>
+        </div>
+
+        <div
+          className={`p-5 rounded-lg bg-background-secondary border border-border shadow-lg ${
+            !isEven ? "lg:-mr-12" : "lg:-ml-12"
+          } relative z-10`}
+        >
+          <p className="text-foreground-muted leading-relaxed">
+            {project.description}
+          </p>
+        </div>
+
+        {/* Highlights */}
+        <ul className={`space-y-1 ${!isEven ? "lg:pl-0" : ""}`}>
+          {project.highlights.slice(0, 3).map((highlight) => (
+            <li
+              key={highlight}
+              className={`flex items-center gap-2 text-sm text-foreground-muted ${
+                !isEven ? "lg:flex-row-reverse" : ""
+              }`}
+            >
+              <ChevronRight size={14} className="text-accent flex-shrink-0" />
+              <span>{highlight}</span>
+            </li>
+          ))}
+        </ul>
+
+        {/* Tech stack */}
+        <div
+          className={`flex flex-wrap gap-2 ${
+            !isEven ? "lg:justify-end" : ""
+          }`}
+        >
+          {project.technologies.map((tech) => (
+            <span key={tech} className="tech-pill">
+              {tech}
+            </span>
+          ))}
+        </div>
+
+        {/* Links for mobile */}
+        <div
+          className={`flex gap-4 lg:hidden ${!isEven ? "justify-end" : ""}`}
+        >
+          {project.liveUrl && (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground-muted hover:text-accent transition-colors"
+            >
+              <ExternalLink size={20} />
+            </a>
+          )}
+          {project.githubUrl && (
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground-muted hover:text-accent transition-colors"
+            >
+              <Github size={20} />
+            </a>
+          )}
+        </div>
+      </div>
+    </motion.article>
+  );
+}
+
+export function Projects() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  const featuredProjects = projects.filter((p) => p.featured);
+
+  return (
+    <section id="projects" className="py-24 md:py-32" ref={ref}>
+      <div className="max-w-6xl mx-auto px-6">
+        {/* Section header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5 }}
+          className="mb-16"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <span className="text-accent">02.</span> Featured Projects
+          </h2>
+          <div className="section-divider max-w-xs" />
+        </motion.div>
+
+        {/* Projects list */}
+        <div className="space-y-24 md:space-y-32">
+          {featuredProjects.map((project, index) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              index={index}
+              isInView={isInView}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
