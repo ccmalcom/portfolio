@@ -13,7 +13,7 @@ export function Footer() {
           {/* Logo / Name */}
           <div className="flex items-center gap-2">
             <span className="text-xl font-semibold">
-              <span className="text-accent">c</span>
+              <span className="gradient-text">c</span>
               <span className="text-foreground">m</span>
             </span>
             <span className="text-foreground-muted text-sm">
@@ -47,7 +47,7 @@ export function Footer() {
           {/* Copyright */}
           <div className="flex items-center gap-1 text-sm text-foreground-muted">
             <span>Built with</span>
-            <Heart size={14} className="text-accent" fill="currentColor" />
+            <Heart size={14} className="text-red-500 gradient-text"  />
             <span>© {currentYear}</span>
           </div>
         </div>
@@ -55,7 +55,10 @@ export function Footer() {
         {/* Tech stack credit */}
         <div className="mt-8 pt-6 border-t border-border text-center">
           <p className="text-xs text-foreground-muted">
-            Built with Next.js, TypeScript, Tailwind CSS & Framer Motion
+            Built with 
+              <a href="https://nextjs.org/" target="_blank" rel="noopener noreferrer" className="text-foreground hover:underline"> Next.js</a>,  
+              <a href="https://www.typescriptlang.org/" target="_blank" rel="noopener noreferrer" className="text-foreground hover:underline"> TypeScript</a>, and 
+              <a href="https://tailwindcss.com/" target="_blank" rel="noopener noreferrer" className="text-foreground hover:underline">  Tailwind CSS</a>.
           </p>
         </div>
       </div>

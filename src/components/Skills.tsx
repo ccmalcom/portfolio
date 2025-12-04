@@ -58,7 +58,7 @@ function SkillCategory({
 			<div className="p-6 rounded-xl bg-background-secondary border border-border hover:border-gray-400 transition-all duration-300 h-full">
 				{/* Category header */}
 				<div className="flex items-center gap-3 mb-4">
-					<div className="p-2 rounded-lg bg-gray-800/50">
+					<div className="p-2 rounded-lg bg-foreground/10">
 						<Icon size={20} style={{color: category.color}} />
 					</div>
 					<div>

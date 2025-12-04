@@ -9,25 +9,25 @@
 @theme {
 
   /* Custom colors */
-    /* Optimized for both light and dark backgrounds */
-    --color-spot-pink: #E05A8A;
-    /* slightly deeper - pops on light, still vibrant on dark */
-    --color-spot-light-pink: #F2B8C1;
-    /* desaturated - won't wash out on warm light bg */
-    --color-spot-green: #4AA854;
-    /* slightly deeper green */
-    --color-spot-yellow-green: #C2E860;
-    /* toned down - less neon */
-    --color-spot-yellow: #E9B54D;
-    /* deeper gold - better contrast on light bg */
-    --color-spot-blue: #5088E0;
-    /* slightly deeper */
-    --color-spot-pale-blue: #8AACBE;
-    /* desaturated for light mode */
+  /* Optimized for both light and dark backgrounds */
+  --color-spot-pink: #E05A8A;
+  /* slightly deeper - pops on light, still vibrant on dark */
+  --color-spot-light-pink: #F2B8C1;
+  /* desaturated - won't wash out on warm light bg */
+  --color-spot-green: #4AA854;
+  /* slightly deeper green */
+  --color-spot-yellow-green: #C2E860;
+  /* toned down - less neon */
+  --color-spot-yellow: #E9B54D;
+  /* deeper gold - better contrast on light bg */
+  --color-spot-blue: #5088E0;
+  /* slightly deeper */
+  --color-spot-pale-blue: #8AACBE;
+  /* desaturated for light mode */
 
-    --color-sf-blue: #00A1E0;
-    /* keep brand color as-is */
-  
+  --color-sf-blue: #00A1E0;
+  /* keep brand color as-is */
+
 
   /* Background colors */
   --color-background: var(--background);
@@ -237,13 +237,15 @@ body {
 /* Gradient text */
 .gradient-text {
   background: linear-gradient(135deg,
-      var(--accent) 0%,
-      var(--accent-2) 50%,
-      var(--accent) 100%);
-  background-size: 200% 200%;
+      var(--color-spot-blue) 0%,
+      var(--color-spot-pink) 33%,
+      var(--color-spot-green) 66%,
+      var(--color-spot-yellow) 100%);
+  background-size: 300% 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  animation: gradient-shift 6s ease-in-out infinite;
 }
 
 /* Glow effect for cards */

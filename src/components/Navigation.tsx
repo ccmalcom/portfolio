@@ -72,8 +72,8 @@ export function Navigation() {
 							className="text-xl font-semibold tracking-tight"
 							whileHover={{ scale: 1.02 }}
 							whileTap={{ scale: 0.98 }}>
-							<span style={{ color: 'var(--accent)' }}>c</span>
-							<span style={{ color: '#e8e8e8' }}>m</span>
+							<span className='gradient-text'>c</span>
+							<span className='foreground'>m</span>
 						</motion.a>
 
 						{/* Desktop Navigation */}

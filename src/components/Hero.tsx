@@ -17,8 +17,7 @@ export function Hero() {
       {/* Floating decorative elements */}
       {/* Floating decorative elements */}
       <motion.div
-        className="absolute top-1/4 left-[15%] w-4 h-4 rounded-full"
-        style={{ backgroundColor: "var(--accent)" }}
+        className="absolute top-1/4 left-[15%] w-4 h-4 rounded-full bg-spot-blue"
         animate={{
           y: [0, -20, 0],
           opacity: [0.6, 1, 0.6],
@@ -30,8 +29,7 @@ export function Hero() {
         }}
       />
       <motion.div
-        className="absolute top-1/3 right-[20%] w-5 h-5 rounded-full"
-        style={{ backgroundColor: "var(--accent)" }}
+        className="absolute top-1/3 right-[20%] w-5 h-5 rounded-full bg-spot-pink"
         animate={{
           y: [0, 15, 0],
           opacity: [0.5, 0.9, 0.5],
@@ -44,8 +42,7 @@ export function Hero() {
         }}
       />
       <motion.div
-        className="absolute bottom-1/3 left-[25%] w-3 h-3 rounded-full"
-        style={{ backgroundColor: "var(--accent-2)" }}
+        className="absolute bottom-1/3 left-[25%] w-3 h-3 rounded-full bg-spot-green"
         animate={{
           y: [0, -15, 0],
           opacity: [0.7, 1, 0.7],
@@ -58,8 +55,7 @@ export function Hero() {
         }}
       />
       <motion.div
-        className="absolute top-1/2 right-[12%] w-2 h-2 rounded-full"
-        style={{ backgroundColor: "var(--accent-2)" }}
+        className="absolute top-1/2 right-[12%] w-2 h-2 rounded-full bg-spot-yellow"
         animate={{
           y: [0, 10, 0],
           opacity: [0.5, 0.8, 0.5],
@@ -85,7 +81,7 @@ export function Hero() {
           <span className="text-foreground">Salesforce Developer,</span>
           <br />
           <span className="text-foreground">Web Developer </span>
-          <span className="text-accent">&</span>
+          <span className="text-foreground">&</span>
           <br />
           <span className="gradient-text">Problem Solver</span>
         </motion.h1>
@@ -107,7 +103,7 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <a href="#projects" className="btn btn-primary">
+          <a href="#projects" className="btn bg-spot-blue text-white">
             View My Work
           </a>
           <a href="#contact" className="btn btn-secondary">

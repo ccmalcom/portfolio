@@ -17,10 +17,10 @@ export function CodeSnippet() {
 					<span className="text-foreground-muted text-xs ml-2">chase.tsx</span>
 				</div>
 				<code className="text-foreground-muted">
-					<span className="text-purple-400">const</span>{' '}
-					<span className="text-blue-400">chase</span>{' '}
+					<span className="text-spot-blue">const</span>{' '}
+					<span className="text-spot-pink">chase</span>{' '}
 					<span className="text-foreground-muted">=</span>{' '}
-					<span className="text-yellow-400">{'{'}</span>
+					<span className="text-spot-yellow">{'{'}</span>
 					<br />
 					<span className="ml-4 text-foreground">role</span>
 					<span className="text-foreground-muted">:</span>{' '}
@@ -39,9 +39,9 @@ export function CodeSnippet() {
 					<br />
 					<span className="ml-4 text-foreground">coffee</span>
 					<span className="text-foreground-muted">:</span>{' '}
-					<span className="text-orange-400">true</span>
+					<span className="text-spot-yellow">true</span>
 					<br />
-					<span className="text-yellow-400">{'}'}</span>
+					<span className="text-spot-yellow">{'}'}</span>
 					<span className="text-foreground-muted">;</span>
 				</code>
 			</div>

@@ -134,7 +134,7 @@ function ProjectCard({
 								{/* Label for back image */}
 								<div
 									className="absolute top-3 left-3 px-2 py-1 rounded text-xs font-medium"
-									style={{ backgroundColor: 'var(--color-spot-pink)', color: '#0a0a0a' }}>
+									style={{ backgroundColor: 'var(--color-spot-pink)', color: 'var(--foreground)' }}>
 									{backLabel}
 								</div>
 								{/* Click hint */}
@@ -178,7 +178,7 @@ function ProjectCard({
 								{/* Label for front image */}
 								<div
 									className="absolute top-3 left-3 px-2 py-1 rounded text-xs font-medium"
-									style={{ backgroundColor: 'var(--color-spot-pink)', color: '#0a0a0a' }}>
+									style={{ backgroundColor: 'var(--color-spot-pink)', color: 'var(--foreground)' }}>
 									{frontLabel}
 								</div>
 							</motion.div>
