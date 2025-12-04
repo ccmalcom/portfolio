@@ -5,14 +5,25 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Github, Linkedin, Sun, Moon } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { navLinks, socialLinks, sectionColors } from '@/data/portfolio';
+import { useSyncExternalStore } from 'react';
+
+const emptySubscribe = () => () => {};
+const getSnapshot = () => true;
+const getServerSnapshot = () => false;
+
+function useIsMounted() {
+	return useSyncExternalStore(emptySubscribe, getSnapshot, getServerSnapshot);
+}
 
 export function Navigation() {
 	const [isScrolled, setIsScrolled] = useState(false);
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 	const [activeSection, setActiveSection] = useState('');
+	const mounted = useIsMounted();
 	const { theme, setTheme } = useTheme();
 
 	useEffect(() => {
+		
 		const handleScroll = () => {
 			setIsScrolled(window.scrollY > 50);
 
@@ -72,8 +83,8 @@ export function Navigation() {
 							className="text-xl font-semibold tracking-tight"
 							whileHover={{ scale: 1.02 }}
 							whileTap={{ scale: 0.98 }}>
-							<span className='gradient-text'>c</span>
-							<span className='foreground'>m</span>
+							<span className="gradient-text">c</span>
+							<span className="foreground">m</span>
 						</motion.a>
 
 						{/* Desktop Navigation */}
@@ -132,7 +143,15 @@ export function Navigation() {
 								onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
 								className="text-foreground-muted hover:text-foreground transition-colors p-2"
 								aria-label="Toggle theme">
-								{theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+								{mounted ? (
+									theme === 'dark' ? (
+										<Sun size={18} />
+									) : (
+										<Moon size={18} />
+									)
+								) : (
+									<div className="w-[18px] h-[18px]" />
+								)}
 							</button>
 						</div>
 
@@ -194,7 +213,15 @@ export function Navigation() {
 								<button
 									onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
 									className="text-foreground-muted hover:text-foreground transition-colors">
-									{theme === 'dark' ? <Sun size={24} /> : <Moon size={24} />}
+									{mounted ? (
+										theme === 'dark' ? (
+											<Sun size={24} />
+										) : (
+											<Moon size={24} />
+										)
+									) : (
+										<div className="w-[24px] h-[24px]" />
+									)}{' '}
 								</button>
 							</motion.div>
 						</nav>

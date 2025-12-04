@@ -55,6 +55,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+  dangerouslySetInnerHTML={{
+    __html: `
+      (function() {
+        try {
+          var theme = localStorage.getItem('theme');
+          if (theme !== 'light') {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) {}
+      })();
+    `,
+  }}
+/>
+      </head>
       
       <body className="antialiased bg-background text-foreground font-sans">
         <ThemeProvider>
