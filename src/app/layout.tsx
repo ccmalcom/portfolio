@@ -55,6 +55,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      
       <body className="antialiased bg-background text-foreground font-sans">
         <ThemeProvider>
           {/* Noise texture overlay for subtle grain effect */}
