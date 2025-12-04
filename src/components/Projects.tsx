@@ -134,7 +134,10 @@ function ProjectCard({
 								{/* Label for back image */}
 								<div
 									className="absolute top-3 left-3 px-2 py-1 rounded text-xs font-medium"
-									style={{ backgroundColor: 'var(--color-spot-pink)', color: 'var(--foreground)' }}>
+									style={{
+										backgroundColor: 'var(--color-spot-pink)',
+										color: 'var(--foreground)',
+									}}>
 									{backLabel}
 								</div>
 								{/* Click hint */}
@@ -178,7 +181,10 @@ function ProjectCard({
 								{/* Label for front image */}
 								<div
 									className="absolute top-3 left-3 px-2 py-1 rounded text-xs font-medium"
-									style={{ backgroundColor: 'var(--color-spot-pink)', color: 'var(--foreground)' }}>
+									style={{
+										backgroundColor: 'var(--color-spot-pink)',
+										color: 'var(--foreground)',
+									}}>
 									{frontLabel}
 								</div>
 							</motion.div>
@@ -257,9 +263,11 @@ function ProjectCard({
 			<div className={`lg:col-span-5 space-y-4 ${!isEven ? 'lg:order-1' : ''}`}>
 				<div className="space-y-2">
 					<p className="text-spot-pink text-sm font-mono">Featured Project</p>
-					<h3 className="text-2xl md:text-3xl font-bold text-foreground">
-						{project.title}
-					</h3>
+					<a href={project.liveUrl ? project.liveUrl : project.githubUrl} target="__blank">
+						<h3 className="text-2xl md:text-3xl font-bold text-foreground">
+							{project.title}
+						</h3>
+					</a>
 				</div>
 
 				<div
@@ -279,7 +287,10 @@ function ProjectCard({
 							className={`flex items-center gap-2 text-sm text-foreground-muted ${
 								!isEven ? 'lg:flex-row-reverse' : ''
 							}`}>
-							<ChevronRight size={14} className="text-spot-pink flex-shrink-0" />
+							<ChevronRight
+								size={14}
+								className="text-spot-pink flex-shrink-0"
+							/>
 							<span>{highlight}</span>
 						</li>
 					))}

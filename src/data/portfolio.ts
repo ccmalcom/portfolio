@@ -50,6 +50,7 @@ export const projects: Project[] = [
 			'Automated foster-to-adoption pipeline',
 		],
 		featured: true,
+		liveUrl: 'https://caninecastawaysrescue.org',
 	},
 	{
 		id: 'indiana-aid',
