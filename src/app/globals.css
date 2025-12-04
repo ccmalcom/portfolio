@@ -207,11 +207,7 @@ body {
   color: var(--background);
 }
 
-/* Focus ring styling */
-:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-}
+
 
 /* Link underline animation */
 .link-underline {

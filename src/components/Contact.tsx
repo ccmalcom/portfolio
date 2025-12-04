@@ -94,7 +94,7 @@ export function Contact() {
                   value={formState.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg bg-background-secondary border border-border focus:border-spot-yellow focus:ring-1 focus:ring-spot-yellow text-foreground placeholder-foreground-muted transition-colors"
+                  className="w-full px-4 py-3 rounded-lg bg-background-secondary border border-border focus:border-spot-yellow focus:ring-1 focus:ring-spot-yellow text-foreground placeholder-foreground-muted transition-colors focus:outline-none"
                   placeholder="Your name"
                 />
               </div>
@@ -113,7 +113,7 @@ export function Contact() {
                   value={formState.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg bg-background-secondary border border-border focus:border-spot-yellow focus:ring-1 focus:ring-spot-yellow text-foreground placeholder-foreground-muted transition-colors"
+                  className="w-full px-4 py-3 rounded-lg bg-background-secondary border border-border focus:border-spot-yellow focus:ring-1 focus:ring-spot-yellow text-foreground placeholder-foreground-muted transition-colors focus:outline-none"
                   placeholder="your@email.com"
                 />
               </div>
@@ -132,7 +132,7 @@ export function Contact() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 rounded-lg bg-background-secondary border border-border focus:border-spot-yellow focus:ring-1 focus:ring-spot-yellow text-foreground placeholder-foreground-muted transition-colors resize-none"
+                  className="w-full px-4 py-3 rounded-lg bg-background-secondary border border-border focus:border-spot-yellow focus:ring-1 focus:ring-spot-yellow text-foreground placeholder-foreground-muted transition-colors resize-none focus:outline-none"
                   placeholder="What's on your mind?"
                 />
               </div>
