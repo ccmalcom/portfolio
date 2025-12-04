@@ -9,28 +9,28 @@ const categories = [
   {
     id: "salesforce",
     name: "Salesforce",
-    color: "#00A1E0",
+    color: "var(--color-sf-blue)",
     icon: Cloud,
     description: "CRM & Platform Development",
   },
   {
     id: "frontend",
     name: "Frontend",
-    color: "pink-500",
+    color: "var(--color-spot-pink)",
     icon: Layout,
     description: "UI & Web Applications",
   },
   {
     id: "backend",
     name: "Backend",
-    color: "green",
+    color: "var(--color-spot-green)",
     icon: Server,
     description: "APIs & Databases",
   },
   {
     id: "tools",
     name: "Tools",
-    color: "yellow",
+    color: "var(--color-spot-yellow)",
     icon: Wrench,
     description: "Dev Environment",
   },
@@ -55,11 +55,11 @@ function SkillCategory({
 			animate={isInView ? { opacity: 1, y: 0 } : {}}
 			transition={{ duration: 0.5, delay: index * 0.1 }}
 			className="group">
-			<div className="p-6 rounded-xl bg-background-secondary border border-border hover:border-accent/30 transition-all duration-300 h-full">
+			<div className="p-6 rounded-xl bg-background-secondary border border-border hover:border-gray-400 transition-all duration-300 h-full">
 				{/* Category header */}
 				<div className="flex items-center gap-3 mb-4">
-					<div className="p-2 rounded-lg bg-accent-muted">
-						<Icon size={20} className="text-accent" />
+					<div className="p-2 rounded-lg bg-gray-800/50">
+						<Icon size={20} style={{color: category.color}} />
 					</div>
 					<div>
 						<h3
