@@ -23,13 +23,14 @@ export function Contact() {
     // Simulate form submission - replace with actual Formspree or other service
     // For Formspree: https://formspree.io
     try {
-      const response = await fetch("https://formspree.io/f/YOUR_FORM_ID", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formState),
-      });
+      const response = await fetch('https://formspree.io/f/xwkalrjq', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+          'Accept': 'application/json',
+				},
+				body: JSON.stringify(formState),
+			});
 
       if (response.ok) {
         setStatus("success");
@@ -38,9 +39,10 @@ export function Contact() {
         throw new Error("Form submission failed");
       }
     } catch {
+
       // For demo purposes, show success after delay
       await new Promise((resolve) => setTimeout(resolve, 1500));
-      setStatus("success");
+      setStatus("error");
       setFormState({ name: "", email: "", message: "" });
     }
   };
