@@ -18,5 +18,8 @@
         "titleBar.inactiveBackground": "#7d8d8399",
         "titleBar.inactiveForeground": "#15202b99"
     },
-    "peacock.color": "#7d8d83"
+    "peacock.color": "#7d8d83",
+    
+  "css.customData": [".vscode/tailwind.json"]
+
 }

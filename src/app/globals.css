@@ -1,21 +1,120 @@
 @import "tailwindcss";
 
+/*
+ * Tailwind v4 theme configuration
+ * Colors defined here are static. If you need light/dark mode switching,
+ * define colors in :root/.dark and reference them here as var(--color-name).
+ * Example: --color-background: var(--background);
+ */
+@theme {
+  /* Custom colors */
+  --color-sf-pink: #E57BA1;
+
+  /* Background colors */
+  --color-background: var(--background);
+  --color-background-secondary: var(--background-secondary);
+  --color-background-tertiary: var(--background-tertiary);
+
+  /* Foreground colors */
+  --color-foreground: var(--foreground);
+  --color-foreground-muted: var(--foreground-muted);
+
+  /* Accent colors */
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-muted: var(--accent-muted);
+  --color-accent-2: var(--accent-2);
+
+  /* Border */
+  --color-border: var(--border);
+
+  /* Animations */
+  --animate-fade-in: fade-in 0.6s ease-out forwards;
+  --animate-slide-up: slide-up 0.6s ease-out forwards;
+  --animate-slide-in-right: slide-in-right 0.6s ease-out forwards;
+  --animate-pulse-gentle: pulse-gentle 3s ease-in-out infinite;
+  --animate-gradient-shift: gradient-shift 8s ease infinite;
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-up {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slide-in-right {
+    0% {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes pulse-gentle {
+    0%, 100% {
+      opacity: 0.4;
+    }
+
+    50% {
+      opacity: 0.8;
+    }
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+}
+
 :root {
-  /* Light mode - rarely used but available */
   --background: #BFD7FD;
   --background-secondary: #f0f0f0;
-  --background-tertiary: #d7dbcc;
+  --background-tertiary: #cddbcd;
   --foreground: #121212;
-  --foreground-muted: #191818;
+  --foreground-muted: #535353;
   --accent: #d7dbcc;
-  --accent-hover: #eeefea;
+  --accent-hover: #1ed760;
   --accent-muted: rgba(29, 185, 84, 0.15);
   --accent-2: #a8b5db;
   --border: rgba(0, 0, 0, 0.1);
 }
 
 .dark {
-  /* Spotify-inspired dark theme with depth */
   --background: #0a0a0a;
   --background-secondary: #121212;
   --background-tertiary: #1a1a1a;
@@ -25,10 +124,10 @@
   --accent-hover: #1ed760;
   --accent-muted: rgba(29, 185, 84, 0.12);
   --accent-2: #BFD7FD;
-
   --border: rgba(255, 255, 255, 0.08);
 }
 
+/* Keep the rest of your CSS below... */
 * {
   box-sizing: border-box;
 }
