@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Github, Linkedin, Sun, Moon } from 'lucide-react';
 import { useTheme } from 'next-themes';
-import { navLinks, socialLinks } from '@/data/portfolio';
+import { navLinks, socialLinks, sectionColors } from '@/data/portfolio';
 
 export function Navigation() {
 	const [isScrolled, setIsScrolled] = useState(false);
@@ -79,20 +79,25 @@ export function Navigation() {
 						{/* Desktop Navigation */}
 						<div className="hidden md:flex items-center gap-8">
 							{navLinks.map((link) => {
-								const isActive = activeSection === link.href.replace('#', '');
+								const sectionId = link.href.replace(
+									'#',
+									''
+								) as keyof typeof sectionColors;
+								const isActive = activeSection === sectionId;
+								const sectionColor = sectionColors[sectionId];
+
 								return (
 									<button
 										key={link.name}
 										onClick={() => handleNavClick(link.href)}
 										className="text-sm font-medium transition-colors relative"
-										// style={{ color: isActive ? 'var(--accent)' : 'var(--foreground-muted)' }}
-										>
+										style={{ color: isActive ? sectionColor : undefined }}>
 										{link.name}
 										{isActive && (
 											<motion.div
 												layoutId="activeSection"
 												className="absolute -bottom-1 left-0 right-0 h-0.5"
-												style={{ backgroundColor: 'var(--accent)' }}
+												style={{ backgroundColor: sectionColor }}
 												transition={{
 													type: 'spring',
 													stiffness: 380,

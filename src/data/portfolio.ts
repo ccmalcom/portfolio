@@ -18,6 +18,13 @@ export interface Skill {
 	category: 'salesforce' | 'frontend' | 'backend' | 'tools';
 }
 
+export const sectionColors = {
+	about: 'var(--color-spot-blue)',
+	projects: 'var(--color-spot-pink)',
+	skills: 'var(--color-spot-green)',
+	contact: 'var(--color-spot-yellow)',
+}; 
+
 export const projects: Project[] = [
 	{
 		id: 'canine-castaways',

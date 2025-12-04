@@ -95,7 +95,7 @@ function ProjectCard({
 										href={project.liveUrl}
 										target="_blank"
 										rel="noopener noreferrer"
-										className="p-3 rounded-full text-foreground hover:text-accent transition-colors"
+										className="p-3 rounded-full text-foreground hover:text-spot-pink transition-colors"
 										style={{ backgroundColor: 'rgba(10, 10, 10, 0.9)' }}
 										aria-label="View live site">
 										<ExternalLink size={20} />
@@ -106,7 +106,7 @@ function ProjectCard({
 										href={project.githubUrl}
 										target="_blank"
 										rel="noopener noreferrer"
-										className="p-3 rounded-full text-foreground hover:text-accent transition-colors"
+										className="p-3 rounded-full text-foreground hover:text-spot-pink transition-colors"
 										style={{ backgroundColor: 'rgba(10, 10, 10, 0.9)' }}
 										aria-label="View source code">
 										<Github size={20} />
@@ -122,7 +122,7 @@ function ProjectCard({
 							{/* Back image */}
 							<button
 								onClick={() => setIsSwapped(!isSwapped)}
-								className="absolute inset-0 rounded-lg overflow-hidden border border-border cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent"
+								className="absolute inset-0 rounded-lg overflow-hidden border border-border cursor-pointer focus:outline-none focus:ring-2 focus:ring-spot-pink"
 								style={{ backgroundColor: '#121212' }}
 								aria-label={`Switch to ${backLabel} view`}>
 								<Image
@@ -134,7 +134,7 @@ function ProjectCard({
 								{/* Label for back image */}
 								<div
 									className="absolute top-3 left-3 px-2 py-1 rounded text-xs font-medium"
-									style={{ backgroundColor: '#1DB954', color: '#0a0a0a' }}>
+									style={{ backgroundColor: 'var(--color-spot-pink)', color: '#0a0a0a' }}>
 									{backLabel}
 								</div>
 								{/* Click hint */}
@@ -178,7 +178,7 @@ function ProjectCard({
 								{/* Label for front image */}
 								<div
 									className="absolute top-3 left-3 px-2 py-1 rounded text-xs font-medium"
-									style={{ backgroundColor: '#1DB954', color: '#0a0a0a' }}>
+									style={{ backgroundColor: 'var(--color-spot-pink)', color: '#0a0a0a' }}>
 									{frontLabel}
 								</div>
 							</motion.div>
@@ -223,7 +223,7 @@ function ProjectCard({
 										href={project.liveUrl}
 										target="_blank"
 										rel="noopener noreferrer"
-										className="p-3 rounded-full text-foreground hover:text-accent transition-colors"
+										className="p-3 rounded-full text-foreground hover:text-spot-pink transition-colors"
 										style={{ backgroundColor: 'rgba(10, 10, 10, 0.9)' }}
 										aria-label="View live site">
 										<ExternalLink size={20} />
@@ -234,7 +234,7 @@ function ProjectCard({
 										href={project.githubUrl}
 										target="_blank"
 										rel="noopener noreferrer"
-										className="p-3 rounded-full text-foreground hover:text-accent transition-colors"
+										className="p-3 rounded-full text-foreground hover:text-spot-pink transition-colors"
 										style={{ backgroundColor: 'rgba(10, 10, 10, 0.9)' }}
 										aria-label="View source code">
 										<Github size={20} />
@@ -247,17 +247,16 @@ function ProjectCard({
 
 				{/* Decorative corner */}
 				<div
-					className={`absolute -bottom-2 ${
+					className={`absolute -bottom-2 border-spot-pink/50 ${
 						isEven ? '-right-2' : '-left-2'
 					} w-24 h-24 border-2 rounded-lg -z-10`}
-					style={{ borderColor: 'rgba(29, 185, 84, 0.2)' }}
 				/>
 			</div>
 
 			{/* Project info */}
 			<div className={`lg:col-span-5 space-y-4 ${!isEven ? 'lg:order-1' : ''}`}>
 				<div className="space-y-2">
-					<p className="text-accent text-sm font-mono">Featured Project</p>
+					<p className="text-spot-pink text-sm font-mono">Featured Project</p>
 					<h3 className="text-2xl md:text-3xl font-bold text-foreground">
 						{project.title}
 					</h3>
@@ -280,7 +279,7 @@ function ProjectCard({
 							className={`flex items-center gap-2 text-sm text-foreground-muted ${
 								!isEven ? 'lg:flex-row-reverse' : ''
 							}`}>
-							<ChevronRight size={14} className="text-accent flex-shrink-0" />
+							<ChevronRight size={14} className="text-spot-pink flex-shrink-0" />
 							<span>{highlight}</span>
 						</li>
 					))}
@@ -303,7 +302,7 @@ function ProjectCard({
 							href={project.liveUrl}
 							target="_blank"
 							rel="noopener noreferrer"
-							className="text-foreground-muted hover:text-accent transition-colors">
+							className="text-foreground-muted hover:text-spot-pink transition-colors">
 							<ExternalLink size={20} />
 						</a>
 					)}
@@ -312,7 +311,7 @@ function ProjectCard({
 							href={project.githubUrl}
 							target="_blank"
 							rel="noopener noreferrer"
-							className="text-foreground-muted hover:text-accent transition-colors">
+							className="text-foreground-muted hover:text-spot-pink transition-colors">
 							<Github size={20} />
 						</a>
 					)}
@@ -338,7 +337,7 @@ export function Projects() {
 					transition={{ duration: 0.5 }}
 					className="mb-16">
 					<h2 className="text-3xl md:text-4xl font-bold mb-4">
-						<span className="text-accent">02.</span> Featured Projects
+						<span className="text-spot-pink">02.</span> Featured Projects
 					</h2>
 					<div className="section-divider max-w-xs" />
 				</motion.div>

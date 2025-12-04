@@ -350,8 +350,8 @@ body {
   display: inline-flex;
   align-items: center;
   padding: 0.25rem 0.75rem;
-  background-color: var(--accent-muted);
-  color: var(--accent);
+  background-color: var(--background-secondary);
+  color: var(--color-spot-pink);
   border-radius: 9999px;
   font-size: 0.75rem;
   font-weight: 500;
@@ -359,6 +359,6 @@ body {
 }
 
 .tech-pill:hover {
-  background-color: var(--accent);
+  background-color: var(--color-spot-pink);
   color: var(--background);
 }

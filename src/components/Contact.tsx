@@ -64,7 +64,7 @@ export function Contact() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <p className="text-accent font-mono text-sm mb-4">04. What&apos;s Next?</p>
+          <p className="text-spot-yellow font-mono text-sm mb-4">04. What&apos;s Next?</p>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">Get In Touch</h2>
           <p className="text-foreground-muted max-w-lg mx-auto">
             Whether you have a project in mind, a question about Salesforce, or
@@ -94,7 +94,7 @@ export function Contact() {
                   value={formState.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg bg-background-secondary border border-border focus:border-accent focus:ring-1 focus:ring-accent text-foreground placeholder-foreground-muted transition-colors"
+                  className="w-full px-4 py-3 rounded-lg bg-background-secondary border border-border focus:border-spot-yellow focus:ring-1 focus:ring-spot-yellow text-foreground placeholder-foreground-muted transition-colors"
                   placeholder="Your name"
                 />
               </div>
@@ -113,7 +113,7 @@ export function Contact() {
                   value={formState.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg bg-background-secondary border border-border focus:border-accent focus:ring-1 focus:ring-accent text-foreground placeholder-foreground-muted transition-colors"
+                  className="w-full px-4 py-3 rounded-lg bg-background-secondary border border-border focus:border-spot-yellow focus:ring-1 focus:ring-spot-yellow text-foreground placeholder-foreground-muted transition-colors"
                   placeholder="your@email.com"
                 />
               </div>
@@ -132,7 +132,7 @@ export function Contact() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 rounded-lg bg-background-secondary border border-border focus:border-accent focus:ring-1 focus:ring-accent text-foreground placeholder-foreground-muted transition-colors resize-none"
+                  className="w-full px-4 py-3 rounded-lg bg-background-secondary border border-border focus:border-spot-yellow focus:ring-1 focus:ring-spot-yellow text-foreground placeholder-foreground-muted transition-colors resize-none"
                   placeholder="What's on your mind?"
                 />
               </div>
@@ -140,7 +140,7 @@ export function Contact() {
               <button
                 type="submit"
                 disabled={status === "loading" || status === "success"}
-                className="w-full btn btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full btn bg-spot-yellow text-black disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {status === "loading" ? (
                   <>
@@ -187,10 +187,10 @@ export function Contact() {
                 href={socialLinks.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 rounded-lg bg-background-secondary border border-border hover:border-accent/30 transition-all group"
+                className="flex items-center gap-4 p-4 rounded-lg bg-background-secondary border border-border hover:border-spot-yellow/30 transition-all group"
               >
-                <div className="p-2 rounded-lg bg-accent-muted group-hover:bg-accent/20 transition-colors">
-                  <Github size={20} className="text-accent" />
+                <div className="p-2 rounded-lg bg-spot-yellow-muted group-hover:bg-spot-yellow/20 transition-colors">
+                  <Github size={20} className="text-spot-yellow" />
                 </div>
                 <div>
                   <p className="font-medium text-foreground">GitHub</p>
@@ -202,10 +202,10 @@ export function Contact() {
                 href={socialLinks.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 rounded-lg bg-background-secondary border border-border hover:border-accent/30 transition-all group"
+                className="flex items-center gap-4 p-4 rounded-lg bg-background-secondary border border-border hover:border-spot-yellow/30 transition-all group"
               >
-                <div className="p-2 rounded-lg bg-accent-muted group-hover:bg-accent/20 transition-colors">
-                  <Linkedin size={20} className="text-accent" />
+                <div className="p-2 rounded-lg bg-spot-yellow-muted group-hover:bg-spot-yellow/20 transition-colors">
+                  <Linkedin size={20} className="text-spot-yellow" />
                 </div>
                 <div>
                   <p className="font-medium text-foreground">LinkedIn</p>

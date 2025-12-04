@@ -44,7 +44,7 @@ export function About() {
 					transition={{ duration: 0.5 }}
 					className="mb-16">
 					<h2 className="text-3xl md:text-4xl font-bold mb-4">
-						<span className="text-accent">01.</span> About Me
+						<span className="text-spot-blue">01.</span> About Me
 					</h2>
 					<div className="section-divider max-w-xs" />
 				</motion.div>
@@ -70,7 +70,7 @@ export function About() {
 								</div>
 							</div>
 							{/* Decorative border */}
-							<div className="absolute -bottom-3 -right-3 w-48 h-48 md:w-56 md:h-56 rounded-2xl border-2 border-accent/30 -z-10" />
+							<div className="absolute -bottom-3 -right-3 w-48 h-48 md:w-56 md:h-56 rounded-2xl border-2 border-spot-blue/20 -z-10" />
 						</div>
 
 						{/* Quick highlights */}
@@ -82,7 +82,7 @@ export function About() {
 									animate={isInView ? { opacity: 1, y: 0 } : {}}
 									transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
 									className="p-3 rounded-lg bg-background-secondary border border-border">
-									<item.icon size={18} className="text-accent mb-2" />
+									<item.icon size={18} className="text-spot-blue mb-2" />
 									<p className="text-sm font-medium text-foreground">
 										{item.label}
 									</p>
@@ -128,7 +128,7 @@ export function About() {
 
 						{/* Location indicator */}
 						<div className="flex items-center gap-2 text-sm text-foreground-muted pt-4">
-							<span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+							<span className="w-2 h-2 rounded-full bg-spot-blue animate-pulse" />
 							<span>Based in Indiana, USA</span>
 						</div>
 					</motion.div>
