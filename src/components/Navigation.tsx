@@ -20,6 +20,12 @@ export function Navigation() {
 			const sections = navLinks.map((link) => link.href.replace('#', ''));
 			const scrollPosition = window.scrollY + 100;
 
+			// Clear active section if at the top of the page
+			if (window.scrollY < 100) {
+				setActiveSection('');
+				return;
+			}
+
 			for (const section of sections) {
 				const element = document.getElementById(section);
 				if (element) {
