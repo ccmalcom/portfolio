@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <>
       <Navigation />
-      <main>
+      <main className="pt-12 md:pt-10 lg:pt-8">
         <Hero />
         <About />
         <Projects />
