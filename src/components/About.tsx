@@ -61,7 +61,7 @@ export function About() {
 							<div className="w-48 h-48 md:w-56 md:h-56 rounded-2xl overflow-hidden bg-background-tertiary border-2 border-border relative">
 								<div className="absolute inset-0 flex items-center justify-center text-foreground-muted">
 									<Image
-										src="/avatar2.png"
+										src="/avatar.png"
 										alt="Chase Malcom avatar"
 										fill
 										className="object-cover"
