@@ -120,11 +120,7 @@ export function About() {
 							{aboutContent.current}
 						</p>
 
-						<div className="pt-4 border-t border-border">
-							<p className="text-foreground italic">
-								&ldquo;{aboutContent.goal}&rdquo;
-							</p>
-						</div>
+						
 
 						{/* Location indicator */}
 						<div className="flex items-center gap-2 text-sm text-foreground-muted pt-4">
