@@ -7,16 +7,27 @@
  * Example: --color-background: var(--background);
  */
 @theme {
-  /* Custom colors */
-  --color-spot-pink: #E57BA1;
-  --color-spot-light-pink: #F7CFD4;
-  --color-spot-green: #57B660;
-  --color-spot-yellow-green: #D5F479;
-  --color-spot-yellow: #F6C874;
-  --color-spot-blue: #649AED;
-  --color-spot-pale-blue: #A7C2D1;
 
-  --color-sf-blue: #00A1E0;
+  /* Custom colors */
+    /* Optimized for both light and dark backgrounds */
+    --color-spot-pink: #E05A8A;
+    /* slightly deeper - pops on light, still vibrant on dark */
+    --color-spot-light-pink: #F2B8C1;
+    /* desaturated - won't wash out on warm light bg */
+    --color-spot-green: #4AA854;
+    /* slightly deeper green */
+    --color-spot-yellow-green: #C2E860;
+    /* toned down - less neon */
+    --color-spot-yellow: #E9B54D;
+    /* deeper gold - better contrast on light bg */
+    --color-spot-blue: #5088E0;
+    /* slightly deeper */
+    --color-spot-pale-blue: #8AACBE;
+    /* desaturated for light mode */
+
+    --color-sf-blue: #00A1E0;
+    /* keep brand color as-is */
+  
 
   /* Background colors */
   --color-background: var(--background);
@@ -110,29 +121,47 @@
 }
 
 :root {
-  --background: #BFD7FD;
-  --background-secondary: #f0f0f0;
-  --background-tertiary: #cddbcd;
-  --foreground: #121212;
-  --foreground-muted: #535353;
-  --accent: #d7dbcc;
-  --accent-hover: #1ed760;
-  --accent-muted: rgba(29, 185, 84, 0.15);
-  --accent-2: #a8b5db;
-  --border: rgba(0, 0, 0, 0.1);
+  /* Warm paper backgrounds */
+  --background: #F5F1EB;
+  --background-secondary: #EDE8E0;
+  --background-tertiary: #E5DFD5;
+
+  /* Softer foreground - pure black feels harsh on warm backgrounds */
+  --foreground: #2D2A26;
+  --foreground-muted: #6B665E;
+
+  /* Warmer green accent - slightly shifted to feel less "digital" */
+  --accent: #1A9E4A;
+  --accent-hover: #22B558;
+  --accent-muted: rgba(26, 158, 74, 0.12);
+
+  /* Warmer accent-2 - more muted to complement the paper tone */
+  --accent-2: #8B9BB8;
+
+  /* Slightly warmer border */
+  --border: rgba(45, 42, 38, 0.1);
 }
 
 .dark {
-  --background: #0a0a0a;
-  --background-secondary: #121212;
-  --background-tertiary: #1a1a1a;
-  --foreground: #e8e8e8;
-  --foreground-muted: #a0a0a0;
+  /* Deeper blacks with subtle warm undertone */
+  --background: #09090B;
+  --background-secondary: #111113;
+  --background-tertiary: #1A1A1D;
+
+  /* Softer whites - pure white is harsh on dark backgrounds */
+  --foreground: #EDEDEC;
+  --foreground-muted: #9A9A98;
+
+  /* Keep the signature Spotify green but refine supporting colors */
   --accent: #1DB954;
-  --accent-hover: #1ed760;
-  --accent-muted: rgba(29, 185, 84, 0.12);
+  --accent-hover: #1ED760;
+  --accent-muted: rgba(29, 185, 84, 0.10);
+
+  /* Brighter accent-2 to pop against dark backgrounds */
   --accent-2: #BFD7FD;
-  --border: rgba(255, 255, 255, 0.08);
+
+  /* Subtle border with slight warmth */
+  --border: rgba(255, 255, 255, 0.06);
 }
 
 /* Keep the rest of your CSS below... */
