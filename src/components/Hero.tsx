@@ -15,7 +15,6 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-radial from-accent/5 via-transparent to-transparent" />
 
       {/* Floating decorative elements */}
-      {/* Floating decorative elements */}
       <motion.div
         className="absolute top-1/4 left-[15%] w-4 h-4 rounded-full bg-spot-blue"
         animate={{

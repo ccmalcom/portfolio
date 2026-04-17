@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Send, Github, Linkedin, Mail, Loader2, CheckCircle } from "lucide-react";
+import { Send, Github, Linkedin, Loader2, CheckCircle, X } from "lucide-react";
 import { socialLinks } from "@/data/portfolio";
 
 export function Contact() {
@@ -38,12 +38,9 @@ export function Contact() {
       } else {
         throw new Error("Form submission failed");
       }
-    } catch {
-
-      // For demo purposes, show success after delay
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+    } catch (error) {
+      console.error(error);
       setStatus("error");
-      setFormState({ name: "", email: "", message: "" });
     }
   };
 
@@ -153,6 +150,11 @@ export function Contact() {
                   <>
                     <CheckCircle size={18} />
                     Message Sent!
+                  </>
+                ) : status === "error" ? (
+                  <>
+                    <X size={18} />
+                    Something went wrong — try again
                   </>
                 ) : (
                   <>

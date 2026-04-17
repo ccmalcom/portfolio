@@ -1,6 +1,6 @@
 "use client";
 
-import { color, motion, useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Cloud, Layout, Server, Wrench } from "lucide-react";
 import { skills, Skill } from "@/data/portfolio";

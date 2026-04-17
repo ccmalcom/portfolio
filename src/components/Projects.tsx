@@ -263,7 +263,7 @@ function ProjectCard({
 			<div className={`lg:col-span-5 space-y-4 ${!isEven ? 'lg:order-1' : ''}`}>
 				<div className="space-y-2">
 					<p className="text-spot-pink text-sm font-mono">Featured Project</p>
-					<a href={project.liveUrl ? project.liveUrl : project.githubUrl} target="__blank">
+					<a href={project.liveUrl ? project.liveUrl : project.githubUrl} target="_blank">
 						<h3 className="text-2xl md:text-3xl font-bold text-foreground">
 							{project.title}
 						</h3>

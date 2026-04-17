@@ -198,7 +198,7 @@ body {
 }
 
 .dark::-webkit-scrollbar-thumb:hover {
-  background: #2a2a2a;
+  background: var(--background-tertiary);
 }
 
 /* Selection styling */
@@ -241,7 +241,7 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: gradient-shift 6s ease-in-out infinite;
+  animation: var(--animate-gradient-shift);
 }
 
 /* Glow effect for cards */

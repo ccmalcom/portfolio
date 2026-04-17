@@ -200,6 +200,7 @@ export function Navigation() {
 									href={socialLinks.github}
 									target="_blank"
 									rel="noopener noreferrer"
+									aria-label="GitHub"
 									className="text-foreground-muted hover:text-foreground transition-colors">
 									<Github size={24} />
 								</a>
@@ -207,6 +208,7 @@ export function Navigation() {
 									href={socialLinks.linkedin}
 									target="_blank"
 									rel="noopener noreferrer"
+									aria-label="LinkedIn"
 									className="text-foreground-muted hover:text-foreground transition-colors">
 									<Linkedin size={24} />
 								</a>
