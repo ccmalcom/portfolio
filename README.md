@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Chase Malcom — Portfolio
 
-## Getting Started
+My personal portfolio site. A single-page site showcasing my work as a Salesforce
+Developer and web developer, built with Next.js and deployed on Vercel.
 
-First, run the development server:
+**Live:** [chasemalcom.com](https://chasemalcom.com)
+
+## Tech stack
+
+- **Next.js 16** (App Router) + **TypeScript**
+- **Tailwind CSS v4** — configured entirely in `src/app/globals.css` via `@theme` (no `tailwind.config.ts`)
+- **Framer Motion** for animations
+- **next-themes** for light/dark mode (defaults to dark, with a no-flash inline script)
+- **Formspree** for the contact form
+- Deployed on **Vercel**
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # start the dev server at http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Other scripts:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build    # production build
+npm run start    # serve the production build
+npm run lint     # run ESLint
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project structure
 
-## Learn More
+```
+src/
+  app/
+    page.tsx        # thin shell: Navigation → Hero → About → Projects → Skills → Contact → Footer
+    layout.tsx      # root layout + theme boot script
+    globals.css     # Tailwind v4 @theme config and CSS custom properties (light/dark)
+  components/        # one file per section, barrel-exported from index.ts
+  data/
+    portfolio.ts    # single source of truth: projects, skills, nav, social links, about copy
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Editing content
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+All site content lives in **`src/data/portfolio.ts`** — there is no CMS or API. To add
+or change a project, skill, social link, or the About copy, edit that file only.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Project cards support three display modes based on the fields you set in `portfolio.ts`:
 
-## Deploy on Vercel
+1. `bg` + `image` — a GIF floated over a background image
+2. `image` + `backImage` — a stacked card with a 3D tilt on hover and click-to-swap
+3. `image` only — a simple image with hover-overlay links
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Theming
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Light and dark modes are driven by CSS custom properties in `:root` (warm paper tones)
+and `.dark` (near-black), defined in `globals.css`. Decorative spot colors are used
+consistently per section: blue → About, pink → Projects, green → Skills, yellow → Contact.
+
+## Contact form
+
+`Contact.tsx` submits to Formspree via `fetch`. The endpoint is hardcoded — no
+environment variables are required.
+
+## Deployment
+
+Deployed on Vercel with default build settings (no special config beyond
+`next.config.ts`). Pushes to the main branch deploy automatically.
