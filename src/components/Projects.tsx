@@ -24,8 +24,10 @@ function ProjectCard({
 	// Determine which image is front/back based on swap state
 	const frontImage = isSwapped ? project.backImage! : project.image;
 	const backImage = isSwapped ? project.image : project.backImage!;
-	const frontLabel = isSwapped ? 'Salesforce Admin' : 'Public Site';
-	const backLabel = isSwapped ? 'Public Site' : 'Salesforce Admin';
+	const imageLabel = project.imageLabel ?? 'Front';
+	const backImageLabel = project.backImageLabel ?? 'Back';
+	const frontLabel = isSwapped ? backImageLabel : imageLabel;
+	const backLabel = isSwapped ? imageLabel : backImageLabel;
 
 	return (
 		<motion.article
