@@ -6,6 +6,8 @@ export interface Project {
 	image: string;
   bg? : string;
 	backImage?: string; // Optional second image revealed on hover (e.g., admin/backend view)
+	imageLabel?: string; // Badge text for `image` in the stacked-card variant
+	backImageLabel?: string; // Badge text for `backImage` in the stacked-card variant
 	technologies: string[];
 	highlights: string[];
 	liveUrl?: string;
@@ -27,6 +29,37 @@ export const sectionColors = {
 
 export const projects: Project[] = [
 	{
+		id: 'shelfsprite',
+		title: 'ShelfSprite',
+		description:
+			'An invite-only book recommendation app that turns a Goodreads export into an evidence-backed taste profile, then recommends real catalog books with Claude.',
+		longDescription:
+			'Built a full-stack Next.js app that imports a Goodreads library, enriches every book with Open Library and Google Books metadata, and derives a taste profile from the ratings — each trait backed by the specific books that support and contradict it. Recommendations run through a two-stage pipeline: deterministic retrieval and filtering pulls a bounded set of real catalog candidates, then Claude reranks and explains only that set, so the model can never invent a title that does not exist. Runs on Supabase Postgres through drizzle-orm with Supabase Auth, invite-request approvals from an admin console, and a public marketing page for signed-out visitors.',
+		image: '/projects/shelfsprite/library.png',
+		backImage: '/projects/shelfsprite/taste-profile.png',
+		imageLabel: 'Library',
+		backImageLabel: 'Taste Profile',
+		technologies: [
+			'Next.js',
+			'TypeScript',
+			'Supabase',
+			'PostgreSQL',
+			'Drizzle ORM',
+			'Claude API',
+			'Tailwind CSS',
+			'Vercel',
+		],
+		highlights: [
+			'Two-stage recommender: deterministic retrieval, then Claude reranking',
+			'Grounded in real catalog data — the model never invents titles',
+			'Taste traits cited to the specific books that support them',
+			'Invite-only auth with admin approval workflow',
+		],
+		liveUrl: 'https://shelfsprite.app',
+		githubUrl: 'https://github.com/ccmalcom/shelfsprite',
+		featured: true,
+	},
+	{
 		id: 'canine-castaways',
 		title: 'Canine Castaways',
 		description:
@@ -35,6 +68,8 @@ export const projects: Project[] = [
 			'Built a comprehensive Salesforce solution for a no-kill animal rescue organization. Consolidated six disparate legacy systems into a unified NPSP implementation with a custom Experience Cloud portal for volunteers and adopters. Created custom Lightning Web Components for the adoption workflow and wrote Apex classes to handle complex matching logic between animals and potential adopters.',
 		image: '/projects/ccr/site.png',
 		backImage: '/projects/ccr/portal.png', // Salesforce admin view
+		imageLabel: 'Public Site',
+		backImageLabel: 'Salesforce Admin',
 		technologies: [
 			'Salesforce',
 			'NPSP',
