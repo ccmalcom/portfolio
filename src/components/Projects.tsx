@@ -1,7 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { useRef, useState } from 'react';
 import { ExternalLink, Github, ChevronRight } from 'lucide-react';
 import { projects, Project } from '@/data/portfolio';
 import Image from 'next/image';
@@ -52,9 +52,11 @@ function HoverLinks({
 function ProjectCard({
 	project,
 	index,
+	isInView,
 }: {
 	project: Project;
 	index: number;
+	isInView: boolean;
 }) {
 	const [isHovered, setIsHovered] = useState(false);
 	const [isSwapped, setIsSwapped] = useState(false);
@@ -72,7 +74,10 @@ function ProjectCard({
 	const backLabel = isSwapped ? imageLabel : backImageLabel;
 
 	return (
-		<article
+		<motion.article
+			initial={{ opacity: 0, y: 40 }}
+			animate={isInView ? { opacity: 1, y: 0 } : {}}
+			transition={{ duration: 0.6, delay: index * 0.15 }}
 			id={`project-${project.id}`}
 			className={`scroll-mt-24 grid lg:grid-cols-12 gap-6 lg:gap-8 items-center ${
 				!isEven ? 'lg:text-right' : ''
@@ -310,18 +315,20 @@ function ProjectCard({
 					</div>
 				)}
 			</div>
-		</article>
+		</motion.article>
 	);
 }
 
 export function Projects() {
+	const ref = useRef(null);
+	const isInView = useInView(ref, { once: true, margin: '-100px' });
 	const featuredProjects = projects.filter((p) => p.featured);
 
 	return (
-		<section id="projects" className="py-16 md:py-24">
+		<section id="projects" className="py-16 md:py-24" ref={ref}>
 			<div className="max-w-6xl mx-auto px-6">
 				{/* Section header */}
-				<SectionHeader title="Featured Projects" spot="pink" />
+				<SectionHeader title="Featured Projects" spot="pink" isInView={isInView} />
 
 				{/* Projects list */}
 				<div className="space-y-24 md:space-y-32">
@@ -330,6 +337,7 @@ export function Projects() {
 							key={project.id}
 							project={project}
 							index={index}
+							isInView={isInView}
 						/>
 					))}
 				</div>

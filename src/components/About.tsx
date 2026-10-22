@@ -1,11 +1,16 @@
 'use client';
 
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
 import { Music, Leaf, Code2, Briefcase } from 'lucide-react';
 import { aboutContent } from '@/data/portfolio';
 import Image from 'next/image';
 import { SectionHeader } from './SectionHeader';
 
 export function About() {
+	const ref = useRef(null);
+	const isInView = useInView(ref, { once: true, margin: '-100px' });
+
 	const highlights = [
 		{
 			icon: Briefcase,
@@ -30,14 +35,17 @@ export function About() {
 	];
 
 	return (
-		<section id="about" className="py-16 md:py-24">
+		<section id="about" className="py-16 md:py-24" ref={ref}>
 			<div className="max-w-6xl mx-auto px-6">
 				{/* Section header */}
-				<SectionHeader title="About Me" spot="blue" />
+				<SectionHeader title="About Me" spot="blue" isInView={isInView} />
 
 				<div className="grid lg:grid-cols-5 gap-12 lg:gap-16 items-start">
 					{/* Avatar and highlights column */}
-					<div
+					<motion.div
+						initial={{ opacity: 0, x: -20 }}
+						animate={isInView ? { opacity: 1, x: 0 } : {}}
+						transition={{ duration: 0.6, delay: 0.2 }}
 						className="lg:col-span-2 flex flex-col items-center lg:items-start">
 						{/* Avatar container */}
 						<div className="relative mb-8">
@@ -58,9 +66,12 @@ export function About() {
 
 						{/* Quick highlights */}
 						<div className="grid grid-cols-2 gap-3 w-full max-w-sm">
-							{highlights.map((item) => (
-								<div
+							{highlights.map((item, index) => (
+								<motion.div
 									key={item.label}
+									initial={{ opacity: 0, y: 10 }}
+									animate={isInView ? { opacity: 1, y: 0 } : {}}
+									transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
 									className="p-3 rounded-lg bg-background-secondary border border-border">
 									<item.icon size={18} className="text-spot-blue-text mb-2" />
 									<p className="text-sm font-medium text-foreground">
@@ -69,7 +80,7 @@ export function About() {
 									<p className="text-xs text-foreground-muted">
 										{item.description}
 									</p>
-								</div>
+								</motion.div>
 							))}
 						{/* Fun note */}
 						<div className="p-4 rounded-lg border border-dashed col-span-2">
@@ -80,10 +91,13 @@ export function About() {
 							</p>
 						</div>
 						</div>
-					</div>
+					</motion.div>
 
 					{/* Bio content column */}
-					<div
+					<motion.div
+						initial={{ opacity: 0, x: 20 }}
+						animate={isInView ? { opacity: 1, x: 0 } : {}}
+						transition={{ duration: 0.6, delay: 0.3 }}
 						className="lg:col-span-3 space-y-6">
 						<p className="text-lg text-foreground leading-relaxed">
 							{aboutContent.intro}
@@ -101,10 +115,10 @@ export function About() {
 
 						{/* Location indicator */}
 						<div className="flex items-center gap-2 text-sm text-foreground-muted pt-4">
-							<span className="w-2 h-2 rounded-full bg-spot-blue" />
+							<span className="w-2 h-2 rounded-full bg-spot-blue animate-pulse" />
 							<span>Based in Indiana, USA</span>
 						</div>
-					</div>
+					</motion.div>
 				</div>
 			</div>
 		</section>

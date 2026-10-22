@@ -1,5 +1,7 @@
 "use client";
 
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import { Cloud, Layout, Server, Wrench } from "lucide-react";
 import { skills, Skill } from "@/data/portfolio";
 import { SectionHeader } from "./SectionHeader";
@@ -38,14 +40,22 @@ const categories = [
 function SkillCategory({
   category,
   categorySkills,
+  index,
+  isInView,
 }: {
   category: (typeof categories)[number];
   categorySkills: Skill[];
+  index: number;
+  isInView: boolean;
 }) {
   const Icon = category.icon;
 
   return (
-		<div className="group">
+		<motion.div
+			initial={{ opacity: 0, y: 20 }}
+			animate={isInView ? { opacity: 1, y: 0 } : {}}
+			transition={{ duration: 0.5, delay: index * 0.1 }}
+			className="group">
 			<div className="p-6 rounded-xl bg-background border border-border hover:border-foreground-muted transition-all duration-300 h-full">
 				{/* Category header */}
 				<div className="flex items-center gap-3 mb-4">
@@ -78,26 +88,30 @@ function SkillCategory({
 					))}
 				</div>
 			</div>
-		</div>
+		</motion.div>
 	);
 }
 
 export function Skills() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   return (
     <section
       id="skills"
       className="py-16 md:py-24 bg-background-secondary"
+      ref={ref}
     >
       <div className="max-w-6xl mx-auto px-6">
         {/* Section header */}
-        <SectionHeader title="Skills & Technologies" spot="green">
+        <SectionHeader title="Skills & Technologies" spot="green" isInView={isInView}>
           From Salesforce implementations to full-stack web apps, here&apos;s
           what I work with day to day.
         </SectionHeader>
 
         {/* Skills grid */}
         <div className="grid sm:grid-cols-2 gap-6">
-          {categories.map((category) => {
+          {categories.map((category, index) => {
             const categorySkills = skills.filter(
               (s) => s.category === category.id
             );
@@ -106,18 +120,25 @@ export function Skills() {
                 key={category.id}
                 category={category}
                 categorySkills={categorySkills}
+                index={index}
+                isInView={isInView}
               />
             );
           })}
         </div>
 
         {/* Currently learning */}
-        <div className="mt-12 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className="mt-12 text-center"
+        >
           <p className="text-foreground-muted">
             <span className="text-accent-text">Currently exploring:</span>{" "}
             AI/ML integrations, advanced Python patterns, and system design
           </p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

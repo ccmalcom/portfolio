@@ -1,11 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { motion, useInView } from "framer-motion";
+import { useRef, useState } from "react";
 import { Send, Github, Linkedin, Mail, Loader2, CheckCircle } from "lucide-react";
 import { socialLinks } from "@/data/portfolio";
 import { SectionHeader } from "./SectionHeader";
 
 export function Contact() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const [formState, setFormState] = useState({
     name: "",
@@ -53,17 +56,21 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="py-16 md:py-24">
+    <section id="contact" className="py-16 md:py-24" ref={ref}>
       <div className="max-w-4xl mx-auto px-6">
         {/* Section header */}
-        <SectionHeader title="Get In Touch" spot="yellow" align="center">
+        <SectionHeader title="Get In Touch" spot="yellow" align="center" isInView={isInView}>
           Whether you have a project in mind, a question about Salesforce, or
           just want to say hello—my inbox is always open.
         </SectionHeader>
 
         <div className="grid md:grid-cols-2 gap-12">
           {/* Contact form */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label
@@ -174,10 +181,15 @@ export function Contact() {
                 )}
               </div>
             </form>
-          </div>
+          </motion.div>
 
           {/* Contact info & social links */}
-          <div className="space-y-8">
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="space-y-8"
+          >
             <div>
               <h3 className="text-lg font-semibold text-foreground mb-4">
                 Other ways to connect
@@ -234,8 +246,7 @@ export function Contact() {
               </a>
             </div>
 
-            
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

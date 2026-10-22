@@ -1,4 +1,7 @@
+"use client";
+
 import type { ReactNode } from "react";
+import { motion } from "framer-motion";
 
 type Spot = "blue" | "pink" | "green" | "yellow";
 
@@ -19,15 +22,22 @@ export function SectionHeader({
   spot,
   children,
   align = "left",
+  isInView,
 }: {
   title: string;
   spot: Spot;
   children?: ReactNode;
   align?: "left" | "center";
+  isInView: boolean;
 }) {
   const center = align === "center";
   return (
-    <div className={`mb-16 ${center ? "text-center" : ""}`}>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5 }}
+      className={`mb-16 ${center ? "text-center" : ""}`}
+    >
       <h2 className="text-3xl md:text-4xl font-bold mb-4">{title}</h2>
       <div
         className={`h-0.5 w-12 rounded-full ${rule[spot]} ${center ? "mx-auto" : ""}`}
@@ -38,6 +48,6 @@ export function SectionHeader({
           {children}
         </p>
       )}
-    </div>
+    </motion.div>
   );
 }

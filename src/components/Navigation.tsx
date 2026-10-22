@@ -80,7 +80,10 @@ export function Navigation() {
 
 	return (
 		<>
-			<header
+			<motion.header
+				initial={{ y: -100 }}
+				animate={{ y: 0 }}
+				transition={{ duration: 0.5, ease: 'easeOut' }}
 				className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
 					isScrolled
 						? 'bg-background/80 backdrop-blur-lg border-b border-border'
@@ -179,7 +182,7 @@ export function Navigation() {
 						</button>
 					</div>
 				</nav>
-			</header>
+			</motion.header>
 
 			{/* Mobile Menu */}
 			<AnimatePresence>
@@ -196,15 +199,22 @@ export function Navigation() {
 							onClick={() => setIsMobileMenuOpen(false)}
 						/>
 						<nav className="relative flex flex-col items-center justify-center h-full gap-8">
-							{navLinks.map((link) => (
-								<button
+							{navLinks.map((link, index) => (
+								<motion.button
 									key={link.name}
+									initial={{ opacity: 0, y: 20 }}
+									animate={{ opacity: 1, y: 0 }}
+									transition={{ delay: index * 0.1 }}
 									onClick={() => handleNavClick(link.href)}
 									className="text-2xl font-medium text-foreground hover:text-accent transition-colors">
 									{link.name}
-								</button>
+								</motion.button>
 							))}
-							<div className="flex items-center gap-3 mt-8">
+							<motion.div
+								initial={{ opacity: 0 }}
+								animate={{ opacity: 1 }}
+								transition={{ delay: 0.4 }}
+								className="flex items-center gap-3 mt-8">
 								<a
 									href={socialLinks.github}
 									target="_blank"
@@ -235,7 +245,7 @@ export function Navigation() {
 										<div className="w-[24px] h-[24px]" />
 									)}{' '}
 								</button>
-							</div>
+							</motion.div>
 						</nav>
 					</motion.div>
 				)}
