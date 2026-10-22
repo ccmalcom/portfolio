@@ -13,7 +13,7 @@ export function Footer() {
           {/* Logo / Name */}
           <div className="flex items-center gap-2">
             <span className="text-xl font-semibold">
-              <span className="gradient-text">c</span>
+              <span className="text-spot-pink-text">c</span>
               <span className="text-foreground">m</span>
             </span>
             <span className="text-foreground-muted text-sm">

@@ -80,10 +80,7 @@ export function Navigation() {
 
 	return (
 		<>
-			<motion.header
-				initial={{ y: -100 }}
-				animate={{ y: 0 }}
-				transition={{ duration: 0.5, ease: 'easeOut' }}
+			<header
 				className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
 					isScrolled
 						? 'bg-background/80 backdrop-blur-lg border-b border-border'
@@ -97,7 +94,7 @@ export function Navigation() {
 							className="text-xl font-semibold tracking-tight"
 							whileHover={{ scale: 1.02 }}
 							whileTap={{ scale: 0.98 }}>
-							<span className="gradient-text">c</span>
+							<span className="text-spot-pink-text">c</span>
 							<span className="foreground">m</span>
 						</motion.a>
 
@@ -182,7 +179,7 @@ export function Navigation() {
 						</button>
 					</div>
 				</nav>
-			</motion.header>
+			</header>
 
 			{/* Mobile Menu */}
 			<AnimatePresence>
@@ -199,22 +196,15 @@ export function Navigation() {
 							onClick={() => setIsMobileMenuOpen(false)}
 						/>
 						<nav className="relative flex flex-col items-center justify-center h-full gap-8">
-							{navLinks.map((link, index) => (
-								<motion.button
+							{navLinks.map((link) => (
+								<button
 									key={link.name}
-									initial={{ opacity: 0, y: 20 }}
-									animate={{ opacity: 1, y: 0 }}
-									transition={{ delay: index * 0.1 }}
 									onClick={() => handleNavClick(link.href)}
 									className="text-2xl font-medium text-foreground hover:text-accent transition-colors">
 									{link.name}
-								</motion.button>
+								</button>
 							))}
-							<motion.div
-								initial={{ opacity: 0 }}
-								animate={{ opacity: 1 }}
-								transition={{ delay: 0.4 }}
-								className="flex items-center gap-3 mt-8">
+							<div className="flex items-center gap-3 mt-8">
 								<a
 									href={socialLinks.github}
 									target="_blank"
@@ -245,7 +235,7 @@ export function Navigation() {
 										<div className="w-[24px] h-[24px]" />
 									)}{' '}
 								</button>
-							</motion.div>
+							</div>
 						</nav>
 					</motion.div>
 				)}

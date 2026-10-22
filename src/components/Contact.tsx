@@ -1,13 +1,11 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { Send, Github, Linkedin, Mail, Loader2, CheckCircle } from "lucide-react";
 import { socialLinks } from "@/data/portfolio";
+import { SectionHeader } from "./SectionHeader";
 
 export function Contact() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const [formState, setFormState] = useState({
     name: "",
@@ -55,30 +53,17 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="py-16 md:py-24" ref={ref}>
+    <section id="contact" className="py-16 md:py-24">
       <div className="max-w-4xl mx-auto px-6">
         {/* Section header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <p className="text-spot-yellow-text font-mono text-sm mb-4">04. What&apos;s Next?</p>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">Get In Touch</h2>
-          <p className="text-foreground-muted max-w-lg mx-auto">
-            Whether you have a project in mind, a question about Salesforce, or
-            just want to say hello—my inbox is always open.
-          </p>
-        </motion.div>
+        <SectionHeader title="Get In Touch" spot="yellow" align="center">
+          Whether you have a project in mind, a question about Salesforce, or
+          just want to say hello—my inbox is always open.
+        </SectionHeader>
 
         <div className="grid md:grid-cols-2 gap-12">
           {/* Contact form */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
+          <div>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label
@@ -189,15 +174,10 @@ export function Contact() {
                 )}
               </div>
             </form>
-          </motion.div>
+          </div>
 
           {/* Contact info & social links */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="space-y-8"
-          >
+          <div className="space-y-8">
             <div>
               <h3 className="text-lg font-semibold text-foreground mb-4">
                 Other ways to connect
@@ -255,7 +235,7 @@ export function Contact() {
             </div>
 
             
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

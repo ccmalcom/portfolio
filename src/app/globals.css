@@ -7,6 +7,9 @@
  * Example: --color-background: var(--background);
  */
 @theme {
+  /* Fonts (loaded in layout.tsx via next/font) */
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
 
   /* Custom colors */
   /* Optimized for both light and dark backgrounds */
@@ -68,78 +71,6 @@
 
   /* Border */
   --color-border: var(--border);
-
-  /* Animations */
-  --animate-fade-in: fade-in 0.6s ease-out forwards;
-  --animate-slide-up: slide-up 0.6s ease-out forwards;
-  --animate-slide-in-right: slide-in-right 0.6s ease-out forwards;
-  --animate-pulse-gentle: pulse-gentle 3s ease-in-out infinite;
-  --animate-gradient-shift: gradient-shift 8s ease infinite;
-  --animate-float: float 6s ease-in-out infinite;
-
-  @keyframes fade-in {
-    0% {
-      opacity: 0;
-    }
-
-    100% {
-      opacity: 1;
-    }
-  }
-
-  @keyframes slide-up {
-    0% {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes slide-in-right {
-    0% {
-      opacity: 0;
-      transform: translateX(-20px);
-    }
-
-    100% {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  @keyframes pulse-gentle {
-    0%, 100% {
-      opacity: 0.4;
-    }
-
-    50% {
-      opacity: 0.8;
-    }
-  }
-
-  @keyframes gradient-shift {
-    0%, 100% {
-      background-position: 0% 50%;
-    }
-
-    50% {
-      background-position: 100% 50%;
-    }
-  }
-
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0px);
-    }
-
-    50% {
-      transform: translateY(-10px);
-    }
-  }
 }
 
 :root {
@@ -205,6 +136,10 @@
 /* Keep the rest of your CSS below... */
 * {
   box-sizing: border-box;
+}
+
+h1, h2, h3 {
+  text-wrap: balance;
 }
 
 html {
@@ -274,20 +209,6 @@ body {
 
 .link-underline:hover::after {
   width: 100%;
-}
-
-/* Gradient text */
-.gradient-text {
-  background: linear-gradient(135deg,
-      var(--color-spot-blue) 0%,
-      var(--color-spot-pink) 33%,
-      var(--color-spot-green) 66%,
-      var(--color-spot-yellow) 100%);
-  background-size: 300% 300%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: var(--animate-gradient-shift);
 }
 
 /* Glow effect for cards */
@@ -405,4 +326,20 @@ body {
 .tech-pill:hover {
   background-color: var(--color-spot-pink);
   color: var(--color-on-spot);
+}
+
+/* Reduced motion: no smooth scroll, no CSS animation or transition motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

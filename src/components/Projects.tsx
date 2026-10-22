@@ -1,10 +1,11 @@
 'use client';
 
-import { motion, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { motion } from 'framer-motion';
+import { useState } from 'react';
 import { ExternalLink, Github, ChevronRight } from 'lucide-react';
 import { projects, Project } from '@/data/portfolio';
 import Image from 'next/image';
+import { SectionHeader } from './SectionHeader';
 
 function HoverLinks({
 	project,
@@ -51,11 +52,9 @@ function HoverLinks({
 function ProjectCard({
 	project,
 	index,
-	isInView,
 }: {
 	project: Project;
 	index: number;
-	isInView: boolean;
 }) {
 	const [isHovered, setIsHovered] = useState(false);
 	const [isSwapped, setIsSwapped] = useState(false);
@@ -73,11 +72,8 @@ function ProjectCard({
 	const backLabel = isSwapped ? imageLabel : backImageLabel;
 
 	return (
-		<motion.article
+		<article
 			id={`project-${project.id}`}
-			initial={{ opacity: 0, y: 40 }}
-			animate={isInView ? { opacity: 1, y: 0 } : {}}
-			transition={{ duration: 0.6, delay: index * 0.15 }}
 			className={`scroll-mt-24 grid lg:grid-cols-12 gap-6 lg:gap-8 items-center ${
 				!isEven ? 'lg:text-right' : ''
 			}`}
@@ -235,7 +231,6 @@ function ProjectCard({
 			{/* Project info */}
 			<div className={`lg:col-span-5 space-y-4 ${!isEven ? 'lg:order-1' : ''}`}>
 				<div className="space-y-2">
-					<p className="text-spot-pink-text text-sm font-mono">Featured Project</p>
 					<h3 className="text-2xl md:text-3xl font-bold text-foreground">
 						{titleUrl ? (
 							<a
@@ -315,30 +310,18 @@ function ProjectCard({
 					</div>
 				)}
 			</div>
-		</motion.article>
+		</article>
 	);
 }
 
 export function Projects() {
-	const ref = useRef(null);
-	const isInView = useInView(ref, { once: true, margin: '-100px' });
-
 	const featuredProjects = projects.filter((p) => p.featured);
 
 	return (
-		<section id="projects" className="py-16 md:py-24" ref={ref}>
+		<section id="projects" className="py-16 md:py-24">
 			<div className="max-w-6xl mx-auto px-6">
 				{/* Section header */}
-				<motion.div
-					initial={{ opacity: 0, y: 20 }}
-					animate={isInView ? { opacity: 1, y: 0 } : {}}
-					transition={{ duration: 0.5 }}
-					className="mb-16">
-					<h2 className="text-3xl md:text-4xl font-bold mb-4">
-						<span className="text-spot-pink-text">02.</span> Featured Projects
-					</h2>
-					<div className="section-divider max-w-xs" />
-				</motion.div>
+				<SectionHeader title="Featured Projects" spot="pink" />
 
 				{/* Projects list */}
 				<div className="space-y-24 md:space-y-32">
@@ -347,7 +330,6 @@ export function Projects() {
 							key={project.id}
 							project={project}
 							index={index}
-							isInView={isInView}
 						/>
 					))}
 				</div>
