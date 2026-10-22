@@ -200,13 +200,13 @@ A neutral ink-or-paper ground interrupted by four saturated spot colors; every c
 ### Primary
 The spot quartet. Vibrant values are for fills, dots, rules, borders and icons in both themes and for text in dark mode. In light mode, text uses the `-text-light` step of the same hue.
 - **Signal Blue** (#5088E0): the About section; the primary CTA fill ("View My Work"); the hero's first dot; the About pulse dot; the skip link. Light text step **Deep Signal Blue** (#2B58AC).
-- **Hot Pink** (#E05A8A): the Projects section; media badges, tech pill text and hover fill, project link hover, the hero card arrow, the offset echo frame behind project media. Light text step **Raspberry** (#AE3461).
+- **Hot Pink** (#E05A8A): the Projects section; media badges, tech pill text and hover fill, project link hover, the hero card arrow, the footer heart (text step), the offset echo frame behind project media. Light text step **Raspberry** (#AE3461).
 - **Leaf Green** (#4AA854): the Skills section; the Skills header rule. Light text step **Fern** (#25702F).
 - **Marigold** (#E9B54D): the Contact section; submit button fill, input focus border and ring, social card icons on a 15% marigold wash (`spot-yellow-muted`). Light text step **Umber Gold** (#7D5A0C).
 - **On-Spot Ink** (#0a0a0a): the only text color allowed on a vibrant spot fill (5.60 on blue, 5.66 pink, 6.62 green, 10.54 yellow).
 
 ### Secondary
-- **Signal Green accent** (#1DB954 dark / #1A9E4A light, text step #146B34 light): the interaction color. Global focus outline (2px, offset 2px, via the text step), the "Currently exploring:" label, hover on footer and mobile-menu links. In light mode the vibrant step (3.09:1 on paper) is for icons and 24px+ text only.
+- **Signal Green accent** (#1DB954 dark / #1A9E4A light, text step #146B34 light): the interaction color. Global focus outline (2px, offset 2px, via the text step), the "Currently exploring:" label. It is not a hover color: nav and mobile-menu links hover to their section's text color, footer icons to body text. In light mode the vibrant step (3.09:1 on paper) is for icons and 24px+ text only.
 
 ### Tertiary
 - **Salesforce Blue** (#00A1E0, light text step #0A6491): the Salesforce skill category only. Kept as the platform's own color; it does not join the section rotation.
@@ -250,7 +250,7 @@ Media text on the media well is 16.65; media hint text on the overlay chip is at
 
 **Display Font:** Geist (with ui-sans-serif, system-ui, sans-serif), loaded through next/font.
 **Body Font:** Geist.
-**Label/Mono Font:** Geist Mono is loaded and mapped to the mono token but no rendered element uses it.
+**Label/Mono Font:** none. Only Geist is loaded; there is no mono token.
 
 **Character:** One geometric-grotesque family doing everything; hierarchy comes from a steep jump between bold display sizes and regular reading sizes.
 
@@ -286,9 +286,9 @@ Hybrid, mostly tonal. Surfaces separate by three background steps and a hairline
 
 ### Shadow Vocabulary
 - **Overlap card** (Tailwind `shadow-lg`): the project description card lifting over its image.
-- **Floating media at rest** (`0 10px 30px -10px rgba(0,0,0,0.4)`): the GIF floated over a background image.
-- **Floating media lifted** (`0 25px 50px -12px rgba(0,0,0,0.6)`): the same GIF on card hover, with scale 1.05.
-- **Stacked card lifted** (`0 25px 50px -12px rgba(0,0,0,0.5)`): the front image of a stacked project when it tilts back on hover.
+- **Floating media at rest** (`--shadow-media-rest`, `0 10px 30px -10px rgba(0,0,0,0.4)`): the GIF floated over a background image.
+- **Floating media lifted** (`--shadow-media-lifted`, `0 25px 50px -12px rgba(0,0,0,0.6)`): the same GIF on card hover, with scale 1.05.
+- **Stacked card lifted** (`--shadow-stack-lifted`, `0 25px 50px -12px rgba(0,0,0,0.5)`): the front image of a stacked project when it tilts back on hover.
 
 ### Named Rules
 **The Tonal First Rule.** New surfaces step up a background tone and take a hairline border. A shadow is earned only by an element that physically overlaps or lifts off another.
@@ -333,7 +333,7 @@ The hero's work-first proof: project title, its outcome highlights in secondary 
 - **Status:** a polite live region below the button reports success or failure; failure points to LinkedIn.
 
 ### Navigation
-Fixed, transparent over the hero; after 50px of scroll it turns 80% background with a 16px blur and the brand hairline along its bottom edge. The header slides in from above on load. Desktop links are 14px medium; the active section's link takes its section text color with a 2px underline in the section's vibrant spot that springs between links (stiffness 380, damping 30). GitHub, LinkedIn and theme toggle sit right as 18px muted icons. Below md a 44px toggle opens a full-screen 95% background menu whose 24px links stagger in 0.1s apart; Escape closes it and returns focus.
+Fixed, transparent over the hero; after 50px of scroll it turns 80% background with a 16px blur and the brand hairline along its bottom edge. The header slides in from above on load. Desktop links are 14px medium; a link takes its section text color on hover and while active, the active one with a 2px underline in the section's vibrant spot that springs between links (stiffness 380, damping 30). GitHub, LinkedIn and theme toggle sit right as 18px muted icons. Below md a 44px toggle opens a full-screen 95% background menu whose 24px links (hovering to their section text color) stagger in 0.1s apart; Escape closes it and returns focus.
 
 ### SectionHeader (signature)
 The one section header: a bold h2, a 48px by 2px rounded rule in the section's vibrant spot, an optional muted lead paragraph (max 672px). Left-aligned by default, centered for Contact. Fades up 20px over 0.5s when the section scrolls into view.

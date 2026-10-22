@@ -584,17 +584,17 @@
         "purpose": "Project description card overlapping its image (Tailwind shadow-lg)."
       },
       {
-        "name": "media-float-rest",
+        "name": "shadow-media-rest",
         "value": "0 10px 30px -10px rgba(0, 0, 0, 0.4)",
         "purpose": "GIF floated over a background image, at rest."
       },
       {
-        "name": "media-float-lifted",
+        "name": "shadow-media-lifted",
         "value": "0 25px 50px -12px rgba(0, 0, 0, 0.6)",
         "purpose": "Floated GIF on hover, with scale 1.05."
       },
       {
-        "name": "stack-lifted",
+        "name": "shadow-stack-lifted",
         "value": "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
         "purpose": "Front image of a stacked project tilting back on hover."
       }
@@ -776,7 +776,7 @@
     "rules": [
       {
         "name": "The Section Owns a Spot Rule",
-        "body": "Blue is About, pink is Projects, green is Skills, yellow is Contact. The SectionHeader rule, the nav active underline and text, and the section's interactive accents all take that section's spot. Spot color is wayfinding; never swap one section's color into another.",
+        "body": "Blue is About, pink is Projects, green is Skills, yellow is Contact. The SectionHeader rule, the nav active underline and text, the nav and mobile-menu link hover, and the section's interactive accents all take that section's spot. Spot color is wayfinding; never swap one section's color into another.",
         "section": "colors"
       },
       {

@@ -83,7 +83,7 @@ export function About() {
 								</motion.div>
 							))}
 						{/* Fun note */}
-						<div className="p-4 rounded-lg border border-dashed col-span-2">
+						<div className="p-4 rounded-lg border border-dashed border-border col-span-2">
 							<p className="text-sm text-foreground-muted italic">
 								🌱 Fun fact: When I&apos;m not coding, I&apos;m probably hiking
 								a trail or tending to my garden. Growing things—whether

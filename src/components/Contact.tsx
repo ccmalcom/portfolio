@@ -131,7 +131,7 @@ export function Contact() {
               <button
                 type="submit"
                 disabled={status === "loading" || status === "success"}
-                className="w-full btn bg-spot-yellow text-black disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-offset-2"
+                className="w-full btn bg-spot-yellow text-on-spot disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-offset-2"
               >
                 {status === "loading" ? (
                   <>

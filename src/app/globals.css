@@ -9,24 +9,17 @@
 @theme {
   /* Fonts (loaded in layout.tsx via next/font) */
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
 
   /* Custom colors */
   /* Optimized for both light and dark backgrounds */
   --color-spot-pink: #E05A8A;
   /* slightly deeper - pops on light, still vibrant on dark */
-  --color-spot-light-pink: #F2B8C1;
-  /* desaturated - won't wash out on warm light bg */
   --color-spot-green: #4AA854;
   /* slightly deeper green */
-  --color-spot-yellow-green: #C2E860;
-  /* toned down - less neon */
   --color-spot-yellow: #E9B54D;
   /* deeper gold - better contrast on light bg */
   --color-spot-blue: #5088E0;
   /* slightly deeper */
-  --color-spot-pale-blue: #8AACBE;
-  /* desaturated for light mode */
 
   /* Media surfaces (project images, overlays) */
   --color-media-bg: #121212;
@@ -40,6 +33,11 @@
 
   /* Text on a vibrant spot-color fill (buttons, badges): near-black, >=5:1 on every spot */
   --color-on-spot: #0a0a0a;
+
+  /* Shadows for floated and lifted project media */
+  --shadow-media-rest: 0 10px 30px -10px rgba(0, 0, 0, 0.4);
+  --shadow-media-lifted: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+  --shadow-stack-lifted: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 
   /* Soft fill behind spot-colored icons */
   --color-spot-yellow-muted: rgba(233, 181, 77, 0.15);
@@ -64,10 +62,6 @@
   --color-foreground-muted: var(--foreground-muted);
 
   /* Accent colors */
-  --color-accent: var(--accent);
-  --color-accent-hover: var(--accent-hover);
-  --color-accent-muted: var(--accent-muted);
-  --color-accent-2: var(--accent-2);
 
   /* Border */
   --color-border: var(--border);
@@ -85,8 +79,6 @@
 
   /* Warmer green accent - slightly shifted to feel less "digital" */
   --accent: #1A9E4A;
-  --accent-hover: #22B558;
-  --accent-muted: rgba(26, 158, 74, 0.12);
 
   /* Text-safe variants (contrast on #E5DFD5 >= 4.5, on #F5F1EB >= 5.4) */
   --text-spot-blue: #2B58AC;
@@ -110,9 +102,6 @@
       var(--text-spot-yellow));
   --selection-bg: rgba(43, 88, 172, 0.22);
 
-  /* Warmer accent-2 - more muted to complement the paper tone */
-  --accent-2: #8B9BB8;
-
   /* Slightly warmer border */
   --border: rgba(45, 42, 38, 0.1);
 }
@@ -129,8 +118,6 @@
 
   /* Keep the signature Spotify green but refine supporting colors */
   --accent: #1DB954;
-  --accent-hover: #1ED760;
-  --accent-muted: rgba(29, 185, 84, 0.10);
 
   /* Dark keeps the vibrant values as text */
   --text-spot-blue: var(--color-spot-blue);
@@ -140,9 +127,6 @@
   --text-sf-blue: var(--color-sf-blue);
   --text-accent: var(--accent);
   --selection-bg: rgba(80, 136, 224, 0.35);
-
-  /* Brighter accent-2 to pop against dark backgrounds */
-  --accent-2: #BFD7FD;
 
   /* Subtle border with slight warmth */
   --border: rgba(255, 255, 255, 0.06);
@@ -186,7 +170,7 @@ body {
 }
 
 .dark::-webkit-scrollbar-thumb:hover {
-  background: var(--background-tertiary);
+  background: color-mix(in srgb, var(--foreground-muted) 35%, var(--background-tertiary));
 }
 
 /* Selection styling */

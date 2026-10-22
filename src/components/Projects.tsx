@@ -108,18 +108,10 @@ function ProjectCard({
 							{/* Foreground GIF/image - scaled down and centered */}
 							<div className="absolute inset-0 flex items-center justify-center p-8">
 								<motion.div
-									className="relative w-[70%] h-[70%] rounded-lg overflow-hidden shadow-2xl"
-									animate={
-										isHovered
-											? {
-													scale: 1.05,
-													boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.6)',
-											  }
-											: {
-													scale: 1,
-													boxShadow: '0 10px 30px -10px rgba(0, 0, 0, 0.4)',
-											  }
-									}
+									className={`relative w-[70%] h-[70%] rounded-lg overflow-hidden transition-shadow duration-300 ease-out ${
+										isHovered ? 'shadow-media-lifted' : 'shadow-media-rest'
+									}`}
+									animate={isHovered ? { scale: 1.05 } : { scale: 1 }}
 									transition={{ duration: 0.3, ease: 'easeOut' }}>
 									<Image
 										src={project.image}
@@ -162,7 +154,9 @@ function ProjectCard({
 
 							{/* Front image */}
 							<motion.div
-								className="absolute inset-0 rounded-lg overflow-hidden border border-border bg-media-bg cursor-pointer"
+								className={`absolute inset-0 rounded-lg overflow-hidden border border-border bg-media-bg cursor-pointer transition-shadow duration-[400ms] ease-out ${
+									isHovered ? 'shadow-stack-lifted' : ''
+								}`}
 								onClick={() => setIsSwapped(!isSwapped)}
 								animate={
 									isHovered
@@ -170,13 +164,11 @@ function ProjectCard({
 												rotateX: 12,
 												y: -20,
 												scale: 0.95,
-												boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
 										  }
 										: {
 												rotateX: 0,
 												y: 0,
 												scale: 1,
-												boxShadow: '0 0 0 0px rgba(0, 0, 0, 0)',
 										  }
 								}
 								transition={{ duration: 0.4, ease: 'easeOut' }}>

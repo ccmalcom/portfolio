@@ -28,7 +28,7 @@ export function Footer() {
               href={socialLinks.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-foreground-muted hover:text-accent transition-colors p-2"
+              className="text-foreground-muted hover:text-foreground transition-colors p-2"
               aria-label="GitHub"
             >
               <Github size={18} />
@@ -37,7 +37,7 @@ export function Footer() {
               href={socialLinks.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-foreground-muted hover:text-accent transition-colors p-2"
+              className="text-foreground-muted hover:text-foreground transition-colors p-2"
               aria-label="LinkedIn"
             >
               <Linkedin size={18} />
@@ -48,7 +48,7 @@ export function Footer() {
           {/* Copyright */}
           <div className="flex items-center gap-1 text-sm text-foreground-muted">
             <span>Made with</span>
-            <Heart size={14} className="text-red-500 fill-current" aria-hidden="true" />
+            <Heart size={14} className="text-spot-pink-text fill-current" aria-hidden="true" />
             <span>© {currentYear}</span>
           </div>
         </div>

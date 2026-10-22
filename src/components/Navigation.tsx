@@ -104,7 +104,7 @@ export function Navigation() {
 							whileHover={{ scale: 1.02 }}
 							whileTap={{ scale: 0.98 }}>
 							<span className="gradient-text">c</span>
-							<span className="foreground">m</span>
+							<span className="text-foreground">m</span>
 						</motion.a>
 
 						{/* Desktop Navigation */}
@@ -122,8 +122,11 @@ export function Navigation() {
 									<button
 										key={link.name}
 										onClick={() => handleNavClick(link.href)}
-										className="text-sm font-medium transition-colors relative"
-										style={{ color: isActive ? sectionTextColor : undefined }}>
+										className="text-sm font-medium transition-colors relative hover:text-(--section-text)"
+										style={{
+											'--section-text': sectionTextColor,
+											color: isActive ? sectionTextColor : undefined,
+										} as React.CSSProperties}>
 										{link.name}
 										{isActive && (
 											<motion.div
@@ -212,7 +215,11 @@ export function Navigation() {
 									animate={{ opacity: 1, y: 0 }}
 									transition={{ delay: index * 0.1 }}
 									onClick={() => handleNavClick(link.href)}
-									className="text-2xl font-medium text-foreground hover:text-accent transition-colors">
+									className="text-2xl font-medium text-foreground hover:text-(--section-text) transition-colors"
+									style={{
+										'--section-text':
+											sectionTextColors[link.href.replace('#', '') as keyof typeof sectionTextColors],
+									} as React.CSSProperties}>
 									{link.name}
 								</motion.button>
 							))}
