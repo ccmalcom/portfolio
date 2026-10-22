@@ -46,7 +46,7 @@ function SkillCategory({
 
   return (
 		<div className="group">
-			<div className="p-6 rounded-xl bg-background-secondary border border-border hover:border-gray-400 transition-all duration-300 h-full">
+			<div className="p-6 rounded-xl bg-background border border-border hover:border-foreground-muted transition-all duration-300 h-full">
 				{/* Category header */}
 				<div className="flex items-center gap-3 mb-4">
 					<div className="p-2 rounded-lg bg-foreground/10">
@@ -86,7 +86,7 @@ export function Skills() {
   return (
     <section
       id="skills"
-      className="py-16 md:py-24 bg-background-secondary/30"
+      className="py-16 md:py-24 bg-background-secondary"
     >
       <div className="max-w-6xl mx-auto px-6">
         {/* Section header */}
@@ -96,7 +96,7 @@ export function Skills() {
         </SectionHeader>
 
         {/* Skills grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 gap-6">
           {categories.map((category) => {
             const categorySkills = skills.filter(
               (s) => s.category === category.id

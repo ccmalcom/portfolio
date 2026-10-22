@@ -257,7 +257,7 @@ function ProjectCard({
 
 				{/* Highlights */}
 				<ul className={`space-y-1 ${!isEven ? 'lg:pl-0' : ''}`}>
-					{project.highlights.slice(0, 3).map((highlight) => (
+					{project.highlights.map((highlight) => (
 						<li
 							key={highlight}
 							className={`flex items-center gap-2 text-sm text-foreground-muted ${
