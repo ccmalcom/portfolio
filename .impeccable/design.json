@@ -1,0 +1,843 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-22T00:00:00Z",
+  "title": "Design System: Chase Malcom Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "spot-blue": {
+        "role": "primary",
+        "displayName": "Signal Blue",
+        "canonical": "#5088E0",
+        "tonalRamp": [
+          "#000047",
+          "#001768",
+          "#00398b",
+          "#245aae",
+          "#447cd3",
+          "#659ef8",
+          "#89c5ff",
+          "#b3f0ff"
+        ],
+        "cssVar": "--color-spot-blue"
+      },
+      "spot-pink": {
+        "role": "primary",
+        "displayName": "Hot Pink",
+        "canonical": "#E05A8A",
+        "tonalRamp": [
+          "#350007",
+          "#5a001f",
+          "#7f003b",
+          "#a41f58",
+          "#ca4678",
+          "#f16998",
+          "#ff90be",
+          "#ffbae8"
+        ],
+        "cssVar": "--color-spot-pink"
+      },
+      "spot-green": {
+        "role": "primary",
+        "displayName": "Leaf Green",
+        "canonical": "#4AA854",
+        "tonalRamp": [
+          "#001600",
+          "#003300",
+          "#005200",
+          "#00721e",
+          "#349441",
+          "#59b662",
+          "#80de87",
+          "#aaffb0"
+        ],
+        "cssVar": "--color-spot-green"
+      },
+      "spot-yellow": {
+        "role": "primary",
+        "displayName": "Marigold",
+        "canonical": "#E9B54D",
+        "tonalRamp": [
+          "#200000",
+          "#411600",
+          "#613400",
+          "#825300",
+          "#a47300",
+          "#c89525",
+          "#efbb54",
+          "#ffe680"
+        ],
+        "cssVar": "--color-spot-yellow"
+      },
+      "spot-blue-text-light": {
+        "role": "primary",
+        "displayName": "Deep Signal Blue (light text step)",
+        "canonical": "#2B58AC",
+        "tonalRamp": [
+          "#010046",
+          "#001667",
+          "#0d398a",
+          "#2c59ad",
+          "#4b7ad2",
+          "#6b9df7",
+          "#8fc3ff",
+          "#b8efff"
+        ]
+      },
+      "spot-pink-text-light": {
+        "role": "primary",
+        "displayName": "Raspberry (light text step)",
+        "canonical": "#AE3461",
+        "tonalRamp": [
+          "#330006",
+          "#57001e",
+          "#7c0039",
+          "#a12756",
+          "#c74b75",
+          "#ed6e96",
+          "#ff94bc",
+          "#ffbee6"
+        ]
+      },
+      "spot-green-text-light": {
+        "role": "primary",
+        "displayName": "Fern (light text step)",
+        "canonical": "#25702F",
+        "tonalRamp": [
+          "#001500",
+          "#003100",
+          "#004f0c",
+          "#246f2e",
+          "#47904e",
+          "#69b36e",
+          "#8fda93",
+          "#b9ffbc"
+        ]
+      },
+      "spot-yellow-text-light": {
+        "role": "primary",
+        "displayName": "Umber Gold (light text step)",
+        "canonical": "#7D5A0C",
+        "tonalRamp": [
+          "#1e0200",
+          "#3b1b00",
+          "#593800",
+          "#795705",
+          "#9b7732",
+          "#be9854",
+          "#e5be79",
+          "#ffe8a3"
+        ]
+      },
+      "spot-yellow-muted": {
+        "role": "primary",
+        "displayName": "Marigold Wash",
+        "canonical": "rgba(233, 181, 77, 0.15)",
+        "tonalRamp": [
+          "#200000",
+          "#411600",
+          "#613400",
+          "#825300",
+          "#a47300",
+          "#c89525",
+          "#efbb54",
+          "#ffe680"
+        ],
+        "cssVar": "--color-spot-yellow-muted"
+      },
+      "on-spot": {
+        "role": "primary",
+        "displayName": "On-Spot Ink",
+        "canonical": "#0a0a0a",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#7d7d7d",
+          "#9e9e9e",
+          "#c4c4c4",
+          "#eeeeee"
+        ],
+        "cssVar": "--color-on-spot"
+      },
+      "accent-dark": {
+        "role": "secondary",
+        "displayName": "Signal Green (dark)",
+        "canonical": "#1DB954",
+        "tonalRamp": [
+          "#001800",
+          "#003700",
+          "#005600",
+          "#007709",
+          "#009935",
+          "#24bd57",
+          "#5ae47d",
+          "#89ffa7"
+        ]
+      },
+      "accent-light": {
+        "role": "secondary",
+        "displayName": "Signal Green (light)",
+        "canonical": "#1A9E4A",
+        "tonalRamp": [
+          "#001700",
+          "#003500",
+          "#005400",
+          "#007521",
+          "#069743",
+          "#41b964",
+          "#6ce189",
+          "#99ffb2"
+        ]
+      },
+      "accent-text-light": {
+        "role": "secondary",
+        "displayName": "Signal Green text step (light)",
+        "canonical": "#146B34",
+        "tonalRamp": [
+          "#001500",
+          "#003200",
+          "#00501a",
+          "#1b6f38",
+          "#419157",
+          "#64b377",
+          "#8ada9c",
+          "#b4ffc5"
+        ]
+      },
+      "sf-blue": {
+        "role": "tertiary",
+        "displayName": "Salesforce Blue",
+        "canonical": "#00A1E0",
+        "tonalRamp": [
+          "#00033c",
+          "#00265e",
+          "#00467f",
+          "#0066a2",
+          "#0088c5",
+          "#1eabea",
+          "#55d2ff",
+          "#84fdff"
+        ],
+        "cssVar": "--color-sf-blue"
+      },
+      "sf-blue-text-light": {
+        "role": "tertiary",
+        "displayName": "Salesforce Blue text step (light)",
+        "canonical": "#0A6491",
+        "tonalRamp": [
+          "#000931",
+          "#002750",
+          "#004570",
+          "#0b6491",
+          "#3885b4",
+          "#5ba7d8",
+          "#81ceff",
+          "#acf9ff"
+        ]
+      },
+      "night-bg": {
+        "role": "neutral",
+        "displayName": "Night",
+        "canonical": "#09090B",
+        "tonalRamp": [
+          "#0b0b0d",
+          "#242426",
+          "#3f3f42",
+          "#5d5d60",
+          "#7d7d80",
+          "#9e9ea1",
+          "#c4c4c7",
+          "#eeeef1"
+        ]
+      },
+      "night-bg-secondary": {
+        "role": "neutral",
+        "displayName": "Night Raised",
+        "canonical": "#111113",
+        "tonalRamp": [
+          "#0b0b0d",
+          "#242426",
+          "#3f3f42",
+          "#5d5d60",
+          "#7d7d80",
+          "#9e9ea1",
+          "#c4c4c7",
+          "#eeeef1"
+        ]
+      },
+      "night-bg-tertiary": {
+        "role": "neutral",
+        "displayName": "Night Inset",
+        "canonical": "#1A1A1D",
+        "tonalRamp": [
+          "#0b0b0e",
+          "#242427",
+          "#3f3f43",
+          "#5d5d61",
+          "#7d7d81",
+          "#9e9ea2",
+          "#c3c4c8",
+          "#eeeef2"
+        ]
+      },
+      "night-fg": {
+        "role": "neutral",
+        "displayName": "Bone",
+        "canonical": "#EDEDEC",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242423",
+          "#40403f",
+          "#5e5e5d",
+          "#7d7d7c",
+          "#9e9e9d",
+          "#c4c4c3",
+          "#eeeeed"
+        ]
+      },
+      "night-fg-muted": {
+        "role": "neutral",
+        "displayName": "Ash",
+        "canonical": "#9A9A98",
+        "tonalRamp": [
+          "#0b0b0a",
+          "#242422",
+          "#40403e",
+          "#5e5e5c",
+          "#7d7d7b",
+          "#9e9e9c",
+          "#c4c4c2",
+          "#eeeeec"
+        ]
+      },
+      "night-border": {
+        "role": "neutral",
+        "displayName": "Night Hairline (6% white)",
+        "canonical": "rgba(255, 255, 255, 0.06)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#7d7d7d",
+          "#9e9e9e",
+          "#c4c4c4",
+          "#eeeeee"
+        ]
+      },
+      "night-selection": {
+        "role": "neutral",
+        "displayName": "Night Selection",
+        "canonical": "rgba(80, 136, 224, 0.35)",
+        "tonalRamp": [
+          "#000047",
+          "#001768",
+          "#00398b",
+          "#245aae",
+          "#447cd3",
+          "#659ef8",
+          "#89c5ff",
+          "#b3f0ff"
+        ]
+      },
+      "paper-bg": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "#F5F1EB",
+        "tonalRamp": [
+          "#0d0b07",
+          "#26241f",
+          "#423f3a",
+          "#605d58",
+          "#807d77",
+          "#a19e98",
+          "#c7c3be",
+          "#f2eee8"
+        ]
+      },
+      "paper-bg-secondary": {
+        "role": "neutral",
+        "displayName": "Paper Raised",
+        "canonical": "#EDE8E0",
+        "tonalRamp": [
+          "#0e0b06",
+          "#27231e",
+          "#433f39",
+          "#615d56",
+          "#817d75",
+          "#a29e96",
+          "#c8c3bc",
+          "#f3eee6"
+        ]
+      },
+      "paper-bg-tertiary": {
+        "role": "neutral",
+        "displayName": "Paper Inset",
+        "canonical": "#E5DFD5",
+        "tonalRamp": [
+          "#0e0b05",
+          "#28231c",
+          "#443f37",
+          "#625d54",
+          "#827c73",
+          "#a39e94",
+          "#c9c3ba",
+          "#f4eee4"
+        ]
+      },
+      "paper-fg": {
+        "role": "neutral",
+        "displayName": "Warm Ink",
+        "canonical": "#2D2A26",
+        "tonalRamp": [
+          "#0d0b07",
+          "#262320",
+          "#423f3b",
+          "#605d58",
+          "#807d78",
+          "#a19e99",
+          "#c7c3be",
+          "#f2eee8"
+        ]
+      },
+      "paper-fg-muted": {
+        "role": "neutral",
+        "displayName": "Taupe",
+        "canonical": "#625D55",
+        "tonalRamp": [
+          "#0e0b05",
+          "#28231c",
+          "#443f38",
+          "#625d55",
+          "#827c74",
+          "#a39e95",
+          "#c9c3ba",
+          "#f4eee4"
+        ]
+      },
+      "paper-border": {
+        "role": "neutral",
+        "displayName": "Paper Hairline (10% ink)",
+        "canonical": "rgba(45, 42, 38, 0.1)",
+        "tonalRamp": [
+          "#0d0b07",
+          "#262320",
+          "#423f3b",
+          "#605d58",
+          "#807d78",
+          "#a19e99",
+          "#c7c3be",
+          "#f2eee8"
+        ]
+      },
+      "paper-selection": {
+        "role": "neutral",
+        "displayName": "Paper Selection",
+        "canonical": "rgba(43, 88, 172, 0.22)",
+        "tonalRamp": [
+          "#010046",
+          "#001667",
+          "#0d398a",
+          "#2c59ad",
+          "#4b7ad2",
+          "#6b9df7",
+          "#8fc3ff",
+          "#b8efff"
+        ]
+      },
+      "media-bg": {
+        "role": "neutral",
+        "displayName": "Media Well",
+        "canonical": "#121212",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#7d7d7d",
+          "#9e9e9e",
+          "#c4c4c4",
+          "#eeeeee"
+        ],
+        "cssVar": "--color-media-bg"
+      },
+      "media-overlay": {
+        "role": "neutral",
+        "displayName": "Media Overlay",
+        "canonical": "rgba(10, 10, 10, 0.85)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#7d7d7d",
+          "#9e9e9e",
+          "#c4c4c4",
+          "#eeeeee"
+        ],
+        "cssVar": "--color-media-overlay"
+      },
+      "media-scrim": {
+        "role": "neutral",
+        "displayName": "Media Scrim",
+        "canonical": "rgba(0, 0, 0, 0.3)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#7d7d7d",
+          "#9e9e9e",
+          "#c4c4c4",
+          "#eeeeee"
+        ],
+        "cssVar": "--color-media-scrim"
+      },
+      "media-fg": {
+        "role": "neutral",
+        "displayName": "Media Text",
+        "canonical": "#f5f1eb",
+        "tonalRamp": [
+          "#0d0b07",
+          "#26241f",
+          "#423f3a",
+          "#605d58",
+          "#807d77",
+          "#a19e98",
+          "#c7c3be",
+          "#f2eee8"
+        ],
+        "cssVar": "--color-media-fg"
+      },
+      "media-muted": {
+        "role": "neutral",
+        "displayName": "Media Hint",
+        "canonical": "#a0a0a0",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#7d7d7d",
+          "#9e9e9e",
+          "#c4c4c4",
+          "#eeeeee"
+        ],
+        "cssVar": "--color-media-muted"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headline only. Steps 2.25rem / 3rem sm / 3.75rem md / 4.5rem lg."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section titles via SectionHeader. 1.875rem, 2.25rem from md."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Project names. 1.5rem, 1.875rem from md."
+      },
+      "subtitle": {
+        "displayName": "Subtitle",
+        "purpose": "Skill category names, featured card title, contact subhead (1rem to 1.125rem)."
+      },
+      "logo": {
+        "displayName": "Logo",
+        "purpose": "The cm mark; the c carries the brand gradient."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Hero tagline (to 1.25rem from sm) and About intro."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Descriptions and bio; lead paragraphs capped at 42rem."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Nav, buttons, form labels, highlights, skill chips. Mobile menu links use 1.5rem at the same weight."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Tech pills, descriptors, media badges and hints. 12px is the minimum text size."
+      }
+    },
+    "gradients": [
+      {
+        "name": "brand-gradient",
+        "value": "linear-gradient(135deg, var(--text-spot-blue) 0%, var(--text-spot-pink) 33%, var(--text-spot-green) 66%, var(--text-spot-yellow) 100%)",
+        "purpose": "Gradient text (Problem Solver, logo c) at background-size 300%, and the featured card hover border."
+      },
+      {
+        "name": "brand-gradient-line",
+        "value": "linear-gradient(90deg, var(--text-spot-blue), var(--text-spot-pink), var(--text-spot-green), var(--text-spot-yellow))",
+        "purpose": "1px hairline under the scrolled nav and above the footer, opacity 0.8."
+      }
+    ],
+    "shadows": [
+      {
+        "name": "overlap-card",
+        "value": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+        "purpose": "Project description card overlapping its image (Tailwind shadow-lg)."
+      },
+      {
+        "name": "media-float-rest",
+        "value": "0 10px 30px -10px rgba(0, 0, 0, 0.4)",
+        "purpose": "GIF floated over a background image, at rest."
+      },
+      {
+        "name": "media-float-lifted",
+        "value": "0 25px 50px -12px rgba(0, 0, 0, 0.6)",
+        "purpose": "Floated GIF on hover, with scale 1.05."
+      },
+      {
+        "name": "stack-lifted",
+        "value": "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
+        "purpose": "Front image of a stacked project tilting back on hover."
+      }
+    ],
+    "surfaces": [
+      {
+        "name": "noise-grain",
+        "value": "fixed fractal-noise SVG, opacity 0.015, z-index 100, pointer-events none",
+        "purpose": "Subtle paper/film grain over the whole page in both themes."
+      },
+      {
+        "name": "nav-scrolled",
+        "value": "background at 80%, backdrop-filter blur(16px)",
+        "purpose": "Fixed nav after 50px of scroll."
+      }
+    ],
+    "motion": [
+      {
+        "name": "hero-dots",
+        "value": "y 10-20px and opacity loops; 3s, 3.5s, 4s, 5s; easeInOut; delays 0-2s; infinite",
+        "purpose": "Four spot-colored dots; brand character. Stopped under reduced motion."
+      },
+      {
+        "name": "scroll-arrow",
+        "value": "y 0 -> 8px -> 0, 1.5s easeInOut, infinite",
+        "purpose": "Hero scroll cue."
+      },
+      {
+        "name": "pulse-dot",
+        "value": "Tailwind animate-pulse (2s cubic-bezier(0.4, 0, 0.6, 1) infinite)",
+        "purpose": "About location dot."
+      },
+      {
+        "name": "gradient-shift",
+        "value": "background-position 0% -> 100% -> 0%, 8s ease infinite",
+        "purpose": "Brand gradient text."
+      },
+      {
+        "name": "hero-entrance",
+        "value": "opacity 0 -> 1, y 20 -> 0, 0.6s, delays 0.1 / 0.2 / 0.3s",
+        "purpose": "Staggered headline, tagline, CTAs."
+      },
+      {
+        "name": "nav-entrance",
+        "value": "y -100 -> 0, 0.5s easeOut",
+        "purpose": "Header slides in on load."
+      },
+      {
+        "name": "section-entrance",
+        "value": "opacity 0 -> 1, y or x 20-40px, 0.4-0.6s, stagger 0.1-0.15s, once, 100px inset",
+        "purpose": "Scroll-triggered entrances for every section."
+      },
+      {
+        "name": "nav-active-spring",
+        "value": "spring stiffness 380 damping 30",
+        "purpose": "Active-section underline moving between links."
+      },
+      {
+        "name": "state-transition",
+        "value": "0.2s ease",
+        "purpose": "Buttons, pills, gradient border reveal."
+      },
+      {
+        "name": "media-lift",
+        "value": "0.3-0.4s easeOut",
+        "purpose": "Project media hover lift and tilt."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "Framer MotionConfig reducedMotion user; CSS animation and transition 0.01ms, 1 iteration; scroll-behavior auto",
+        "purpose": "The only thing motion yields to."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      }
+    ],
+    "sectionColors": {
+      "about": "spot-blue",
+      "projects": "spot-pink",
+      "skills": "spot-green",
+      "contact": "spot-yellow"
+    }
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Signal Blue pill for the main call to action.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">View My Work</a>",
+      "css": ".ds-btn-primary { font-family: var(--font-sans, Geist, ui-sans-serif, system-ui, sans-serif); display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.75rem 1.5rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 500; background: var(--color-spot-blue, #5088E0); color: var(--color-on-spot, #0a0a0a); text-decoration: none; transition: all 0.2s ease; } .ds-btn-primary:focus-visible { outline: 2px solid var(--color-accent-text, #1DB954); outline-offset: 2px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Hairline pill for the secondary action.",
+      "html": "<a class=\"ds-btn-secondary\" href=\"#\">Get In Touch</a>",
+      "css": ".ds-btn-secondary { font-family: var(--font-sans, Geist, ui-sans-serif, system-ui, sans-serif); display: inline-flex; align-items: center; justify-content: center; padding: 0.75rem 1.5rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 500; background: transparent; color: var(--foreground, #EDEDEC); border: 1px solid var(--border, rgba(255,255,255,0.06)); text-decoration: none; transition: all 0.2s ease; } .ds-btn-secondary:hover { background: var(--background-tertiary, #1A1A1D); border-color: var(--foreground-muted, #9A9A98); } .ds-btn-secondary:focus-visible { outline: 2px solid var(--color-accent-text, #1DB954); outline-offset: 2px; }"
+    },
+    {
+      "name": "Project Link",
+      "kind": "button",
+      "refersTo": "project-link",
+      "description": "Always-visible 44px pill link under each project.",
+      "html": "<a class=\"ds-project-link\" href=\"#\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M15 3h6v6\"/><path d=\"M10 14 21 3\"/><path d=\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"/></svg>Live site</a>",
+      "css": ".ds-project-link { font-family: var(--font-sans, Geist, ui-sans-serif, system-ui, sans-serif); display: inline-flex; align-items: center; gap: 0.5rem; min-height: 44px; padding: 0 1.25rem; border-radius: 9999px; border: 1px solid var(--border, rgba(255,255,255,0.06)); color: var(--foreground, #EDEDEC); font-size: 0.875rem; font-weight: 500; text-decoration: none; transition: color 0.15s, border-color 0.15s; } .ds-project-link:hover { border-color: var(--color-spot-pink, #E05A8A); color: var(--text-spot-pink, #E05A8A); } .ds-project-link:focus-visible { outline: 2px solid var(--color-accent-text, #1DB954); outline-offset: 2px; }"
+    },
+    {
+      "name": "Tech Pill",
+      "kind": "chip",
+      "refersTo": "tech-pill",
+      "description": "Project technology tag in the Projects pink.",
+      "html": "<span class=\"ds-tech-pill\">Salesforce</span><span class=\"ds-tech-pill\">Apex</span>",
+      "css": ".ds-tech-pill { font-family: var(--font-sans, Geist, ui-sans-serif, system-ui, sans-serif); display: inline-flex; align-items: center; margin-right: 0.5rem; padding: 0.25rem 0.75rem; border-radius: 9999px; background: var(--background-secondary, #111113); color: var(--text-spot-pink, #E05A8A); font-size: 0.75rem; font-weight: 500; transition: all 0.2s ease; } .ds-tech-pill:hover { background: var(--color-spot-pink, #E05A8A); color: var(--color-on-spot, #0a0a0a); }"
+    },
+    {
+      "name": "Skill Chip",
+      "kind": "chip",
+      "refersTo": "skill-chip",
+      "description": "Skill name; hover takes the category color.",
+      "html": "<span class=\"ds-skill-chip\" style=\"--category-color: var(--text-spot-green, #4AA854)\">Python</span>",
+      "css": ".ds-skill-chip { font-family: var(--font-sans, Geist, ui-sans-serif, system-ui, sans-serif); display: inline-block; padding: 0.375rem 0.75rem; border-radius: 6px; background: var(--background-tertiary, #1A1A1D); color: var(--foreground-muted, #9A9A98); border: 1px solid var(--border, rgba(255,255,255,0.06)); font-size: 0.875rem; transition: all 0.15s; } .ds-skill-chip:hover { border-color: var(--category-color); color: var(--category-color); }"
+    },
+    {
+      "name": "Section Header",
+      "kind": "custom",
+      "refersTo": "",
+      "description": "The one section header: bold h2, 48px rule in the section spot, optional lead.",
+      "html": "<div class=\"ds-section-header\"><h2>Featured Projects</h2><div class=\"ds-section-rule\"></div><p>From Salesforce implementations to full-stack web apps.</p></div>",
+      "css": ".ds-section-header { font-family: var(--font-sans, Geist, ui-sans-serif, system-ui, sans-serif); color: var(--foreground, #EDEDEC); } .ds-section-header h2 { font-size: 2.25rem; line-height: 1.111; font-weight: 700; margin: 0 0 1rem; text-wrap: balance; } .ds-section-rule { width: 48px; height: 2px; border-radius: 9999px; background: var(--color-spot-pink, #E05A8A); } .ds-section-header p { margin: 1rem 0 0; max-width: 42rem; color: var(--foreground-muted, #9A9A98); line-height: 1.625; }"
+    },
+    {
+      "name": "Featured Project Card",
+      "kind": "card",
+      "refersTo": "featured-project-card",
+      "description": "Hero card with project outcome; brand-gradient border on hover or focus.",
+      "html": "<a class=\"ds-featured\" href=\"#\"><span><span class=\"ds-featured-label\">Recent project</span><span class=\"ds-featured-title\">Canine Castaways</span><span class=\"ds-featured-label\">Replaced 6 legacy systems with unified Salesforce org.</span></span><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></a>",
+      "css": ".ds-featured { font-family: var(--font-sans, Geist, ui-sans-serif, system-ui, sans-serif); position: relative; display: flex; align-items: center; justify-content: space-between; gap: 1rem; max-width: 28rem; padding: 1rem 1.25rem; border-radius: 8px; border: 1px solid var(--border, rgba(255,255,255,0.06)); background: var(--background-secondary, #111113); color: var(--foreground, #EDEDEC); text-decoration: none; } .ds-featured::before { content: \"\"; position: absolute; inset: -1px; padding: 1px; border-radius: inherit; background: var(--brand-gradient, linear-gradient(135deg, #5088E0 0%, #E05A8A 33%, #4AA854 66%, #E9B54D 100%)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); opacity: 0; transition: opacity 0.2s ease; pointer-events: none; } .ds-featured:hover::before, .ds-featured:focus-visible::before { opacity: 1; } .ds-featured > span { display: block; } .ds-featured-label { display: block; font-size: 0.875rem; color: var(--foreground-muted, #9A9A98); } .ds-featured-title { display: block; font-weight: 600; } .ds-featured svg { flex-shrink: 0; color: var(--text-spot-pink, #E05A8A); transition: transform 0.15s; } .ds-featured:hover svg { transform: translateX(4px); }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Contact field; Marigold focus border and ring.",
+      "html": "<label class=\"ds-label\" for=\"ds-name\">Name</label><input class=\"ds-input\" id=\"ds-name\" placeholder=\"Your name\">",
+      "css": ".ds-label { font-family: var(--font-sans, Geist, ui-sans-serif, system-ui, sans-serif); display: block; margin-bottom: 0.5rem; font-size: 0.875rem; font-weight: 500; color: var(--foreground, #EDEDEC); } .ds-input { font-family: var(--font-sans, Geist, ui-sans-serif, system-ui, sans-serif); width: 100%; padding: 0.75rem 1rem; border-radius: 8px; background: var(--background-secondary, #111113); border: 1px solid var(--border, rgba(255,255,255,0.06)); color: var(--foreground, #EDEDEC); font-size: 1rem; transition: border-color 0.15s; } .ds-input::placeholder { color: var(--foreground-muted, #9A9A98); } .ds-input:focus { outline: none; border-color: var(--text-spot-yellow, #E9B54D); } .ds-input:focus-visible { box-shadow: 0 0 0 2px var(--text-spot-yellow, #E9B54D); }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "",
+      "description": "Scrolled nav: blurred background, section-colored active link, brand hairline.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-logo\"><span class=\"ds-grad\">c</span>m</span><span class=\"ds-nav-links\"><a href=\"#\">About</a><a href=\"#\" class=\"is-active\">Projects</a><a href=\"#\">Skills</a><a href=\"#\">Contact</a></span><span class=\"ds-hairline\"></span></nav>",
+      "css": "@keyframes ds-shift { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } } .ds-nav { font-family: var(--font-sans, Geist, ui-sans-serif, system-ui, sans-serif); position: relative; display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.5rem; background: color-mix(in srgb, var(--background, #09090B) 80%, transparent); backdrop-filter: blur(16px); color: var(--foreground, #EDEDEC); } .ds-logo { font-size: 1.25rem; font-weight: 600; letter-spacing: -0.025em; } .ds-grad { background: var(--brand-gradient, linear-gradient(135deg, #5088E0 0%, #E05A8A 33%, #4AA854 66%, #E9B54D 100%)); background-size: 300% 300%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: ds-shift 8s ease infinite; } .ds-nav-links { display: flex; gap: 2rem; } .ds-nav-links a { position: relative; font-size: 0.875rem; font-weight: 500; color: inherit; text-decoration: none; } .ds-nav-links a.is-active { color: var(--text-spot-pink, #E05A8A); } .ds-nav-links a.is-active::after { content: \"\"; position: absolute; left: 0; right: 0; bottom: -4px; height: 2px; background: var(--color-spot-pink, #E05A8A); } .ds-nav-links a:focus-visible { outline: 2px solid var(--color-accent-text, #1DB954); outline-offset: 2px; } .ds-hairline { position: absolute; left: 0; right: 0; bottom: 0; height: 1px; opacity: 0.8; background: var(--brand-gradient-line, linear-gradient(90deg, #5088E0, #E05A8A, #4AA854, #E9B54D)); } @media (prefers-reduced-motion: reduce) { .ds-grad { animation: none; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Four Spots of Color in the Dark",
+    "overview": "A quiet, near-black page (warm paper in light mode) that four saturated spot colors, blue, pink, green and yellow, keep interrupting. The neutrals do the reading work; the spots do wayfinding, brand and life. Each section owns one spot, the brand gradient braids all four together, and four small dots drift in the hero so the page is visibly alive on arrival. The owner's own words set the posture: motion \"give[s] it character, and I want my portfolio to stand out,\" and the gradient is \"part of the character/brand.\"\n\nDensity is relaxed and editorial: one centered hero, then left-aligned sections inside a 1152px column with generous vertical rhythm (64px mobile, 96px desktop per section). Type is one family, Geist, carried by weight and size rather than by pairing. Depth is mostly tonal (three background steps per theme), with real shadows reserved for project media and the description card that overlaps it.\n\nWork leads. The first screen carries a featured project with its outcome, and every project's links are visible text buttons, never hover-only. Contact runs through the form, LinkedIn and GitHub; no email address is rendered.",
+    "keyCharacteristics": [
+      "Dark by default (`#09090B` night), warm paper (`#F5F1EB`) as the light theme.",
+      "Four spot colors, one per section, with darker text-safe variants in light mode.",
+      "A blue-pink-green-yellow brand gradient used as accent only: hero \"Problem Solver\", the logo \"c\", the scrolled-nav hairline, the hero card hover border, the footer divider.",
+      "Character motion that loops (floating dots, bouncing arrow, pulsing dot, shifting gradient) and yields only to the visitor's `prefers-reduced-motion`.",
+      "Pill-shaped actions, gently rounded (8px) cards, one sans family."
+    ],
+    "rules": [
+      {
+        "name": "The Section Owns a Spot Rule",
+        "body": "Blue is About, pink is Projects, green is Skills, yellow is Contact. The SectionHeader rule, the nav active underline and text, and the section's interactive accents all take that section's spot. Spot color is wayfinding; never swap one section's color into another.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Steps Rule",
+        "body": "Every spot has a vibrant step for fills, dots, borders and icons and a text step for words. Dark mode uses the vibrant value for both; light mode always uses the `-text` step for text (at least 4.5:1 on every paper surface). Text on a vibrant fill is On-Spot Ink, never white.",
+        "section": "colors"
+      },
+      {
+        "name": "The Brand Braid Rule",
+        "body": "The blue, pink, green, yellow gradient is brand. It is built from the text steps, so it darkens in light mode on its own. It appears only as an accent: the \"Problem Solver\" headline span and the logo \"c\" (shifting over 8s), the 1px hairline under the scrolled nav and above the footer, and the 1px border revealed when the featured card is hovered or focused. Never behind body text, never as a section background, never in place of a section's own spot.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Family Rule",
+        "body": "Geist sets every word. Do not introduce a second display face or a mono kicker; weight (400 / 500 / 600 / 700) and size carry the hierarchy.",
+        "section": "typography"
+      },
+      {
+        "name": "The Balanced Heading Rule",
+        "body": "h1 to h3 use `text-wrap: balance`; headings are never set in all caps or letter-spaced out.",
+        "section": "typography"
+      },
+      {
+        "name": "The Work Leads Rule",
+        "body": "A featured project with its measured outcome sits on the first screen (the hero card), and every project shows its \"Live site\" and \"Source\" links as visible 44px pill buttons. The image hover overlay is decoration only, hidden from assistive tech and the tab order.",
+        "section": "layout"
+      },
+      {
+        "name": "The Tonal First Rule",
+        "body": "New surfaces step up a background tone and take a hairline border. A shadow is earned only by an element that physically overlaps or lifts off another.",
+        "section": "elevation-depth"
+      },
+      {
+        "name": "The Echo Frame Rule",
+        "body": "Featured visuals (project media, the avatar) carry an offset outline frame behind them: a 2px border in the section's spot at low opacity (pink 50% on projects, blue 20% on the avatar), shifted 8 to 12px down and to the side, same radius as the visual. It is an outline in the section color, not a shadow.",
+        "section": "shapes"
+      },
+      {
+        "name": "The Motion Is Character Rule",
+        "body": "The floating dots, staggered hero entrance, bouncing arrow, scroll-triggered entrances, pulsing location dot and shifting gradient stay. Motion yields only to the visitor's `prefers-reduced-motion` setting, never to taste.",
+        "section": "components"
+      }
+    ],
+    "dos": [
+      "**Do** give every new section one spot color from the rotation and pass it to SectionHeader and the nav maps (`sectionColors`, `sectionTextColors`).",
+      "**Do** use the vibrant spot for fills, dots, rules and borders, the `-text` step for words, and On-Spot Ink (#0a0a0a) for text on a spot fill.",
+      "**Do** keep the brand braid to accents: headline span, logo \"c\", 1px hairlines, a hover border.",
+      "**Do** keep a featured project and its outcome on the first screen, and keep project links visible as 44px pills.",
+      "**Do** step surfaces tonally (background, secondary, tertiary) with a hairline border before reaching for a shadow.",
+      "**Do** guard every looping or transform animation behind `prefers-reduced-motion`.",
+      "**Do** keep text at 12px or larger and secondary text on the muted token, which clears 4.5:1 on every surface in both themes."
+    ],
+    "donts": [
+      "**Don't** remove or still the floating dots, the staggered hero entrance, the bouncing arrow, the section entrances or the pulsing dot; the owner rejected the quiet-at-rest pass.",
+      "**Don't** flatten the brand gradient to a single solid color; the owner rejected that too (\"it's part of the character/brand\").",
+      "**Don't** put the brand gradient behind body text or use it in place of a section's own spot.",
+      "**Don't** render an email address or mailto link anywhere on the page; it draws spam. Contact goes through the form, LinkedIn and GitHub.",
+      "**Don't** hide project links behind hover; the image overlay is decoration.",
+      "**Don't** set text in a vibrant spot color on paper; vibrant pink, blue, green and yellow fall to 1.67 to 3.14 on the light theme.",
+      "**Don't** put white text on a spot fill; use On-Spot Ink.",
+      "**Don't** add eyebrow kickers, numbered section labels or mono labels above headings; SectionHeader is the only header pattern."
+    ]
+  }
+}
