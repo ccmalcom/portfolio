@@ -191,7 +191,6 @@ export const navLinks = [
 export const socialLinks = {
 	github: 'https://github.com/ccmalcom',
 	linkedin: 'https://www.linkedin.com/in/chase-malcom/',
-	email: 'mailto:chase@chasemalcom.com',
 };
 
 export const aboutContent = {
