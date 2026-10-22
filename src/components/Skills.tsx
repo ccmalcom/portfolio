@@ -98,7 +98,7 @@ export function Skills() {
   return (
     <section
       id="skills"
-      className="py-24 md:py-32 bg-background-secondary/30"
+      className="py-16 md:py-24 bg-background-secondary/30"
       ref={ref}
     >
       <div className="max-w-6xl mx-auto px-6">

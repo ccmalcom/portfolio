@@ -25,6 +25,13 @@
   --color-spot-pale-blue: #8AACBE;
   /* desaturated for light mode */
 
+  /* Media surfaces (project images, overlays) */
+  --color-media-bg: #121212;
+  --color-media-overlay: rgba(10, 10, 10, 0.85);
+  --color-media-scrim: rgba(0, 0, 0, 0.3);
+  --color-media-fg: #f5f1eb;
+  --color-media-muted: #a0a0a0;
+
   --color-sf-blue: #00A1E0;
   /* keep brand color as-is */
 

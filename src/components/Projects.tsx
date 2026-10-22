@@ -6,6 +6,48 @@ import { ExternalLink, Github, ChevronRight } from 'lucide-react';
 import { projects, Project } from '@/data/portfolio';
 import Image from 'next/image';
 
+function HoverLinks({
+	project,
+	visible,
+}: {
+	project: Project;
+	visible: boolean;
+}) {
+	// Decorative: the always-visible text links below are the real path.
+	const linkClass =
+		'p-3 rounded-full bg-media-overlay text-media-fg hover:text-spot-pink transition-colors';
+	return (
+		<motion.div
+			initial={false}
+			animate={{ opacity: visible ? 1 : 0 }}
+			aria-hidden="true"
+			className={`absolute inset-0 flex items-center justify-center gap-4 bg-media-scrim ${
+				visible ? '' : 'pointer-events-none'
+			}`}>
+			{project.liveUrl && (
+				<a
+					href={project.liveUrl}
+					target="_blank"
+					rel="noopener noreferrer"
+					tabIndex={-1}
+					className={linkClass}>
+					<ExternalLink size={20} />
+				</a>
+			)}
+			{project.githubUrl && (
+				<a
+					href={project.githubUrl}
+					target="_blank"
+					rel="noopener noreferrer"
+					tabIndex={-1}
+					className={linkClass}>
+					<Github size={20} />
+				</a>
+			)}
+		</motion.div>
+	);
+}
+
 function ProjectCard({
 	project,
 	index,
@@ -20,6 +62,7 @@ function ProjectCard({
 	const isEven = index % 2 === 0;
 	const hasBackImage = !!project.backImage;
 	const hasBgImage = !!project.bg;
+	const titleUrl = project.liveUrl ?? project.githubUrl;
 
 	// Determine which image is front/back based on swap state
 	const frontImage = isSwapped ? project.backImage! : project.image;
@@ -31,10 +74,11 @@ function ProjectCard({
 
 	return (
 		<motion.article
+			id={`project-${project.id}`}
 			initial={{ opacity: 0, y: 40 }}
 			animate={isInView ? { opacity: 1, y: 0 } : {}}
 			transition={{ duration: 0.6, delay: index * 0.15 }}
-			className={`grid lg:grid-cols-12 gap-6 lg:gap-8 items-center ${
+			className={`scroll-mt-24 grid lg:grid-cols-12 gap-6 lg:gap-8 items-center ${
 				!isEven ? 'lg:text-right' : ''
 			}`}
 			onMouseEnter={() => setIsHovered(true)}
@@ -52,8 +96,7 @@ function ProjectCard({
 						<>
 							{/* Background image */}
 							<div
-								className="absolute inset-0 rounded-lg overflow-hidden border border-border"
-								style={{ backgroundColor: '#121212' }}>
+								className="absolute inset-0 rounded-lg overflow-hidden border border-border bg-media-bg">
 								<Image
 									src={project.bg!}
 									alt={`${project.title} background`}
@@ -86,35 +129,7 @@ function ProjectCard({
 									/>
 								</motion.div>
 							</div>
-							{/* Hover overlay with links */}
-							<motion.div
-								initial={false}
-								animate={{ opacity: isHovered ? 1 : 0 }}
-								className="absolute inset-0 flex items-center justify-center gap-4"
-								style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)' }}>
-								{project.liveUrl && (
-									<a
-										href={project.liveUrl}
-										target="_blank"
-										rel="noopener noreferrer"
-										className="p-3 rounded-full text-foreground hover:text-spot-pink transition-colors"
-										style={{ backgroundColor: 'rgba(10, 10, 10, 0.9)' }}
-										aria-label="View live site">
-										<ExternalLink size={20} />
-									</a>
-								)}
-								{project.githubUrl && (
-									<a
-										href={project.githubUrl}
-										target="_blank"
-										rel="noopener noreferrer"
-										className="p-3 rounded-full text-foreground hover:text-spot-pink transition-colors"
-										style={{ backgroundColor: 'rgba(10, 10, 10, 0.9)' }}
-										aria-label="View source code">
-										<Github size={20} />
-									</a>
-								)}
-							</motion.div>
+							<HoverLinks project={project} visible={isHovered} />
 						</>
 					)}
 
@@ -124,8 +139,7 @@ function ProjectCard({
 							{/* Back image */}
 							<button
 								onClick={() => setIsSwapped(!isSwapped)}
-								className="absolute inset-0 rounded-lg overflow-hidden border border-border cursor-pointer focus:outline-none focus:ring-2 focus:ring-spot-pink"
-								style={{ backgroundColor: '#121212' }}
+								className="absolute inset-0 rounded-lg overflow-hidden border border-border cursor-pointer bg-media-bg focus:outline-none focus-visible:ring-2 focus-visible:ring-spot-pink"
 								aria-label={`Switch to ${backLabel} view`}>
 								<Image
 									src={backImage}
@@ -135,28 +149,20 @@ function ProjectCard({
 								/>
 								{/* Label for back image */}
 								<div
-									className="absolute top-3 left-3 px-2 py-1 rounded text-xs font-medium"
-									style={{
-										backgroundColor: 'var(--color-spot-pink)',
-										color: 'var(--foreground)',
-									}}>
+									className="absolute bottom-3 left-3 px-2 py-1 rounded text-xs font-medium bg-spot-pink text-foreground">
 									{backLabel}
 								</div>
 								{/* Click hint */}
-								<div
-									className="absolute bottom-3 right-3 px-2 py-1 rounded text-xs"
-									style={{
-										backgroundColor: 'rgba(10, 10, 10, 0.8)',
-										color: '#a0a0a0',
-									}}>
-									Click to swap
+								<div className="absolute bottom-3 right-3 px-2 py-1 rounded text-xs bg-media-overlay text-media-muted">
+									<span className="[@media(hover:none)]:hidden">Click to swap</span>
+									<span className="hidden [@media(hover:none)]:inline">Tap to swap</span>
 								</div>
 							</button>
 
 							{/* Front image */}
 							<motion.div
-								className="absolute inset-0 rounded-lg overflow-hidden border border-border"
-								style={{ backgroundColor: '#1a1a1a' }}
+								className="absolute inset-0 rounded-lg overflow-hidden border border-border bg-media-bg cursor-pointer"
+								onClick={() => setIsSwapped(!isSwapped)}
 								animate={
 									isHovered
 										? {
@@ -182,23 +188,20 @@ function ProjectCard({
 
 								{/* Label for front image */}
 								<div
-									className="absolute top-3 left-3 px-2 py-1 rounded text-xs font-medium"
-									style={{
-										backgroundColor: 'var(--color-spot-pink)',
-										color: 'var(--foreground)',
-									}}>
+									className="absolute bottom-3 left-3 px-2 py-1 rounded text-xs font-medium bg-spot-pink text-foreground">
 									{frontLabel}
 								</div>
 							</motion.div>
 
-							{/* Hover hint */}
+							{/* Input-aware hint: pointer users peek, touch users tap */}
 							{!isHovered && (
-								<div
-									className="absolute bottom-3 right-3 px-2 py-1 rounded text-xs text-foreground-muted"
-									style={{ backgroundColor: 'rgba(26, 26, 26, 0.8)' }}>
+								<div className="pointer-events-none absolute bottom-3 right-3 px-2 py-1 rounded text-xs bg-media-overlay text-media-muted [@media(hover:none)]:hidden">
 									Hover to peek behind
 								</div>
 							)}
+							<div className="pointer-events-none absolute bottom-3 right-3 hidden px-2 py-1 rounded text-xs bg-media-overlay text-media-muted [@media(hover:none)]:block">
+								Tap to swap view
+							</div>
 						</>
 					)}
 
@@ -206,8 +209,7 @@ function ProjectCard({
 					{!hasBgImage && !hasBackImage && (
 						<>
 							<div
-								className="absolute inset-0 rounded-lg overflow-hidden border border-border"
-								style={{ backgroundColor: '#1a1a1a' }}>
+								className="absolute inset-0 rounded-lg overflow-hidden border border-border bg-media-bg">
 								<Image
 									src={project.image}
 									alt={project.title}
@@ -217,38 +219,7 @@ function ProjectCard({
 								/>
 							</div>
 
-							{/* Hover overlay with links */}
-							<motion.div
-								initial={false}
-								animate={{ opacity: isHovered ? 1 : 0 }}
-								className="absolute inset-0 flex items-center justify-center gap-4"
-								style={{
-									backgroundColor: 'rgba(29, 185, 84, 0.1)',
-									backdropFilter: 'blur(1px)',
-								}}>
-								{project.liveUrl && (
-									<a
-										href={project.liveUrl}
-										target="_blank"
-										rel="noopener noreferrer"
-										className="p-3 rounded-full text-foreground hover:text-spot-pink transition-colors"
-										style={{ backgroundColor: 'rgba(10, 10, 10, 0.9)' }}
-										aria-label="View live site">
-										<ExternalLink size={20} />
-									</a>
-								)}
-								{project.githubUrl && (
-									<a
-										href={project.githubUrl}
-										target="_blank"
-										rel="noopener noreferrer"
-										className="p-3 rounded-full text-foreground hover:text-spot-pink transition-colors"
-										style={{ backgroundColor: 'rgba(10, 10, 10, 0.9)' }}
-										aria-label="View source code">
-										<Github size={20} />
-									</a>
-								)}
-							</motion.div>
+							<HoverLinks project={project} visible={isHovered} />
 						</>
 					)}
 				</div>
@@ -265,11 +236,19 @@ function ProjectCard({
 			<div className={`lg:col-span-5 space-y-4 ${!isEven ? 'lg:order-1' : ''}`}>
 				<div className="space-y-2">
 					<p className="text-spot-pink text-sm font-mono">Featured Project</p>
-					<a href={project.liveUrl ? project.liveUrl : project.githubUrl} target="_blank">
-						<h3 className="text-2xl md:text-3xl font-bold text-foreground">
-							{project.title}
-						</h3>
-					</a>
+					<h3 className="text-2xl md:text-3xl font-bold text-foreground">
+						{titleUrl ? (
+							<a
+								href={titleUrl}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="hover:text-spot-pink transition-colors">
+								{project.title}
+							</a>
+						) : (
+							project.title
+						)}
+					</h3>
 				</div>
 
 				<div
@@ -308,27 +287,33 @@ function ProjectCard({
 					))}
 				</div>
 
-				{/* Links for mobile */}
-				<div className={`flex gap-4 lg:hidden ${!isEven ? 'justify-end' : ''}`}>
-					{project.liveUrl && (
-						<a
-							href={project.liveUrl}
-							target="_blank"
-							rel="noopener noreferrer"
-							className="text-foreground-muted hover:text-spot-pink transition-colors">
-							<ExternalLink size={20} />
-						</a>
-					)}
-					{project.githubUrl && (
-						<a
-							href={project.githubUrl}
-							target="_blank"
-							rel="noopener noreferrer"
-							className="text-foreground-muted hover:text-spot-pink transition-colors">
-							<Github size={20} />
-						</a>
-					)}
-				</div>
+				{/* Always-visible links (the image overlay is decoration only) */}
+				{(project.liveUrl || project.githubUrl) && (
+					<div className={`flex flex-wrap gap-3 ${!isEven ? 'lg:justify-end' : ''}`}>
+						{project.liveUrl && (
+							<a
+								href={project.liveUrl}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="inline-flex min-h-11 items-center gap-2 rounded-full border border-border px-5 text-sm font-medium text-foreground transition-colors hover:border-spot-pink hover:text-spot-pink">
+								<ExternalLink size={16} aria-hidden="true" />
+								Live site
+								<span className="sr-only"> for {project.title} (opens in new tab)</span>
+							</a>
+						)}
+						{project.githubUrl && (
+							<a
+								href={project.githubUrl}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="inline-flex min-h-11 items-center gap-2 rounded-full border border-border px-5 text-sm font-medium text-foreground transition-colors hover:border-spot-pink hover:text-spot-pink">
+								<Github size={16} aria-hidden="true" />
+								Source
+								<span className="sr-only"> for {project.title} (opens in new tab)</span>
+							</a>
+						)}
+					</div>
+				)}
 			</div>
 		</motion.article>
 	);
@@ -341,7 +326,7 @@ export function Projects() {
 	const featuredProjects = projects.filter((p) => p.featured);
 
 	return (
-		<section id="projects" className="py-24 md:py-32" ref={ref}>
+		<section id="projects" className="py-16 md:py-24" ref={ref}>
 			<div className="max-w-6xl mx-auto px-6">
 				{/* Section header */}
 				<motion.div
