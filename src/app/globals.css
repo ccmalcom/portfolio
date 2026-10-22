@@ -7,26 +7,49 @@
  * Example: --color-background: var(--background);
  */
 @theme {
+  /* Fonts (loaded in layout.tsx via next/font) */
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
 
   /* Custom colors */
   /* Optimized for both light and dark backgrounds */
   --color-spot-pink: #E05A8A;
   /* slightly deeper - pops on light, still vibrant on dark */
-  --color-spot-light-pink: #F2B8C1;
-  /* desaturated - won't wash out on warm light bg */
   --color-spot-green: #4AA854;
   /* slightly deeper green */
-  --color-spot-yellow-green: #C2E860;
-  /* toned down - less neon */
   --color-spot-yellow: #E9B54D;
   /* deeper gold - better contrast on light bg */
   --color-spot-blue: #5088E0;
   /* slightly deeper */
-  --color-spot-pale-blue: #8AACBE;
-  /* desaturated for light mode */
+
+  /* Media surfaces (project images, overlays) */
+  --color-media-bg: #121212;
+  --color-media-overlay: rgba(10, 10, 10, 0.85);
+  --color-media-scrim: rgba(0, 0, 0, 0.3);
+  --color-media-fg: #f5f1eb;
+  --color-media-muted: #a0a0a0;
 
   --color-sf-blue: #00A1E0;
   /* keep brand color as-is */
+
+  /* Text on a vibrant spot-color fill (buttons, badges): near-black, >=5:1 on every spot */
+  --color-on-spot: #0a0a0a;
+
+  /* Shadows for floated and lifted project media */
+  --shadow-media-rest: 0 10px 30px -10px rgba(0, 0, 0, 0.4);
+  --shadow-media-lifted: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+  --shadow-stack-lifted: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+
+  /* Soft fill behind spot-colored icons */
+  --color-spot-yellow-muted: rgba(233, 181, 77, 0.15);
+
+  /* Spot colors as TEXT. Vibrant values stay for fills, dots, borders, icons.
+     Light mode steps them darker (>=4.5:1 on all three paper surfaces); dark keeps vibrant. */
+  --color-spot-blue-text: var(--text-spot-blue);
+  --color-spot-pink-text: var(--text-spot-pink);
+  --color-spot-green-text: var(--text-spot-green);
+  --color-spot-yellow-text: var(--text-spot-yellow);
+  --color-sf-blue-text: var(--text-sf-blue);
+  --color-accent-text: var(--text-accent);
 
 
   /* Background colors */
@@ -39,85 +62,9 @@
   --color-foreground-muted: var(--foreground-muted);
 
   /* Accent colors */
-  --color-accent: var(--accent);
-  --color-accent-hover: var(--accent-hover);
-  --color-accent-muted: var(--accent-muted);
-  --color-accent-2: var(--accent-2);
 
   /* Border */
   --color-border: var(--border);
-
-  /* Animations */
-  --animate-fade-in: fade-in 0.6s ease-out forwards;
-  --animate-slide-up: slide-up 0.6s ease-out forwards;
-  --animate-slide-in-right: slide-in-right 0.6s ease-out forwards;
-  --animate-pulse-gentle: pulse-gentle 3s ease-in-out infinite;
-  --animate-gradient-shift: gradient-shift 8s ease infinite;
-  --animate-float: float 6s ease-in-out infinite;
-
-  @keyframes fade-in {
-    0% {
-      opacity: 0;
-    }
-
-    100% {
-      opacity: 1;
-    }
-  }
-
-  @keyframes slide-up {
-    0% {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes slide-in-right {
-    0% {
-      opacity: 0;
-      transform: translateX(-20px);
-    }
-
-    100% {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  @keyframes pulse-gentle {
-    0%, 100% {
-      opacity: 0.4;
-    }
-
-    50% {
-      opacity: 0.8;
-    }
-  }
-
-  @keyframes gradient-shift {
-    0%, 100% {
-      background-position: 0% 50%;
-    }
-
-    50% {
-      background-position: 100% 50%;
-    }
-  }
-
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0px);
-    }
-
-    50% {
-      transform: translateY(-10px);
-    }
-  }
 }
 
 :root {
@@ -128,15 +75,32 @@
 
   /* Softer foreground - pure black feels harsh on warm backgrounds */
   --foreground: #2D2A26;
-  --foreground-muted: #6B665E;
+  --foreground-muted: #625D55;
 
   /* Warmer green accent - slightly shifted to feel less "digital" */
   --accent: #1A9E4A;
-  --accent-hover: #22B558;
-  --accent-muted: rgba(26, 158, 74, 0.12);
 
-  /* Warmer accent-2 - more muted to complement the paper tone */
-  --accent-2: #8B9BB8;
+  /* Text-safe variants (contrast on #E5DFD5 >= 4.5, on #F5F1EB >= 5.4) */
+  --text-spot-blue: #2B58AC;
+  --text-spot-pink: #AE3461;
+  --text-spot-green: #25702F;
+  --text-spot-yellow: #7D5A0C;
+  --text-sf-blue: #0A6491;
+  --text-accent: #146B34;
+
+  /* Brand gradient: blue, pink, green, yellow. Uses the text-safe variants,
+     so it follows the theme (darker in light mode, vibrant in dark). */
+  --brand-gradient: linear-gradient(135deg,
+      var(--text-spot-blue) 0%,
+      var(--text-spot-pink) 33%,
+      var(--text-spot-green) 66%,
+      var(--text-spot-yellow) 100%);
+  --brand-gradient-line: linear-gradient(90deg,
+      var(--text-spot-blue),
+      var(--text-spot-pink),
+      var(--text-spot-green),
+      var(--text-spot-yellow));
+  --selection-bg: rgba(43, 88, 172, 0.22);
 
   /* Slightly warmer border */
   --border: rgba(45, 42, 38, 0.1);
@@ -154,11 +118,15 @@
 
   /* Keep the signature Spotify green but refine supporting colors */
   --accent: #1DB954;
-  --accent-hover: #1ED760;
-  --accent-muted: rgba(29, 185, 84, 0.10);
 
-  /* Brighter accent-2 to pop against dark backgrounds */
-  --accent-2: #BFD7FD;
+  /* Dark keeps the vibrant values as text */
+  --text-spot-blue: var(--color-spot-blue);
+  --text-spot-pink: var(--color-spot-pink);
+  --text-spot-green: var(--color-spot-green);
+  --text-spot-yellow: var(--color-spot-yellow);
+  --text-sf-blue: var(--color-sf-blue);
+  --text-accent: var(--accent);
+  --selection-bg: rgba(80, 136, 224, 0.35);
 
   /* Subtle border with slight warmth */
   --border: rgba(255, 255, 255, 0.06);
@@ -167,6 +135,10 @@
 /* Keep the rest of your CSS below... */
 * {
   box-sizing: border-box;
+}
+
+h1, h2, h3 {
+  text-wrap: balance;
 }
 
 html {
@@ -198,73 +170,70 @@ body {
 }
 
 .dark::-webkit-scrollbar-thumb:hover {
-  background: var(--background-tertiary);
+  background: color-mix(in srgb, var(--foreground-muted) 35%, var(--background-tertiary));
 }
 
 /* Selection styling */
 ::selection {
-  background-color: var(--accent);
-  color: var(--background);
+  background-color: var(--selection-bg);
+  color: inherit;
 }
 
-
-
-/* Link underline animation */
-.link-underline {
-  position: relative;
-  text-decoration: none;
+/* Brand gradient text (Problem Solver, logo mark) */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
-.link-underline::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  width: 0;
-  height: 2px;
-  background-color: var(--accent);
-  transition: width 0.3s ease;
-}
-
-.link-underline:hover::after {
-  width: 100%;
-}
-
-/* Gradient text */
 .gradient-text {
-  background: linear-gradient(135deg,
-      var(--color-spot-blue) 0%,
-      var(--color-spot-pink) 33%,
-      var(--color-spot-green) 66%,
-      var(--color-spot-yellow) 100%);
+  background: var(--brand-gradient);
   background-size: 300% 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: var(--animate-gradient-shift);
+  animation: gradient-shift 8s ease infinite;
 }
 
-/* Glow effect for cards */
-.card-glow {
+/* 1px gradient hairline (nav bottom, footer top) */
+.brand-hairline {
+  height: 1px;
+  background: var(--brand-gradient-line);
+  opacity: 0.8;
+}
+
+/* Gradient border revealed on hover/focus (card keeps its own border beneath) */
+.gradient-border {
   position: relative;
 }
 
-.card-glow::before {
+.gradient-border::before {
   content: "";
   position: absolute;
   inset: -1px;
-  background: linear-gradient(135deg,
-      transparent 0%,
-      var(--accent-muted) 50%,
-      transparent 100%);
+  padding: 1px;
   border-radius: inherit;
+  background: var(--brand-gradient);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
   opacity: 0;
-  transition: opacity 0.4s ease;
-  z-index: -1;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
 }
 
-.card-glow:hover::before {
+.gradient-border:hover::before,
+.gradient-border:focus-visible::before {
   opacity: 1;
+}
+
+
+
+/* Visible keyboard focus everywhere (inputs add their own ring) */
+@layer base {
+  :focus-visible {
+    outline: 2px solid var(--color-accent-text);
+    outline-offset: 2px;
+  }
 }
 
 /* Noise texture overlay */
@@ -275,38 +244,6 @@ body {
   opacity: 0.015;
   z-index: 100;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-}
-
-/* Section divider */
-.section-divider {
-  height: 1px;
-  background: linear-gradient(90deg,
-      transparent 0%,
-      var(--border) 20%,
-      var(--border) 80%,
-      transparent 100%);
-}
-
-/* Code block styling */
-.code-block {
-  background: var(--background-tertiary);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 1.5rem;
-  overflow-x: auto;
-  font-family: var(--font-geist-mono), monospace;
-}
-
-/* Animate on scroll utility */
-.animate-on-scroll {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.animate-on-scroll.visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 /* Button base styles */
@@ -320,16 +257,6 @@ body {
   font-weight: 500;
   transition: all 0.2s ease;
   cursor: pointer;
-}
-
-.btn-primary {
-  background-color: var(--accent);
-  color: #0a0a0a;
-}
-
-.btn-primary:hover {
-  background-color: var(--accent-hover);
-  transform: scale(1.02);
 }
 
 .btn-secondary {
@@ -349,7 +276,7 @@ body {
   align-items: center;
   padding: 0.25rem 0.75rem;
   background-color: var(--background-secondary);
-  color: var(--color-spot-pink);
+  color: var(--color-spot-pink-text);
   border-radius: 9999px;
   font-size: 0.75rem;
   font-weight: 500;
@@ -358,5 +285,21 @@ body {
 
 .tech-pill:hover {
   background-color: var(--color-spot-pink);
-  color: var(--background);
+  color: var(--color-on-spot);
+}
+
+/* Reduced motion: no smooth scroll, no CSS animation or transition motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

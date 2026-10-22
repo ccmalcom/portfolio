@@ -2,8 +2,9 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Send, Github, Linkedin, Loader2, CheckCircle, X } from "lucide-react";
+import { Send, Github, Linkedin, Loader2, CheckCircle } from "lucide-react";
 import { socialLinks } from "@/data/portfolio";
+import { SectionHeader } from "./SectionHeader";
 
 export function Contact() {
   const ref = useRef(null);
@@ -54,22 +55,13 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 md:py-32" ref={ref}>
+    <section id="contact" className="py-16 md:py-24" ref={ref}>
       <div className="max-w-4xl mx-auto px-6">
         {/* Section header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <p className="text-spot-yellow font-mono text-sm mb-4">04. What&apos;s Next?</p>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">Get In Touch</h2>
-          <p className="text-foreground-muted max-w-lg mx-auto">
-            Whether you have a project in mind, a question about Salesforce, or
-            just want to say hello—my inbox is always open.
-          </p>
-        </motion.div>
+        <SectionHeader title="Get In Touch" spot="yellow" align="center" isInView={isInView}>
+          Whether you have a project in mind, a question about Salesforce, or
+          just want to say hello—my inbox is always open.
+        </SectionHeader>
 
         <div className="grid md:grid-cols-2 gap-12">
           {/* Contact form */}
@@ -93,7 +85,7 @@ export function Contact() {
                   value={formState.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg bg-background-secondary border border-border focus:border-spot-yellow focus:ring-1 focus:ring-spot-yellow text-foreground placeholder-foreground-muted transition-colors focus:outline-none"
+                  className="w-full px-4 py-3 rounded-lg bg-background-secondary border border-border focus:border-spot-yellow-text focus-visible:ring-2 focus-visible:ring-spot-yellow-text text-foreground placeholder-foreground-muted transition-colors focus:outline-none"
                   placeholder="Your name"
                 />
               </div>
@@ -112,7 +104,7 @@ export function Contact() {
                   value={formState.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg bg-background-secondary border border-border focus:border-spot-yellow focus:ring-1 focus:ring-spot-yellow text-foreground placeholder-foreground-muted transition-colors focus:outline-none"
+                  className="w-full px-4 py-3 rounded-lg bg-background-secondary border border-border focus:border-spot-yellow-text focus-visible:ring-2 focus-visible:ring-spot-yellow-text text-foreground placeholder-foreground-muted transition-colors focus:outline-none"
                   placeholder="your@email.com"
                 />
               </div>
@@ -131,7 +123,7 @@ export function Contact() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 rounded-lg bg-background-secondary border border-border focus:border-spot-yellow focus:ring-1 focus:ring-spot-yellow text-foreground placeholder-foreground-muted transition-colors resize-none focus:outline-none"
+                  className="w-full px-4 py-3 rounded-lg bg-background-secondary border border-border focus:border-spot-yellow-text focus-visible:ring-2 focus-visible:ring-spot-yellow-text text-foreground placeholder-foreground-muted transition-colors resize-none focus:outline-none"
                   placeholder="What's on your mind?"
                 />
               </div>
@@ -139,7 +131,7 @@ export function Contact() {
               <button
                 type="submit"
                 disabled={status === "loading" || status === "success"}
-                className="w-full btn bg-spot-yellow text-black disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full btn bg-spot-yellow text-on-spot disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-offset-2"
               >
                 {status === "loading" ? (
                   <>
@@ -151,18 +143,43 @@ export function Contact() {
                     <CheckCircle size={18} />
                     Message Sent!
                   </>
-                ) : status === "error" ? (
-                  <>
-                    <X size={18} />
-                    Something went wrong — try again
-                  </>
                 ) : (
                   <>
                     <Send size={18} />
-                    Send Message
+                    {status === "error" ? "Try again" : "Send Message"}
                   </>
                 )}
               </button>
+
+              {/* Status message: announced to assistive tech */}
+              <div role="status" aria-live="polite" className="text-sm">
+                {status === "error" && (
+                  <p className="text-foreground">
+                    Couldn&apos;t send your message. Try again, or reach me on{" "}
+                    <a
+                      href={socialLinks.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-medium text-spot-yellow-text underline underline-offset-2"
+                    >
+                      LinkedIn
+                    </a>
+                    .
+                  </p>
+                )}
+                {status === "success" && (
+                  <p className="text-foreground">
+                    Thanks, I&apos;ll get back to you soon.{" "}
+                    <button
+                      type="button"
+                      onClick={() => setStatus("idle")}
+                      className="inline-flex min-h-11 items-center font-medium text-spot-yellow-text underline underline-offset-2"
+                    >
+                      Send another message
+                    </button>
+                  </p>
+                )}
+              </div>
             </form>
           </motion.div>
 
@@ -178,15 +195,12 @@ export function Contact() {
                 Other ways to connect
               </h3>
               <p className="text-foreground-muted mb-6">
-                Prefer to reach out directly? Feel free to connect on
-                social media.
+                Prefer to reach out directly? Feel free to connect on social media.
               </p>
             </div>
 
             {/* Social links */}
             <div className="space-y-4">
-         
-
               <a
                 href={socialLinks.github}
                 target="_blank"
@@ -194,7 +208,7 @@ export function Contact() {
                 className="flex items-center gap-4 p-4 rounded-lg bg-background-secondary border border-border hover:border-spot-yellow/30 transition-all group"
               >
                 <div className="p-2 rounded-lg bg-spot-yellow-muted group-hover:bg-spot-yellow/20 transition-colors">
-                  <Github size={20} className="text-spot-yellow" />
+                  <Github size={20} className="text-spot-yellow-text" />
                 </div>
                 <div>
                   <p className="font-medium text-foreground">GitHub</p>
@@ -209,7 +223,7 @@ export function Contact() {
                 className="flex items-center gap-4 p-4 rounded-lg bg-background-secondary border border-border hover:border-spot-yellow/30 transition-all group"
               >
                 <div className="p-2 rounded-lg bg-spot-yellow-muted group-hover:bg-spot-yellow/20 transition-colors">
-                  <Linkedin size={20} className="text-spot-yellow" />
+                  <Linkedin size={20} className="text-spot-yellow-text" />
                 </div>
                 <div>
                   <p className="font-medium text-foreground">LinkedIn</p>
@@ -218,7 +232,6 @@ export function Contact() {
               </a>
             </div>
 
-            
           </motion.div>
         </div>
       </div>

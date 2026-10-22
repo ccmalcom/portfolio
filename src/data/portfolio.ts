@@ -25,6 +25,14 @@ export const sectionColors = {
 	projects: 'var(--color-spot-pink)',
 	skills: 'var(--color-spot-green)',
 	contact: 'var(--color-spot-yellow)',
+};
+
+// Text-safe variants of sectionColors (darker in light mode, >=4.5:1)
+export const sectionTextColors = {
+	about: 'var(--color-spot-blue-text)',
+	projects: 'var(--color-spot-pink-text)',
+	skills: 'var(--color-spot-green-text)',
+	contact: 'var(--color-spot-yellow-text)',
 }; 
 
 export const projects: Project[] = [
@@ -183,7 +191,6 @@ export const navLinks = [
 export const socialLinks = {
 	github: 'https://github.com/ccmalcom',
 	linkedin: 'https://www.linkedin.com/in/chase-malcom/',
-	email: 'mailto:chase@chasemalcom.com',
 };
 
 export const aboutContent = {

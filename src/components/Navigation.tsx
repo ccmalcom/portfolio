@@ -1,10 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Github, Linkedin, Sun, Moon } from 'lucide-react';
 import { useTheme } from 'next-themes';
-import { navLinks, socialLinks, sectionColors } from '@/data/portfolio';
+import { navLinks, socialLinks, sectionColors, sectionTextColors } from '@/data/portfolio';
 import { useSyncExternalStore } from 'react';
 
 const emptySubscribe = () => () => {};
@@ -19,6 +19,7 @@ export function Navigation() {
 	const [isScrolled, setIsScrolled] = useState(false);
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 	const [activeSection, setActiveSection] = useState('');
+	const toggleRef = useRef<HTMLButtonElement>(null);
 	const mounted = useIsMounted();
 	const { theme, setTheme } = useTheme();
 
@@ -56,11 +57,24 @@ export function Navigation() {
 		return () => window.removeEventListener('scroll', handleScroll);
 	}, []);
 
+	// Escape closes the mobile menu and returns focus to the toggle
+	useEffect(() => {
+		if (!isMobileMenuOpen) return;
+		const onKey = (e: KeyboardEvent) => {
+			if (e.key === 'Escape') {
+				setIsMobileMenuOpen(false);
+				toggleRef.current?.focus();
+			}
+		};
+		window.addEventListener('keydown', onKey);
+		return () => window.removeEventListener('keydown', onKey);
+	}, [isMobileMenuOpen]);
+
 	const handleNavClick = (href: string) => {
 		setIsMobileMenuOpen(false);
 		const element = document.querySelector(href);
 		if (element) {
-			element.scrollIntoView({ behavior: 'smooth' });
+			element.scrollIntoView();
 		}
 	};
 
@@ -72,9 +86,15 @@ export function Navigation() {
 				transition={{ duration: 0.5, ease: 'easeOut' }}
 				className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
 					isScrolled
-						? 'bg-background/80 backdrop-blur-lg border-b border-border'
+						? 'bg-background/80 backdrop-blur-lg'
 						: 'bg-transparent'
 				}`}>
+				{isScrolled && (
+					<div
+						aria-hidden="true"
+						className="brand-hairline absolute inset-x-0 bottom-0"
+					/>
+				)}
 				<nav className="max-w-6xl mx-auto px-6 py-4">
 					<div className="flex items-center justify-between">
 						{/* Logo */}
@@ -84,7 +104,7 @@ export function Navigation() {
 							whileHover={{ scale: 1.02 }}
 							whileTap={{ scale: 0.98 }}>
 							<span className="gradient-text">c</span>
-							<span className="foreground">m</span>
+							<span className="text-foreground">m</span>
 						</motion.a>
 
 						{/* Desktop Navigation */}
@@ -96,13 +116,17 @@ export function Navigation() {
 								) as keyof typeof sectionColors;
 								const isActive = activeSection === sectionId;
 								const sectionColor = sectionColors[sectionId];
+								const sectionTextColor = sectionTextColors[sectionId];
 
 								return (
 									<button
 										key={link.name}
 										onClick={() => handleNavClick(link.href)}
-										className="text-sm font-medium transition-colors relative"
-										style={{ color: isActive ? sectionColor : undefined }}>
+										className="text-sm font-medium transition-colors relative hover:text-(--section-text)"
+										style={{
+											'--section-text': sectionTextColor,
+											color: isActive ? sectionTextColor : undefined,
+										} as React.CSSProperties}>
 										{link.name}
 										{isActive && (
 											<motion.div
@@ -157,9 +181,12 @@ export function Navigation() {
 
 						{/* Mobile menu button */}
 						<button
+							ref={toggleRef}
 							onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-							className="md:hidden text-foreground p-2"
-							aria-label="Toggle menu">
+							className="md:hidden text-foreground inline-flex h-11 w-11 items-center justify-center -mr-2"
+							aria-label="Toggle menu"
+							aria-expanded={isMobileMenuOpen}
+							aria-controls="mobile-menu">
 							{isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
 						</button>
 					</div>
@@ -174,6 +201,7 @@ export function Navigation() {
 						animate={{ opacity: 1, y: 0 }}
 						exit={{ opacity: 0, y: -20 }}
 						transition={{ duration: 0.2 }}
+						id="mobile-menu"
 						className="fixed inset-0 z-40 md:hidden">
 						<div
 							className="absolute inset-0 bg-background/95 backdrop-blur-lg"
@@ -187,7 +215,11 @@ export function Navigation() {
 									animate={{ opacity: 1, y: 0 }}
 									transition={{ delay: index * 0.1 }}
 									onClick={() => handleNavClick(link.href)}
-									className="text-2xl font-medium text-foreground hover:text-accent transition-colors">
+									className="text-2xl font-medium text-foreground hover:text-(--section-text) transition-colors"
+									style={{
+										'--section-text':
+											sectionTextColors[link.href.replace('#', '') as keyof typeof sectionTextColors],
+									} as React.CSSProperties}>
 									{link.name}
 								</motion.button>
 							))}
@@ -195,13 +227,13 @@ export function Navigation() {
 								initial={{ opacity: 0 }}
 								animate={{ opacity: 1 }}
 								transition={{ delay: 0.4 }}
-								className="flex items-center gap-6 mt-8">
+								className="flex items-center gap-3 mt-8">
 								<a
 									href={socialLinks.github}
 									target="_blank"
 									rel="noopener noreferrer"
 									aria-label="GitHub"
-									className="text-foreground-muted hover:text-foreground transition-colors">
+									className="text-foreground-muted hover:text-foreground transition-colors p-3">
 									<Github size={24} />
 								</a>
 								<a
@@ -209,12 +241,13 @@ export function Navigation() {
 									target="_blank"
 									rel="noopener noreferrer"
 									aria-label="LinkedIn"
-									className="text-foreground-muted hover:text-foreground transition-colors">
+									className="text-foreground-muted hover:text-foreground transition-colors p-3">
 									<Linkedin size={24} />
 								</a>
 								<button
 									onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-									className="text-foreground-muted hover:text-foreground transition-colors">
+									className="text-foreground-muted hover:text-foreground transition-colors p-3"
+									aria-label="Toggle theme">
 									{mounted ? (
 										theme === 'dark' ? (
 											<Sun size={24} />

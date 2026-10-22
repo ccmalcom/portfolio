@@ -7,7 +7,8 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="py-12 border-t border-border">
+    <footer className="py-12">
+      <div aria-hidden="true" className="brand-hairline -mt-12 mb-12" />
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Logo / Name */}
@@ -27,7 +28,7 @@ export function Footer() {
               href={socialLinks.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-foreground-muted hover:text-accent transition-colors p-2"
+              className="text-foreground-muted hover:text-foreground transition-colors p-2"
               aria-label="GitHub"
             >
               <Github size={18} />
@@ -36,7 +37,7 @@ export function Footer() {
               href={socialLinks.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-foreground-muted hover:text-accent transition-colors p-2"
+              className="text-foreground-muted hover:text-foreground transition-colors p-2"
               aria-label="LinkedIn"
             >
               <Linkedin size={18} />
@@ -46,8 +47,8 @@ export function Footer() {
 
           {/* Copyright */}
           <div className="flex items-center gap-1 text-sm text-foreground-muted">
-            <span>Built with</span>
-            <Heart size={14} className="text-red-500 gradient-text"  />
+            <span>Made with</span>
+            <Heart size={14} className="text-spot-pink-text fill-current" aria-hidden="true" />
             <span>© {currentYear}</span>
           </div>
         </div>

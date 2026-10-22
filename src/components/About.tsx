@@ -1,11 +1,11 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Music, Leaf, Code2, Briefcase } from 'lucide-react';
 import { aboutContent } from '@/data/portfolio';
 import Image from 'next/image';
+import { SectionHeader } from './SectionHeader';
 
 export function About() {
 	const ref = useRef(null);
@@ -35,19 +35,10 @@ export function About() {
 	];
 
 	return (
-		<section id="about" className="py-24 md:py-32" ref={ref}>
+		<section id="about" className="py-16 md:py-24" ref={ref}>
 			<div className="max-w-6xl mx-auto px-6">
 				{/* Section header */}
-				<motion.div
-					initial={{ opacity: 0, y: 20 }}
-					animate={isInView ? { opacity: 1, y: 0 } : {}}
-					transition={{ duration: 0.5 }}
-					className="mb-16">
-					<h2 className="text-3xl md:text-4xl font-bold mb-4">
-						<span className="text-spot-blue">01.</span> About Me
-					</h2>
-					<div className="section-divider max-w-xs" />
-				</motion.div>
+				<SectionHeader title="About Me" spot="blue" isInView={isInView} />
 
 				<div className="grid lg:grid-cols-5 gap-12 lg:gap-16 items-start">
 					{/* Avatar and highlights column */}
@@ -82,7 +73,7 @@ export function About() {
 									animate={isInView ? { opacity: 1, y: 0 } : {}}
 									transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
 									className="p-3 rounded-lg bg-background-secondary border border-border">
-									<item.icon size={18} className="text-spot-blue mb-2" />
+									<item.icon size={18} className="text-spot-blue-text mb-2" />
 									<p className="text-sm font-medium text-foreground">
 										{item.label}
 									</p>
@@ -92,7 +83,7 @@ export function About() {
 								</motion.div>
 							))}
 						{/* Fun note */}
-						<div className="p-4 rounded-lg border border-dashed col-span-2">
+						<div className="p-4 rounded-lg border border-dashed border-border col-span-2">
 							<p className="text-sm text-foreground-muted italic">
 								🌱 Fun fact: When I&apos;m not coding, I&apos;m probably hiking
 								a trail or tending to my garden. Growing things—whether
