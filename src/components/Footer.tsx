@@ -7,13 +7,14 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="py-12 border-t border-border">
+    <footer className="py-12">
+      <div aria-hidden="true" className="brand-hairline -mt-12 mb-12" />
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Logo / Name */}
           <div className="flex items-center gap-2">
             <span className="text-xl font-semibold">
-              <span className="text-spot-pink-text">c</span>
+              <span className="gradient-text">c</span>
               <span className="text-foreground">m</span>
             </span>
             <span className="text-foreground-muted text-sm">

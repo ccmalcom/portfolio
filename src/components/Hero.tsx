@@ -55,7 +55,7 @@ export function Hero() {
           <span className="text-foreground">Web Developer </span>
           <span className="text-foreground">&</span>
           <br />
-          <span className="text-spot-blue-text">Problem Solver</span>
+          <span className="gradient-text">Problem Solver</span>
         </motion.h1>
 
         {/* Tagline */}
@@ -86,7 +86,7 @@ export function Hero() {
         {featured && (
           <a
             href={`#project-${featured.id}`}
-            className="group mt-10 mx-auto flex max-w-md items-center justify-between gap-4 rounded-lg border border-border bg-background-secondary px-5 py-4 text-left transition-colors hover:border-spot-pink"
+            className="group gradient-border mt-10 mx-auto flex max-w-md items-center justify-between gap-4 rounded-lg border border-border bg-background-secondary px-5 py-4 text-left transition-colors"
           >
             <span className="min-w-0">
               <span className="block text-sm text-foreground-muted">

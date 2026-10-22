@@ -86,9 +86,15 @@ export function Navigation() {
 				transition={{ duration: 0.5, ease: 'easeOut' }}
 				className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
 					isScrolled
-						? 'bg-background/80 backdrop-blur-lg border-b border-border'
+						? 'bg-background/80 backdrop-blur-lg'
 						: 'bg-transparent'
 				}`}>
+				{isScrolled && (
+					<div
+						aria-hidden="true"
+						className="brand-hairline absolute inset-x-0 bottom-0"
+					/>
+				)}
 				<nav className="max-w-6xl mx-auto px-6 py-4">
 					<div className="flex items-center justify-between">
 						{/* Logo */}
@@ -97,7 +103,7 @@ export function Navigation() {
 							className="text-xl font-semibold tracking-tight"
 							whileHover={{ scale: 1.02 }}
 							whileTap={{ scale: 0.98 }}>
-							<span className="text-spot-pink-text">c</span>
+							<span className="gradient-text">c</span>
 							<span className="foreground">m</span>
 						</motion.a>
 

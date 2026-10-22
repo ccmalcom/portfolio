@@ -96,6 +96,20 @@
   --text-sf-blue: #0A6491;
   --text-accent: #146B34;
 
+  /* Brand gradient: blue, pink, green, yellow. Uses the text-safe variants,
+     so it follows the theme (darker in light mode, vibrant in dark). */
+  --brand-gradient: linear-gradient(135deg,
+      var(--text-spot-blue) 0%,
+      var(--text-spot-pink) 33%,
+      var(--text-spot-green) 66%,
+      var(--text-spot-yellow) 100%);
+  --brand-gradient-line: linear-gradient(90deg,
+      var(--text-spot-blue),
+      var(--text-spot-pink),
+      var(--text-spot-green),
+      var(--text-spot-yellow));
+  --selection-bg: rgba(43, 88, 172, 0.22);
+
   /* Warmer accent-2 - more muted to complement the paper tone */
   --accent-2: #8B9BB8;
 
@@ -125,6 +139,7 @@
   --text-spot-yellow: var(--color-spot-yellow);
   --text-sf-blue: var(--color-sf-blue);
   --text-accent: var(--accent);
+  --selection-bg: rgba(80, 136, 224, 0.35);
 
   /* Brighter accent-2 to pop against dark backgrounds */
   --accent-2: #BFD7FD;
@@ -176,8 +191,55 @@ body {
 
 /* Selection styling */
 ::selection {
-  background-color: var(--accent);
-  color: var(--background);
+  background-color: var(--selection-bg);
+  color: inherit;
+}
+
+/* Brand gradient text (Problem Solver, logo mark) */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.gradient-text {
+  background: var(--brand-gradient);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 8s ease infinite;
+}
+
+/* 1px gradient hairline (nav bottom, footer top) */
+.brand-hairline {
+  height: 1px;
+  background: var(--brand-gradient-line);
+  opacity: 0.8;
+}
+
+/* Gradient border revealed on hover/focus (card keeps its own border beneath) */
+.gradient-border {
+  position: relative;
+}
+
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  padding: 1px;
+  border-radius: inherit;
+  background: var(--brand-gradient);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.gradient-border:hover::before,
+.gradient-border:focus-visible::before {
+  opacity: 1;
 }
 
 
