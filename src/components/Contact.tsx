@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Send, Github, Linkedin, Mail, Loader2, CheckCircle } from "lucide-react";
+import { Send, Github, Linkedin, Loader2, CheckCircle } from "lucide-react";
 import { socialLinks } from "@/data/portfolio";
 import { SectionHeader } from "./SectionHeader";
 
@@ -15,7 +15,6 @@ export function Contact() {
     email: "",
     message: "",
   });
-  const emailAddress = socialLinks.email.replace(/^mailto:/, "");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -156,13 +155,14 @@ export function Contact() {
               <div role="status" aria-live="polite" className="text-sm">
                 {status === "error" && (
                   <p className="text-foreground">
-                    That didn&apos;t go through, and your message is still here.
-                    Try again, or email me directly at{" "}
+                    Couldn&apos;t send your message. Try again, or reach me on{" "}
                     <a
-                      href={socialLinks.email}
+                      href={socialLinks.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="font-medium text-spot-yellow-text underline underline-offset-2"
                     >
-                      {emailAddress}
+                      LinkedIn
                     </a>
                     .
                   </p>
@@ -195,26 +195,12 @@ export function Contact() {
                 Other ways to connect
               </h3>
               <p className="text-foreground-muted mb-6">
-                Prefer to reach out directly? Email me, or connect on
-                social media.
+                Prefer to reach out directly? Feel free to connect on social media.
               </p>
             </div>
 
             {/* Social links */}
             <div className="space-y-4">
-              <a
-                href={socialLinks.email}
-                className="flex items-center gap-4 p-4 rounded-lg bg-background-secondary border border-border hover:border-spot-yellow/30 transition-all group"
-              >
-                <div className="p-2 rounded-lg bg-spot-yellow-muted group-hover:bg-spot-yellow/20 transition-colors">
-                  <Mail size={20} className="text-spot-yellow-text" />
-                </div>
-                <div className="min-w-0">
-                  <p className="font-medium text-foreground">Email</p>
-                  <p className="text-sm text-foreground-muted break-all">{emailAddress}</p>
-                </div>
-              </a>
-
               <a
                 href={socialLinks.github}
                 target="_blank"
