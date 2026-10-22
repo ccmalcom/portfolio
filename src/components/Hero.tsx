@@ -10,7 +10,7 @@ export function Hero() {
   // MotionConfig drops transforms under reduced motion but still loops opacity; hold the dots still.
   const reduceMotion = useReducedMotion();
   const scrollToAbout = () => {
-    document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
+    document.getElementById("about")?.scrollIntoView();
   };
 
   return (
