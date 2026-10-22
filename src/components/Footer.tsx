@@ -46,8 +46,8 @@ export function Footer() {
 
           {/* Copyright */}
           <div className="flex items-center gap-1 text-sm text-foreground-muted">
-            <span>Built with</span>
-            <Heart size={14} className="text-red-500 gradient-text"  />
+            <span>Made with</span>
+            <Heart size={14} className="text-red-500 fill-current" aria-hidden="true" />
             <span>© {currentYear}</span>
           </div>
         </div>

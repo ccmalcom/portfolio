@@ -35,6 +35,21 @@
   --color-sf-blue: #00A1E0;
   /* keep brand color as-is */
 
+  /* Text on a vibrant spot-color fill (buttons, badges): near-black, >=5:1 on every spot */
+  --color-on-spot: #0a0a0a;
+
+  /* Soft fill behind spot-colored icons */
+  --color-spot-yellow-muted: rgba(233, 181, 77, 0.15);
+
+  /* Spot colors as TEXT. Vibrant values stay for fills, dots, borders, icons.
+     Light mode steps them darker (>=4.5:1 on all three paper surfaces); dark keeps vibrant. */
+  --color-spot-blue-text: var(--text-spot-blue);
+  --color-spot-pink-text: var(--text-spot-pink);
+  --color-spot-green-text: var(--text-spot-green);
+  --color-spot-yellow-text: var(--text-spot-yellow);
+  --color-sf-blue-text: var(--text-sf-blue);
+  --color-accent-text: var(--text-accent);
+
 
   /* Background colors */
   --color-background: var(--background);
@@ -135,12 +150,20 @@
 
   /* Softer foreground - pure black feels harsh on warm backgrounds */
   --foreground: #2D2A26;
-  --foreground-muted: #6B665E;
+  --foreground-muted: #625D55;
 
   /* Warmer green accent - slightly shifted to feel less "digital" */
   --accent: #1A9E4A;
   --accent-hover: #22B558;
   --accent-muted: rgba(26, 158, 74, 0.12);
+
+  /* Text-safe variants (contrast on #E5DFD5 >= 4.5, on #F5F1EB >= 5.4) */
+  --text-spot-blue: #2B58AC;
+  --text-spot-pink: #AE3461;
+  --text-spot-green: #25702F;
+  --text-spot-yellow: #7D5A0C;
+  --text-sf-blue: #0A6491;
+  --text-accent: #146B34;
 
   /* Warmer accent-2 - more muted to complement the paper tone */
   --accent-2: #8B9BB8;
@@ -163,6 +186,14 @@
   --accent: #1DB954;
   --accent-hover: #1ED760;
   --accent-muted: rgba(29, 185, 84, 0.10);
+
+  /* Dark keeps the vibrant values as text */
+  --text-spot-blue: var(--color-spot-blue);
+  --text-spot-pink: var(--color-spot-pink);
+  --text-spot-green: var(--color-spot-green);
+  --text-spot-yellow: var(--color-spot-yellow);
+  --text-sf-blue: var(--color-sf-blue);
+  --text-accent: var(--accent);
 
   /* Brighter accent-2 to pop against dark backgrounds */
   --accent-2: #BFD7FD;
@@ -215,6 +246,14 @@ body {
 }
 
 
+
+/* Visible keyboard focus everywhere (inputs add their own ring) */
+@layer base {
+  :focus-visible {
+    outline: 2px solid var(--color-accent-text);
+    outline-offset: 2px;
+  }
+}
 
 /* Link underline animation */
 .link-underline {
@@ -356,7 +395,7 @@ body {
   align-items: center;
   padding: 0.25rem 0.75rem;
   background-color: var(--background-secondary);
-  color: var(--color-spot-pink);
+  color: var(--color-spot-pink-text);
   border-radius: 9999px;
   font-size: 0.75rem;
   font-weight: 500;
@@ -365,5 +404,5 @@ body {
 
 .tech-pill:hover {
   background-color: var(--color-spot-pink);
-  color: var(--background);
+  color: var(--color-on-spot);
 }

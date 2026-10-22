@@ -75,6 +75,12 @@ export default function RootLayout({
       <body className="antialiased bg-background text-foreground font-sans">
         <ThemeProvider>
           {/* Noise texture overlay for subtle grain effect */}
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-full focus:bg-spot-blue focus:px-5 focus:py-3 focus:text-sm focus:font-medium focus:text-on-spot"
+          >
+            Skip to main content
+          </a>
           <div className="noise-overlay" aria-hidden="true" />
           {children}
         </ThemeProvider>

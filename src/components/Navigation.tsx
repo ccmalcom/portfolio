@@ -1,10 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Github, Linkedin, Sun, Moon } from 'lucide-react';
 import { useTheme } from 'next-themes';
-import { navLinks, socialLinks, sectionColors } from '@/data/portfolio';
+import { navLinks, socialLinks, sectionColors, sectionTextColors } from '@/data/portfolio';
 import { useSyncExternalStore } from 'react';
 
 const emptySubscribe = () => () => {};
@@ -19,6 +19,7 @@ export function Navigation() {
 	const [isScrolled, setIsScrolled] = useState(false);
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 	const [activeSection, setActiveSection] = useState('');
+	const toggleRef = useRef<HTMLButtonElement>(null);
 	const mounted = useIsMounted();
 	const { theme, setTheme } = useTheme();
 
@@ -55,6 +56,19 @@ export function Navigation() {
 		window.addEventListener('scroll', handleScroll);
 		return () => window.removeEventListener('scroll', handleScroll);
 	}, []);
+
+	// Escape closes the mobile menu and returns focus to the toggle
+	useEffect(() => {
+		if (!isMobileMenuOpen) return;
+		const onKey = (e: KeyboardEvent) => {
+			if (e.key === 'Escape') {
+				setIsMobileMenuOpen(false);
+				toggleRef.current?.focus();
+			}
+		};
+		window.addEventListener('keydown', onKey);
+		return () => window.removeEventListener('keydown', onKey);
+	}, [isMobileMenuOpen]);
 
 	const handleNavClick = (href: string) => {
 		setIsMobileMenuOpen(false);
@@ -96,13 +110,14 @@ export function Navigation() {
 								) as keyof typeof sectionColors;
 								const isActive = activeSection === sectionId;
 								const sectionColor = sectionColors[sectionId];
+								const sectionTextColor = sectionTextColors[sectionId];
 
 								return (
 									<button
 										key={link.name}
 										onClick={() => handleNavClick(link.href)}
 										className="text-sm font-medium transition-colors relative"
-										style={{ color: isActive ? sectionColor : undefined }}>
+										style={{ color: isActive ? sectionTextColor : undefined }}>
 										{link.name}
 										{isActive && (
 											<motion.div
@@ -157,9 +172,12 @@ export function Navigation() {
 
 						{/* Mobile menu button */}
 						<button
+							ref={toggleRef}
 							onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-							className="md:hidden text-foreground p-2"
-							aria-label="Toggle menu">
+							className="md:hidden text-foreground inline-flex h-11 w-11 items-center justify-center -mr-2"
+							aria-label="Toggle menu"
+							aria-expanded={isMobileMenuOpen}
+							aria-controls="mobile-menu">
 							{isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
 						</button>
 					</div>
@@ -174,6 +192,7 @@ export function Navigation() {
 						animate={{ opacity: 1, y: 0 }}
 						exit={{ opacity: 0, y: -20 }}
 						transition={{ duration: 0.2 }}
+						id="mobile-menu"
 						className="fixed inset-0 z-40 md:hidden">
 						<div
 							className="absolute inset-0 bg-background/95 backdrop-blur-lg"
@@ -195,13 +214,13 @@ export function Navigation() {
 								initial={{ opacity: 0 }}
 								animate={{ opacity: 1 }}
 								transition={{ delay: 0.4 }}
-								className="flex items-center gap-6 mt-8">
+								className="flex items-center gap-3 mt-8">
 								<a
 									href={socialLinks.github}
 									target="_blank"
 									rel="noopener noreferrer"
 									aria-label="GitHub"
-									className="text-foreground-muted hover:text-foreground transition-colors">
+									className="text-foreground-muted hover:text-foreground transition-colors p-3">
 									<Github size={24} />
 								</a>
 								<a
@@ -209,12 +228,13 @@ export function Navigation() {
 									target="_blank"
 									rel="noopener noreferrer"
 									aria-label="LinkedIn"
-									className="text-foreground-muted hover:text-foreground transition-colors">
+									className="text-foreground-muted hover:text-foreground transition-colors p-3">
 									<Linkedin size={24} />
 								</a>
 								<button
 									onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-									className="text-foreground-muted hover:text-foreground transition-colors">
+									className="text-foreground-muted hover:text-foreground transition-colors p-3"
+									aria-label="Toggle theme">
 									{mounted ? (
 										theme === 'dark' ? (
 											<Sun size={24} />

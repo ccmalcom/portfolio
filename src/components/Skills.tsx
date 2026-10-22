@@ -9,28 +9,28 @@ const categories = [
   {
     id: "salesforce",
     name: "Salesforce",
-    color: "var(--color-sf-blue)",
+    color: "var(--color-sf-blue-text)",
     icon: Cloud,
     description: "CRM & Platform Development",
   },
   {
     id: "frontend",
     name: "Frontend",
-    color: "var(--color-spot-pink)",
+    color: "var(--color-spot-pink-text)",
     icon: Layout,
     description: "UI & Web Applications",
   },
   {
     id: "backend",
     name: "Backend",
-    color: "var(--color-spot-green)",
+    color: "var(--color-spot-green-text)",
     icon: Server,
     description: "APIs & Databases",
   },
   {
     id: "tools",
     name: "Tools",
-    color: "var(--color-spot-yellow)",
+    color: "var(--color-spot-yellow-text)",
     icon: Wrench,
     description: "Dev Environment",
   },
@@ -110,7 +110,7 @@ export function Skills() {
           className="mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            <span className="text-accent">03.</span> Skills & Technologies
+            <span className="text-accent-text">03.</span> Skills & Technologies
           </h2>
           <div className="section-divider max-w-xs" />
           <p className="mt-4 text-foreground-muted max-w-2xl">
@@ -145,7 +145,7 @@ export function Skills() {
           className="mt-12 text-center"
         >
           <p className="text-foreground-muted">
-            <span className="text-accent">Currently exploring:</span>{" "}
+            <span className="text-accent-text">Currently exploring:</span>{" "}
             AI/ML integrations, advanced Python patterns, and system design
           </p>
         </motion.div>

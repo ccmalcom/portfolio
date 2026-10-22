@@ -51,7 +51,7 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <a href="#projects" className="btn bg-spot-blue text-white">
+          <a href="#projects" className="btn bg-spot-blue text-on-spot">
             View My Work
           </a>
           <a href="#contact" className="btn btn-secondary">
@@ -80,7 +80,7 @@ export function Hero() {
             </span>
             <ArrowRight
               size={20}
-              className="shrink-0 text-spot-pink transition-transform group-hover:translate-x-1"
+              className="shrink-0 text-spot-pink-text transition-transform group-hover:translate-x-1"
               aria-hidden="true"
             />
           </motion.a>

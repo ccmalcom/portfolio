@@ -44,7 +44,7 @@ export function About() {
 					transition={{ duration: 0.5 }}
 					className="mb-16">
 					<h2 className="text-3xl md:text-4xl font-bold mb-4">
-						<span className="text-spot-blue">01.</span> About Me
+						<span className="text-spot-blue-text">01.</span> About Me
 					</h2>
 					<div className="section-divider max-w-xs" />
 				</motion.div>
@@ -82,7 +82,7 @@ export function About() {
 									animate={isInView ? { opacity: 1, y: 0 } : {}}
 									transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
 									className="p-3 rounded-lg bg-background-secondary border border-border">
-									<item.icon size={18} className="text-spot-blue mb-2" />
+									<item.icon size={18} className="text-spot-blue-text mb-2" />
 									<p className="text-sm font-medium text-foreground">
 										{item.label}
 									</p>

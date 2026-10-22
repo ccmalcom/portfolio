@@ -149,7 +149,7 @@ function ProjectCard({
 								/>
 								{/* Label for back image */}
 								<div
-									className="absolute bottom-3 left-3 px-2 py-1 rounded text-xs font-medium bg-spot-pink text-foreground">
+									className="absolute bottom-3 left-3 px-2 py-1 rounded text-xs font-medium bg-spot-pink text-on-spot">
 									{backLabel}
 								</div>
 								{/* Click hint */}
@@ -188,7 +188,7 @@ function ProjectCard({
 
 								{/* Label for front image */}
 								<div
-									className="absolute bottom-3 left-3 px-2 py-1 rounded text-xs font-medium bg-spot-pink text-foreground">
+									className="absolute bottom-3 left-3 px-2 py-1 rounded text-xs font-medium bg-spot-pink text-on-spot">
 									{frontLabel}
 								</div>
 							</motion.div>
@@ -235,14 +235,14 @@ function ProjectCard({
 			{/* Project info */}
 			<div className={`lg:col-span-5 space-y-4 ${!isEven ? 'lg:order-1' : ''}`}>
 				<div className="space-y-2">
-					<p className="text-spot-pink text-sm font-mono">Featured Project</p>
+					<p className="text-spot-pink-text text-sm font-mono">Featured Project</p>
 					<h3 className="text-2xl md:text-3xl font-bold text-foreground">
 						{titleUrl ? (
 							<a
 								href={titleUrl}
 								target="_blank"
 								rel="noopener noreferrer"
-								className="hover:text-spot-pink transition-colors">
+								className="hover:text-spot-pink-text transition-colors">
 								{project.title}
 							</a>
 						) : (
@@ -270,7 +270,7 @@ function ProjectCard({
 							}`}>
 							<ChevronRight
 								size={14}
-								className="text-spot-pink flex-shrink-0"
+								className="text-spot-pink-text flex-shrink-0"
 							/>
 							<span>{highlight}</span>
 						</li>
@@ -295,7 +295,7 @@ function ProjectCard({
 								href={project.liveUrl}
 								target="_blank"
 								rel="noopener noreferrer"
-								className="inline-flex min-h-11 items-center gap-2 rounded-full border border-border px-5 text-sm font-medium text-foreground transition-colors hover:border-spot-pink hover:text-spot-pink">
+								className="inline-flex min-h-11 items-center gap-2 rounded-full border border-border px-5 text-sm font-medium text-foreground transition-colors hover:border-spot-pink hover:text-spot-pink-text">
 								<ExternalLink size={16} aria-hidden="true" />
 								Live site
 								<span className="sr-only"> for {project.title} (opens in new tab)</span>
@@ -306,7 +306,7 @@ function ProjectCard({
 								href={project.githubUrl}
 								target="_blank"
 								rel="noopener noreferrer"
-								className="inline-flex min-h-11 items-center gap-2 rounded-full border border-border px-5 text-sm font-medium text-foreground transition-colors hover:border-spot-pink hover:text-spot-pink">
+								className="inline-flex min-h-11 items-center gap-2 rounded-full border border-border px-5 text-sm font-medium text-foreground transition-colors hover:border-spot-pink hover:text-spot-pink-text">
 								<Github size={16} aria-hidden="true" />
 								Source
 								<span className="sr-only"> for {project.title} (opens in new tab)</span>
@@ -335,7 +335,7 @@ export function Projects() {
 					transition={{ duration: 0.5 }}
 					className="mb-16">
 					<h2 className="text-3xl md:text-4xl font-bold mb-4">
-						<span className="text-spot-pink">02.</span> Featured Projects
+						<span className="text-spot-pink-text">02.</span> Featured Projects
 					</h2>
 					<div className="section-divider max-w-xs" />
 				</motion.div>
